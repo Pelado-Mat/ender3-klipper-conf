@@ -1,0 +1,1333 @@
+
+*******************************************************************
+Current Moonraker telegram bot config
+[bot]
+server = localhost
+
+[camera]
+host = http://localhost:8080/?action=stream
+
+[progress_notification]
+percent = 5
+height = 5
+time = 5
+
+[timelapse]
+cleanup = true
+height = 0.2
+time = 5
+target_fps = 30
+
+
+*******************************************************************
+2023-10-08 22:35:34,591 - __main__ - ERROR - 
+
+2023-10-08 22:35:34,647 - __main__ - ERROR - Uncaught exception
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot/bot/main.py", line 1106, in <module>
+    bot_updater = start_bot(configWrap.secrets.token, configWrap.bot_config.socks_proxy)
+  File "/home/m/moonraker-telegram-bot/bot/main.py", line 1006, in start_bot
+    updater = Updater(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/updater.py", line 279, in __init__
+    self.bot = ExtBot(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/extbot.py", line 99, in __init__
+    super().__init__(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 195, in __init__
+    self.token = self._validate_token(token)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 363, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+Stack (most recent call last):
+  File "/home/m/moonraker-telegram-bot/bot/main.py", line 64, in handle_exception
+    logger.error(
+
+*******************************************************************
+Current Moonraker telegram bot config
+[bot]
+server = localhost
+
+[camera]
+host = http://localhost:8080/?action=stream
+
+[progress_notification]
+percent = 5
+height = 5
+time = 5
+
+[timelapse]
+cleanup = true
+height = 0.2
+time = 5
+target_fps = 30
+
+
+*******************************************************************
+2023-10-08 22:35:50,536 - __main__ - ERROR - 
+
+2023-10-08 22:35:50,551 - __main__ - ERROR - Uncaught exception
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot/bot/main.py", line 1106, in <module>
+    bot_updater = start_bot(configWrap.secrets.token, configWrap.bot_config.socks_proxy)
+  File "/home/m/moonraker-telegram-bot/bot/main.py", line 1006, in start_bot
+    updater = Updater(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/updater.py", line 279, in __init__
+    self.bot = ExtBot(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/extbot.py", line 99, in __init__
+    super().__init__(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 195, in __init__
+    self.token = self._validate_token(token)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 363, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+Stack (most recent call last):
+  File "/home/m/moonraker-telegram-bot/bot/main.py", line 64, in handle_exception
+    logger.error(
+
+*******************************************************************
+Current Moonraker telegram bot config
+[bot]
+server = localhost
+
+[camera]
+host = http://localhost:8080/?action=stream
+
+[progress_notification]
+percent = 5
+height = 5
+time = 5
+
+[timelapse]
+cleanup = true
+height = 0.2
+time = 5
+target_fps = 30
+
+
+*******************************************************************
+2023-10-08 22:36:04,817 - __main__ - ERROR - 
+
+2023-10-08 22:36:04,832 - __main__ - ERROR - Uncaught exception
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot/bot/main.py", line 1106, in <module>
+    bot_updater = start_bot(configWrap.secrets.token, configWrap.bot_config.socks_proxy)
+  File "/home/m/moonraker-telegram-bot/bot/main.py", line 1006, in start_bot
+    updater = Updater(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/updater.py", line 279, in __init__
+    self.bot = ExtBot(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/extbot.py", line 99, in __init__
+    super().__init__(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 195, in __init__
+    self.token = self._validate_token(token)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 363, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+Stack (most recent call last):
+  File "/home/m/moonraker-telegram-bot/bot/main.py", line 64, in handle_exception
+    logger.error(
+
+*******************************************************************
+Current Moonraker telegram bot config
+[bot]
+server = localhost
+
+[camera]
+host = http://localhost:8080/?action=stream
+
+[progress_notification]
+percent = 5
+height = 5
+time = 5
+
+[timelapse]
+cleanup = true
+height = 0.2
+time = 5
+target_fps = 30
+
+
+*******************************************************************
+2023-10-08 22:36:18,847 - __main__ - ERROR - 
+
+2023-10-08 22:36:18,862 - __main__ - ERROR - Uncaught exception
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot/bot/main.py", line 1106, in <module>
+    bot_updater = start_bot(configWrap.secrets.token, configWrap.bot_config.socks_proxy)
+  File "/home/m/moonraker-telegram-bot/bot/main.py", line 1006, in start_bot
+    updater = Updater(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/updater.py", line 279, in __init__
+    self.bot = ExtBot(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/extbot.py", line 99, in __init__
+    super().__init__(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 195, in __init__
+    self.token = self._validate_token(token)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 363, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+Stack (most recent call last):
+  File "/home/m/moonraker-telegram-bot/bot/main.py", line 64, in handle_exception
+    logger.error(
+
+*******************************************************************
+Current Moonraker telegram bot config
+[bot]
+server = localhost
+
+[camera]
+host = http://localhost:8080/?action=stream
+
+[progress_notification]
+percent = 5
+height = 5
+time = 5
+
+[timelapse]
+cleanup = true
+height = 0.2
+time = 5
+target_fps = 30
+
+
+*******************************************************************
+2023-10-08 22:36:33,154 - __main__ - ERROR - 
+
+2023-10-08 22:36:36,578 - klippy - ERROR - Not Found
+2023-10-08 22:36:37,871 - __main__ - ERROR - Uncaught exception
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot/bot/main.py", line 1114, in <module>
+    greeting_message(bot_updater.bot)
+  File "/home/m/moonraker-telegram-bot/bot/main.py", line 986, in greeting_message
+    bot.send_message(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 134, in decorator
+    result = func(*args, **kwargs)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 534, in send_message
+    return self._message(  # type: ignore[return-value]
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/extbot.py", line 203, in _message
+    result = super()._message(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 344, in _message
+    result = self._post(endpoint, data, timeout=timeout, api_kwargs=api_kwargs)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 299, in _post
+    return self.request.post(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/utils/request.py", line 361, in post
+    result = self._request_wrapper(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/utils/request.py", line 279, in _request_wrapper
+    raise BadRequest(message)
+telegram.error.BadRequest: Chat not found
+Stack (most recent call last):
+  File "/home/m/moonraker-telegram-bot/bot/main.py", line 64, in handle_exception
+    logger.error(
+
+*******************************************************************
+Current Moonraker telegram bot config
+[bot]
+server = localhost
+
+[camera]
+host = http://localhost:8080/?action=stream
+
+[progress_notification]
+percent = 5
+height = 5
+time = 5
+
+[timelapse]
+cleanup = true
+height = 0.2
+time = 5
+target_fps = 30
+
+
+*******************************************************************
+2023-10-08 22:36:58,355 - __main__ - ERROR - 
+
+2023-10-08 22:36:59,783 - klippy - ERROR - Not Found
+2023-10-08 22:37:01,205 - __main__ - ERROR - Uncaught exception
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot/bot/main.py", line 1114, in <module>
+    greeting_message(bot_updater.bot)
+  File "/home/m/moonraker-telegram-bot/bot/main.py", line 986, in greeting_message
+    bot.send_message(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 134, in decorator
+    result = func(*args, **kwargs)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 534, in send_message
+    return self._message(  # type: ignore[return-value]
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/extbot.py", line 203, in _message
+    result = super()._message(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 344, in _message
+    result = self._post(endpoint, data, timeout=timeout, api_kwargs=api_kwargs)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 299, in _post
+    return self.request.post(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/utils/request.py", line 361, in post
+    result = self._request_wrapper(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/utils/request.py", line 279, in _request_wrapper
+    raise BadRequest(message)
+telegram.error.BadRequest: Chat not found
+Stack (most recent call last):
+  File "/home/m/moonraker-telegram-bot/bot/main.py", line 64, in handle_exception
+    logger.error(
+2023-10-08 22:37:41,285 - klippy - ERROR - Not Found
+2023-10-08 22:37:41,286 - __main__ - ERROR - Exception while handling an update:
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/utils/promise.py", line 96, in run
+    self._result = self.pooled_function(*self.args, **self.kwargs)
+  File "/home/m/moonraker-telegram-bot/bot/main.py", line 152, in status
+    mess = escape(klippy.get_status())
+  File "/home/m/moonraker-telegram-bot/bot/klippy.py", line 396, in get_status
+    resp = self._make_request("GET", "/printer/objects/query?webhooks&print_stats&display_status").json()["result"]["status"]
+KeyError: 'result'
+
+*******************************************************************
+Current Moonraker telegram bot config
+[bot]
+server = localhost
+
+[camera]
+host = http://localhost:8080/?action=stream
+
+[progress_notification]
+percent = 5
+height = 5
+time = 5
+
+[timelapse]
+cleanup = true
+height = 0.2
+time = 5
+target_fps = 30
+
+[respond]
+
+
+*******************************************************************
+2023-10-08 22:38:56,429 - __main__ - ERROR - 
+
+2023-10-08 22:38:58,007 - klippy - ERROR - Not Found
+2023-10-08 22:39:01,026 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:39:02,980 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:39:04,981 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:39:06,978 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:39:08,980 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:39:10,978 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:39:12,978 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:39:14,978 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:39:16,978 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:39:18,980 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:39:20,980 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:39:22,979 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:39:24,978 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:39:26,982 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:39:28,980 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:39:30,977 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:39:31,829 - websocket_helper - INFO - WebSocket closed
+2023-10-08 22:39:31,831 - websocket_helper - ERROR - WebSocket close status code: 1001
+2023-10-08 22:39:31,832 - websocket_helper - ERROR - WebSocket close message: Server Shutdown
+2023-10-08 22:39:31,833 - __main__ - INFO - Exiting! Moonraker connection lost!
+
+*******************************************************************
+Current Moonraker telegram bot config
+[bot]
+server = localhost
+
+[camera]
+host = http://localhost:8080/?action=stream
+
+[progress_notification]
+percent = 5
+height = 5
+time = 5
+
+[timelapse]
+cleanup = true
+height = 0.2
+time = 5
+target_fps = 30
+
+[respond]
+
+
+*******************************************************************
+2023-10-08 22:39:55,204 - __main__ - ERROR - 
+
+2023-10-08 22:39:56,606 - klippy - ERROR - Not Found
+2023-10-08 22:39:58,477 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:40:00,476 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:40:02,475 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:40:04,474 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:40:06,475 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:40:08,475 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:40:10,473 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:40:12,475 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:40:14,474 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:40:14,636 - klippy - ERROR - Not Found
+2023-10-08 22:40:14,637 - __main__ - ERROR - Exception while handling an update:
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/utils/promise.py", line 96, in run
+    self._result = self.pooled_function(*self.args, **self.kwargs)
+  File "/home/m/moonraker-telegram-bot/bot/main.py", line 152, in status
+    mess = escape(klippy.get_status())
+  File "/home/m/moonraker-telegram-bot/bot/klippy.py", line 396, in get_status
+    resp = self._make_request("GET", "/printer/objects/query?webhooks&print_stats&display_status").json()["result"]["status"]
+KeyError: 'result'
+2023-10-08 22:40:16,474 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:40:18,474 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:40:20,474 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:40:22,474 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:40:24,478 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:40:26,474 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:40:28,474 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:40:30,474 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:40:32,476 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:40:34,473 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:40:36,474 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:40:38,475 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+
+*******************************************************************
+Current Moonraker telegram bot config
+[bot]
+server = localhost
+
+[respond]
+
+[camera]
+host = http://localhost:8080/?action=stream
+
+[progress_notification]
+percent = 5
+height = 5
+time = 5
+
+[timelapse]
+cleanup = true
+height = 0.2
+time = 5
+target_fps = 30
+
+
+*******************************************************************
+2023-10-08 22:40:45,484 - __main__ - ERROR - 
+
+2023-10-08 22:40:46,878 - klippy - ERROR - Not Found
+2023-10-08 22:40:48,869 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:40:50,869 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:40:52,871 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:40:54,867 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:40:56,867 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:40:58,867 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:41:00,869 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:41:02,866 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:41:04,866 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:41:06,866 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:41:08,866 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:41:10,866 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:41:12,866 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:41:14,866 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:41:16,866 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:41:18,863 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:41:20,862 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:41:22,863 - websocket_helper - WARNING - Error received from websocket: {'code': -32601, 'message': 'Method not found'}
+2023-10-08 22:42:30,237 - websocket_helper - INFO - WebSocket closed
+
+*******************************************************************
+Current Moonraker telegram bot config
+[bot]
+server = localhost
+
+[respond]
+
+[camera]
+host = http://localhost:8080/?action=stream
+rotate = 90_cw
+
+[progress_notification]
+percent = 5
+height = 5
+time = 5
+
+[timelapse]
+cleanup = true
+height = 0.2
+time = 5
+target_fps = 30
+
+
+*******************************************************************
+2023-10-08 22:42:41,834 - __main__ - ERROR - 
+
+2023-10-08 22:43:37,247 - websocket_helper - INFO - WebSocket closed
+2023-10-08 22:43:37,249 - __main__ - INFO - Exiting! Moonraker connection lost!
+
+*******************************************************************
+Current Moonraker telegram bot config
+[bot]
+server = localhost
+
+[respond]
+
+[camera]
+host = http://localhost:8080/?action=stream
+rotate = 90_ccw
+
+[progress_notification]
+percent = 5
+height = 5
+time = 5
+
+[timelapse]
+cleanup = true
+height = 0.2
+time = 5
+target_fps = 30
+
+
+*******************************************************************
+2023-10-08 22:43:47,713 - __main__ - ERROR - 
+
+2023-10-08 22:45:04,661 - websocket_helper - INFO - WebSocket closed
+
+*******************************************************************
+Current Moonraker telegram bot config
+[bot]
+server = localhost
+power_device = printer
+
+[respond]
+
+[camera]
+host = http://localhost:8080/?action=stream
+rotate = 90_ccw
+
+[progress_notification]
+percent = 5
+height = 5
+time = 5
+
+[timelapse]
+cleanup = true
+height = 0.2
+time = 5
+target_fps = 30
+
+
+*******************************************************************
+2023-10-08 22:45:15,181 - __main__ - ERROR - 
+
+2023-10-08 22:46:33,354 - websocket_helper - WARNING - klippy disconnect detected with message: notify_klippy_disconnected
+2023-10-08 22:46:33,454 - klippy - ERROR - Klippy Host not connected
+2023-10-08 22:46:35,467 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 22:46:37,468 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 22:46:39,418 - klippy - ERROR - Klippy Host not connected
+2023-10-08 22:46:39,421 - __main__ - ERROR - Exception while handling an update:
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/utils/promise.py", line 96, in run
+    self._result = self.pooled_function(*self.args, **self.kwargs)
+  File "/home/m/moonraker-telegram-bot/bot/main.py", line 152, in status
+    mess = escape(klippy.get_status())
+  File "/home/m/moonraker-telegram-bot/bot/klippy.py", line 396, in get_status
+    resp = self._make_request("GET", "/printer/objects/query?webhooks&print_stats&display_status").json()["result"]["status"]
+KeyError: 'result'
+2023-10-08 22:46:39,466 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 22:46:41,466 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 22:46:43,466 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 22:46:45,467 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 22:46:47,468 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 22:46:49,468 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 22:46:51,468 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 22:46:53,468 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 22:46:55,468 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 22:46:57,469 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 22:46:59,470 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 22:47:01,470 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 22:53:03,693 - websocket_helper - ERROR - 'estimated_time'
+2023-10-08 23:09:05,011 - __main__ - ERROR - Job 9945fc5f8f294ade976fa07ee7e139cf raised[Errno 2] No such file or directory: '/home/m/moonraker-telegram-bot-timelapse/pa_pattern.gcode_1969-12-31_21-00/lapse.lock'
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/apscheduler/executors/base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "/home/m/moonraker-telegram-bot/bot/timelapse.py", line 263, in _send_lapse
+    ) = self._camera.create_timelapse(lapse_filename, gcode_name, info_mess)
+  File "/home/m/moonraker-telegram-bot/bot/camera.py", line 422, in create_timelapse
+    return self._create_timelapse(printing_filename, gcode_name, info_mess)
+  File "/home/m/moonraker-telegram-bot/bot/camera.py", line 457, in _create_timelapse
+    lock_file.touch()
+  File "/usr/lib/python3.9/pathlib.py", line 1304, in touch
+    fd = self._raw_open(flags, mode)
+  File "/usr/lib/python3.9/pathlib.py", line 1116, in _raw_open
+    return self._accessor.open(self, flags, mode)
+FileNotFoundError: [Errno 2] No such file or directory: '/home/m/moonraker-telegram-bot-timelapse/pa_pattern.gcode_1969-12-31_21-00/lapse.lock'
+2023-10-08 23:13:23,228 - websocket_helper - WARNING - klippy disconnect detected with message: notify_klippy_disconnected
+2023-10-08 23:13:23,273 - klippy - ERROR - Klippy Host not connected
+2023-10-08 23:13:25,306 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:13:27,290 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:13:29,290 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:13:31,292 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:13:33,290 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:13:35,289 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:13:37,292 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:13:39,293 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:13:41,294 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:13:43,292 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:13:45,290 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:13:47,289 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:13:49,289 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:13:51,294 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:13:53,293 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:13:55,290 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:13:57,293 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:13:59,292 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:14:01,294 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:14:03,293 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:14:05,294 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:14:07,293 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:14:09,294 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:14:11,293 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:14:13,299 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:14:15,290 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:14:17,294 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:14:19,290 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:14:21,291 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:14:23,292 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:14:25,290 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:14:27,291 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:14:29,290 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:14:31,291 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:14:33,292 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:14:35,292 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:14:37,292 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:14:39,291 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:14:41,291 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:14:43,291 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:14:45,291 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:14:47,290 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:14:49,291 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:14:51,292 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:14:53,292 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:14:55,292 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:14:57,292 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:14:59,290 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:15:01,294 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:15:03,291 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:15:05,291 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:15:07,293 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:15:09,292 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:15:11,291 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:15:13,291 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:15:15,291 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:15:17,292 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:15:19,292 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:15:21,294 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:15:23,291 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:15:25,295 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:15:27,293 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:15:29,292 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:15:31,295 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:15:33,291 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:15:35,293 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:15:37,290 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:15:39,292 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:15:41,291 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:15:43,290 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:15:45,291 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:15:47,290 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:15:49,292 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:15:51,294 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:15:53,292 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:15:55,292 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:15:57,289 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:15:59,292 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:16:01,292 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:16:03,293 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:16:05,291 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:16:07,292 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:16:09,291 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:16:11,292 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:16:13,291 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:16:15,291 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:16:17,290 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:16:19,289 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:16:21,294 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:16:23,294 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:16:25,291 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:16:27,291 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:16:29,290 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:16:31,293 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:16:33,293 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:16:35,293 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:16:37,292 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:16:39,290 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:16:41,293 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:16:43,293 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:16:45,289 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:16:47,293 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:16:49,291 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:16:51,292 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:16:53,291 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:16:55,291 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:16:57,290 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:16:59,291 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:17:01,293 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:17:03,288 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:17:14,666 - websocket_helper - ERROR - 'estimated_time'
+2023-10-08 23:18:21,369 - websocket_helper - ERROR - 'estimated_time'
+2023-10-08 23:19:02,728 - klippy - INFO - 'filename' has the same value as the current: 
+2023-10-08 23:19:20,298 - websocket_helper - ERROR - 'estimated_time'
+2023-10-08 23:34:12,553 - __main__ - ERROR - Job b39934e22f504b599489010eb5c468c5 raised[Errno 2] No such file or directory: '/home/m/moonraker-telegram-bot-timelapse/pa_pattern4.gcode_1969-12-31_21-00/lapse.lock'
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/apscheduler/executors/base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "/home/m/moonraker-telegram-bot/bot/timelapse.py", line 263, in _send_lapse
+    ) = self._camera.create_timelapse(lapse_filename, gcode_name, info_mess)
+  File "/home/m/moonraker-telegram-bot/bot/camera.py", line 422, in create_timelapse
+    return self._create_timelapse(printing_filename, gcode_name, info_mess)
+  File "/home/m/moonraker-telegram-bot/bot/camera.py", line 457, in _create_timelapse
+    lock_file.touch()
+  File "/usr/lib/python3.9/pathlib.py", line 1304, in touch
+    fd = self._raw_open(flags, mode)
+  File "/usr/lib/python3.9/pathlib.py", line 1116, in _raw_open
+    return self._accessor.open(self, flags, mode)
+FileNotFoundError: [Errno 2] No such file or directory: '/home/m/moonraker-telegram-bot-timelapse/pa_pattern4.gcode_1969-12-31_21-00/lapse.lock'
+2023-10-08 23:38:29,881 - websocket_helper - WARNING - klippy disconnect detected with message: notify_klippy_disconnected
+2023-10-08 23:38:29,898 - klippy - ERROR - Klippy Host not connected
+2023-10-08 23:38:31,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:38:33,915 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:38:35,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:38:37,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:38:39,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:38:41,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:38:43,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:38:45,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:38:47,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:38:49,915 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:38:51,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:38:53,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:38:55,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:38:57,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:38:59,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:39:01,915 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:39:03,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:39:05,915 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:39:07,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:39:09,916 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:39:11,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:39:13,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:39:15,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:39:17,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:39:19,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:39:21,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:39:23,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:39:25,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:39:27,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:39:29,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:39:31,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:39:33,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:39:35,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:39:37,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:39:39,910 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:39:41,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:39:43,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:39:45,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:39:47,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:39:49,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:39:51,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:39:53,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:39:55,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:39:57,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:39:59,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:40:01,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:40:03,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:40:05,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:40:07,915 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:40:09,915 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:40:11,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:40:13,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:40:15,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:40:17,915 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:40:19,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:40:21,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:40:23,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:40:25,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:40:27,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:40:29,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:40:31,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:40:33,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:40:35,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:40:37,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:40:39,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:40:41,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:40:43,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:40:45,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:40:47,910 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:40:49,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:40:51,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:40:53,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:40:55,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:40:57,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:40:59,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:41:01,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:41:03,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:41:05,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:41:07,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:41:09,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:41:11,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:41:13,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:41:15,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:41:17,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:41:19,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:41:21,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:41:23,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:41:25,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:41:27,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:41:29,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:41:31,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:41:33,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:41:35,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:41:37,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:41:39,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:41:41,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:41:43,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:41:45,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:41:47,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:41:49,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:41:51,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:41:53,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:41:55,910 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:41:57,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:41:59,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:42:01,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:42:04,414 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:42:05,907 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:42:07,909 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:42:09,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:42:11,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:42:13,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:42:15,910 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:42:17,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:42:19,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:42:21,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:42:23,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:42:25,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:42:27,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:42:29,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:42:31,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:42:33,915 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:42:35,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:42:37,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:42:39,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:42:41,910 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:42:43,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:42:45,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:42:47,915 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:42:49,915 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:42:51,915 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:42:53,915 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:42:55,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:42:57,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:42:59,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:43:01,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:43:03,915 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:43:05,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:43:07,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:43:09,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:43:11,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:43:13,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:43:15,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:43:17,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:43:19,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:43:21,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:43:23,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:43:25,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:43:27,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:43:29,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:43:31,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:43:33,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:43:35,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:43:37,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:43:39,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:43:41,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:43:43,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:43:45,915 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:43:47,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:43:49,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:43:51,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:43:53,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:43:55,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:43:57,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:43:59,910 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:44:01,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:44:03,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:44:05,908 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:44:07,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:44:09,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:44:11,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:44:13,915 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:44:15,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:44:17,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:44:19,910 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:44:21,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:44:23,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:44:25,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:44:27,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:44:29,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:44:31,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:44:33,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:44:35,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:44:37,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:44:39,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:44:41,915 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:44:43,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:44:45,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:44:47,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:44:49,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:44:51,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:44:53,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:44:55,915 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:44:57,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:44:59,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:45:01,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:45:03,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:45:05,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:45:07,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:45:09,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:45:11,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:45:13,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:45:15,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:45:17,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:45:19,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:45:21,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:45:23,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:45:25,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:45:27,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:45:29,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:45:31,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:45:33,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:45:35,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:45:37,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:45:39,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:45:41,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:45:43,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:45:45,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:45:47,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:45:49,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:45:51,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:45:53,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:45:55,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:45:57,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:45:59,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:46:01,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:46:03,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:46:05,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:46:07,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:46:09,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:46:11,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:46:13,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:46:15,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:46:17,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:46:19,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:46:21,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:46:23,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:46:25,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:46:27,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:46:29,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:46:31,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:46:33,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:46:35,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:46:37,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:46:39,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:46:41,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:46:43,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:46:45,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:46:47,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:46:49,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:46:51,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:46:53,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:46:55,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:46:57,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:46:59,910 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:47:01,910 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:47:03,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:47:05,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:47:07,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:47:09,910 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:47:11,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:47:13,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:47:15,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:47:17,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:47:19,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:47:21,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:47:23,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:47:25,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:47:27,910 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:47:29,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:47:31,910 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:47:33,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:47:35,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:47:37,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:47:39,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:47:41,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:47:43,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:47:45,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:47:47,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:47:49,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:47:51,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:47:53,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:47:55,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:47:57,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:47:59,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:48:01,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:48:03,919 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:48:05,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:48:07,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:48:09,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:48:11,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:48:13,933 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:48:15,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:48:17,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:48:19,917 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:48:21,918 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:48:23,915 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:48:25,915 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:48:27,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:48:29,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:48:31,915 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:48:33,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:48:35,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:48:37,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:48:39,910 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:48:41,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:48:43,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:48:45,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:48:47,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:48:49,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:48:51,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:48:53,910 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:48:55,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:48:57,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:48:59,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:49:01,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:49:03,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:49:05,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:49:07,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:49:09,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:49:11,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:49:13,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:49:15,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:49:17,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:49:19,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:49:21,910 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:49:23,910 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:49:25,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:49:27,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:49:29,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:49:31,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:49:33,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:49:35,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:49:37,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:49:39,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:49:41,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:49:43,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:49:45,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:49:47,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:49:49,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:49:51,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:49:53,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:49:55,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:49:57,910 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:49:59,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:50:01,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:50:03,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:50:05,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:50:07,907 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:50:09,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:50:11,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:50:13,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:50:15,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:50:17,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:50:19,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:50:21,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:50:23,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:50:25,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:50:27,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:50:29,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:50:31,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:50:33,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:50:35,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:50:37,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:50:39,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:50:41,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:50:43,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:50:45,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:50:47,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:50:49,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:50:51,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:50:53,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:50:55,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:50:57,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:50:59,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:51:01,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:51:03,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:51:05,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:51:07,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:51:09,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:51:11,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:51:13,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:51:15,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:51:17,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:51:19,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:51:21,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:51:23,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:51:25,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:51:27,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:51:29,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:51:31,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:51:33,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:51:35,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:51:37,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:51:39,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:51:41,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:51:43,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:51:45,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:51:47,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:51:49,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:51:51,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:51:53,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:51:55,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:51:57,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:51:59,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:52:01,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:52:03,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:52:05,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:52:07,908 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:52:09,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:52:11,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:52:13,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:52:15,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:52:17,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:52:19,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:52:21,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:52:23,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:52:25,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:52:27,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:52:29,915 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:52:31,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:52:33,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:52:35,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:52:37,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:52:39,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:52:41,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:52:43,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:52:45,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:52:47,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:52:49,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:52:51,910 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:52:53,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:52:55,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:52:57,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:52:59,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:53:01,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:53:03,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:53:05,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:53:07,917 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:53:09,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:53:11,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:53:13,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:53:15,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:53:17,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:53:19,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:53:21,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:53:23,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:53:25,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:53:27,910 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:53:29,910 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:53:31,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:53:33,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:53:35,915 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:53:37,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:53:39,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:53:41,910 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:53:43,916 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:53:45,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:53:47,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:53:49,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:53:51,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:53:53,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:53:55,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:53:57,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:53:59,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:54:01,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:54:03,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:54:05,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:54:07,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:54:09,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:54:11,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:54:13,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:54:15,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:54:17,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:54:19,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:54:21,910 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:54:23,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:54:25,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:54:27,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:54:29,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:54:31,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:54:33,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:54:35,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:54:37,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:54:39,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:54:41,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:54:43,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:54:45,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:54:47,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:54:49,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:54:51,915 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:54:53,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:54:55,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:54:57,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:54:59,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:55:01,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:55:03,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:55:05,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:55:07,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:55:09,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:55:11,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:55:13,915 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:55:15,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:55:17,910 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:55:19,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:55:21,915 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:55:23,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:55:25,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:55:27,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:55:29,915 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:55:31,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:55:33,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:55:35,915 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:55:37,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:55:39,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:55:41,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:55:43,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:55:45,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:55:47,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:55:49,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:55:51,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:55:53,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:55:55,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:55:57,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:55:59,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:56:01,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:56:03,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:56:05,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:56:07,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:56:09,907 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:56:11,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:56:13,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:56:15,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:56:17,910 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:56:19,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:56:21,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:56:23,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:56:25,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:56:27,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:56:29,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:56:31,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:56:33,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:56:35,915 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:56:37,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:56:39,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:56:41,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:56:43,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:56:45,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:56:47,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:56:49,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:56:51,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:56:53,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:56:55,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:56:57,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:56:59,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:57:01,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:57:03,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:57:05,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:57:07,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:57:09,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:57:11,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:57:13,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:57:15,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:57:17,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:57:19,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:57:21,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:57:23,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:57:25,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:57:27,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:57:29,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:57:31,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:57:33,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:57:35,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:57:37,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:57:39,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:57:41,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:57:43,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:57:45,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:57:47,916 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:57:49,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:57:51,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:57:53,910 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:57:55,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:57:57,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:57:59,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:58:01,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:58:03,915 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:58:05,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:58:07,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:58:09,907 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:58:11,910 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:58:13,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:58:15,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:58:17,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:58:19,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:58:21,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:58:23,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:58:25,917 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:58:27,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:58:29,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:58:31,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:58:33,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:58:35,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:58:37,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:58:39,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:58:41,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:58:43,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:58:45,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:58:47,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:58:49,910 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:58:51,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:58:53,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:58:55,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:58:57,910 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:58:59,910 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:59:01,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:59:03,910 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:59:05,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:59:07,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:59:09,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:59:11,910 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:59:13,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:59:15,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:59:17,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:59:19,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:59:21,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:59:23,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:59:25,914 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:59:27,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:59:29,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:59:31,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:59:33,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:59:35,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:59:37,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:59:39,910 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:59:41,910 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:59:43,910 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:59:45,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:59:47,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:59:49,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:59:51,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:59:53,913 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:59:55,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:59:57,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-08 23:59:59,911 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
+2023-10-09 00:00:01,912 - websocket_helper - WARNING - Error received from websocket: {'code': 503, 'message': 'Klippy Host not connected'}
