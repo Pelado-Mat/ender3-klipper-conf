@@ -1,2 +1,4 @@
 .env
 secrets.conf
+klipper/printer_data/gcodes/
+
