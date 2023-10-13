@@ -1,4 +1,4 @@
--------------------- Log Start | Thu Oct 12 03:00:01 2023 --------------------
+-------------------- Log Start | Fri Oct 13 03:00:09 2023 --------------------
 data_path: /home/m/printer_data
 is_default_data_path: False
 config_file: /home/m/printer_data/config/moonraker.conf
@@ -207,109 +207,21 @@ Git Repo crowsnest: No warnings detected
 Git Repo sonar: No warnings detected
 Git Repo moonraker-telegram-bot: No warnings detected
 Klipper Version: v0.11.0-295-g83ef0e13
-2023-10-12 00:00:01,298 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:00:03,299 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:00:05,302 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:00:07,299 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:00:09,297 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:00:11,298 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:00:13,296 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:00:15,296 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:00:17,299 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:00:19,297 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:00:21,298 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:00:22,695 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.objects.query, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:00:22,701 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:00:22,716 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.objects.query, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:00:23,297 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:00:25,297 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:00:26,594 [machine.py:_parse_network_interfaces()] - Error processing network update
-Traceback (most recent call last):
-  File "/home/m/moonraker/moonraker/components/machine.py", line 627, in _parse_network_interfaces
-    resp = await self.addr_cmd.run_with_response(log_complete=False)
-  File "/home/m/moonraker/moonraker/components/shell_command.py", line 277, in run_with_response
-    raise ShellCommandError(
-moonraker.components.shell_command.ShellCommandError: Error running shell command: 'ip -json -det address'
-2023-10-12 00:00:27,296 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:00:29,295 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:00:31,297 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:00:33,298 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:00:35,297 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:00:37,298 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:00:39,296 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:00:41,296 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:00:43,297 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:00:45,296 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:00:47,296 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:00:49,297 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:00:51,296 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:00:52,697 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.objects.query, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:00:52,704 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:00:52,747 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.objects.query, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:00:53,299 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:00:55,299 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:00:57,297 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:00:59,294 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:01:01,298 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:01:03,297 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:01:05,297 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:01:07,297 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:01:08,183 [machine.py:_parse_network_interfaces()] - Error processing network update
-Traceback (most recent call last):
-  File "/home/m/moonraker/moonraker/components/machine.py", line 627, in _parse_network_interfaces
-    resp = await self.addr_cmd.run_with_response(log_complete=False)
-  File "/home/m/moonraker/moonraker/components/shell_command.py", line 277, in run_with_response
-    raise ShellCommandError(
-moonraker.components.shell_command.ShellCommandError: Error running shell command: 'ip -json -det address'
-2023-10-12 00:01:09,296 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:01:11,296 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:01:13,301 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:01:15,297 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:01:17,297 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:01:19,296 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:01:21,296 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:01:22,695 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.objects.query, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:01:22,701 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:01:22,707 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.objects.query, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:01:23,296 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:01:25,296 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:01:27,297 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:01:29,296 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:01:31,297 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:01:33,298 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:01:35,299 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:01:44,347 [proc_stats.py:_watchdog_callback()] - EVENT LOOP BLOCKED: 8.21 seconds, total blocked count: 2
-2023-10-12 00:01:44,355 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:01:44,358 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:01:44,360 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:01:44,361 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:01:44,549 [proc_stats.py:log_last_stats()] - 
-System Time: 1697079693.223684, Usage: 2.18%, Memory: 26632 kB
-System Time: 1697079694.225313, Usage: 2.79%, Memory: 26624 kB
-System Time: 1697079695.222518, Usage: 2.19%, Memory: 26624 kB
-System Time: 1697079696.228451, Usage: 2.31%, Memory: 26624 kB
-System Time: 1697079697.229154, Usage: 2.49%, Memory: 26624 kB
-2023-10-12 00:01:45,296 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:01:46,870 [machine.py:_parse_network_interfaces()] - Error processing network update
-Traceback (most recent call last):
-  File "/home/m/moonraker/moonraker/components/machine.py", line 627, in _parse_network_interfaces
-    resp = await self.addr_cmd.run_with_response(log_complete=False)
-  File "/home/m/moonraker/moonraker/components/shell_command.py", line 277, in run_with_response
-    raise ShellCommandError(
-moonraker.components.shell_command.ShellCommandError: Error running shell command: 'ip -json -det address'
-2023-10-12 00:01:47,297 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:01:49,297 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:01:51,299 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:01:52,695 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.objects.query, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:01:52,701 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:01:52,707 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.objects.query, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:01:53,298 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:01:55,298 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:01:57,301 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-12 00:01:58,426 [machine.py:_parse_network_interfaces()] - Error processing network update
-Traceback (most recent call last):
-  File "/home/m/moonraker/moonraker/components/machine.py", line 627, in _parse_network_interfaces
-    resp = await self.addr_cmd.run_with_response(log_complete=False)
-  File "/home/m/moonraker/moonraker/components/shell_command.py", line 277, in run_with_response
-    raise ShellCommandError(
-moonraker.components.shell_command.ShellCommandError: Error running shell command: 'ip -json -det address'
+2023-10-13 00:00:00,117 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
+2023-10-13 00:00:02,118 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
+2023-10-13 00:00:04,120 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
+2023-10-13 00:00:06,119 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
+2023-10-13 00:00:08,118 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
+2023-10-13 00:00:10,116 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
+2023-10-13 00:00:12,120 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
+2023-10-13 00:00:14,119 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
+2023-10-13 00:00:16,122 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
+2023-10-13 00:00:18,119 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
+2023-10-13 00:00:20,119 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
+2023-10-13 00:00:22,118 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
+2023-10-13 00:00:24,118 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
+2023-10-13 00:00:26,119 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
+2023-10-13 00:00:27,673 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.objects.query, Code: 503, Message: Klippy Host not connected
+2023-10-13 00:00:27,679 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
+2023-10-13 00:00:27,685 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.objects.query, Code: 503, Message: Klippy Host not connected
+2023-10-13 00:00:28,120 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
