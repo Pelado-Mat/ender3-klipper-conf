@@ -1,4 +1,4 @@
--------------------- Log Start | Fri Oct 13 03:00:09 2023 --------------------
+-------------------- Log Start | Sun Oct 15 03:00:32 2023 --------------------
 data_path: /home/m/printer_data
 is_default_data_path: False
 config_file: /home/m/printer_data/config/moonraker.conf
@@ -175,8 +175,8 @@ unit_name: moonraker.service
 is_default: True
 manager: systemd
 Properties:
-**Requires=['system.slice', 'network-online.target', 'sysinit.target']
-**After=['systemd-journald.socket', 'basic.target', 'klipper.service', 'sysinit.target', 'system.slice', 'network-online.target']
+**Requires=['system.slice', 'sysinit.target', 'network-online.target']
+**After=['network-online.target', 'sysinit.target', 'systemd-journald.socket', 'basic.target', 'klipper.service', 'system.slice']
 **SupplementaryGroups=['moonraker-admin']
 **EnvironmentFiles=/home/m/printer_data/systemd/moonraker.env
 **ExecStart=/home/m/moonraker-env/bin/python $MOONRAKER_ARGS
@@ -191,7 +191,7 @@ is_default: True
 manager: systemd
 Properties:
 **Requires=['-.mount', 'sysinit.target', 'system.slice']
-**After=['systemd-journald.socket', 'basic.target', 'klipper-mcu.service', '-.mount', 'sysinit.target', 'system.slice', 'network-online.target']
+**After=['network-online.target', 'sysinit.target', 'klipper-mcu.service', 'systemd-journald.socket', 'basic.target', 'system.slice', '-.mount']
 **SupplementaryGroups=[]
 **EnvironmentFiles=/home/m/printer_data/systemd/klipper.env
 **ExecStart=/home/m/klippy-env/bin/python $KLIPPER_ARGS
@@ -207,21 +207,33 @@ Git Repo crowsnest: No warnings detected
 Git Repo sonar: No warnings detected
 Git Repo moonraker-telegram-bot: No warnings detected
 Klipper Version: v0.11.0-295-g83ef0e13
-2023-10-13 00:00:00,117 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-13 00:00:02,118 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-13 00:00:04,120 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-13 00:00:06,119 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-13 00:00:08,118 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-13 00:00:10,116 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-13 00:00:12,120 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-13 00:00:14,119 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-13 00:00:16,122 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-13 00:00:18,119 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-13 00:00:20,119 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-13 00:00:22,118 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-13 00:00:24,118 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-13 00:00:26,119 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-13 00:00:27,673 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.objects.query, Code: 503, Message: Klippy Host not connected
-2023-10-13 00:00:27,679 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
-2023-10-13 00:00:27,685 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.objects.query, Code: 503, Message: Klippy Host not connected
-2023-10-13 00:00:28,120 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
+2023-10-15 00:00:26,166 [proc_stats.py:_watchdog_callback()] - EVENT LOOP BLOCKED: 17.69 seconds, total blocked count: 1
+2023-10-15 00:00:26,367 [proc_stats.py:log_last_stats()] - 
+System Time: 1697338806.416474, Usage: 7.79%, Memory: 26156 kB
+System Time: 1697338807.415374, Usage: 7.53%, Memory: 26156 kB
+System Time: 1697338808.418099, Usage: 7.83%, Memory: 26156 kB
+System Time: 1697338809.414330, Usage: 21.34%, Memory: 26156 kB
+System Time: 1697338810.415327, Usage: 5.32%, Memory: 26148 kB
+2023-10-15 00:00:28,720 [machine.py:_parse_network_interfaces()] - Error processing network update
+Traceback (most recent call last):
+  File "/home/m/moonraker/moonraker/components/machine.py", line 627, in _parse_network_interfaces
+    resp = await self.addr_cmd.run_with_response(log_complete=False)
+  File "/home/m/moonraker/moonraker/components/shell_command.py", line 277, in run_with_response
+    raise ShellCommandError(
+moonraker.components.shell_command.ShellCommandError: Error running shell command: 'ip -json -det address'
+2023-10-15 00:00:40,289 [machine.py:_parse_network_interfaces()] - Error processing network update
+Traceback (most recent call last):
+  File "/home/m/moonraker/moonraker/components/machine.py", line 627, in _parse_network_interfaces
+    resp = await self.addr_cmd.run_with_response(log_complete=False)
+  File "/home/m/moonraker/moonraker/components/shell_command.py", line 277, in run_with_response
+    raise ShellCommandError(
+moonraker.components.shell_command.ShellCommandError: Error running shell command: 'ip -json -det address'
+2023-10-15 00:00:45,609 [web.py:log_exception()] - Uncaught exception GET /websocket (172.22.200.40)
+HTTPServerRequest(protocol='http', host='klipper.h.m01.cl:7125', method='GET', uri='/websocket', version='HTTP/1.1', remote_ip='172.22.200.40')
+Traceback (most recent call last):
+  File "/home/m/moonraker-env/lib/python3.9/site-packages/tornado/web.py", line 1690, in _execute
+    result = self.prepare()
+  File "/home/m/moonraker/moonraker/websockets.py", line 359, in prepare
+    raise self.server.error(
+moonraker.utils.ServerError: Maximum Number of Websocket Connections Reached
+2023-10-15 00:00:45,613 [app.py:log_request()] - 500 GET /websocket (172.22.200.40) [No User] 8.04ms
