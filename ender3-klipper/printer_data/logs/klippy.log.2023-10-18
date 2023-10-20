@@ -1,0 +1,1568 @@
+=============== Log rollover at Wed Oct 18 09:39:58 2023 ===============
+Starting Klippy...
+Args: ['/home/m/klipper/klippy/klippy.py', '/home/m/printer_data/config/printer.cfg', '-l', '/home/m/printer_data/logs/klippy.log', '-I', '/home/m/printer_data/comms/klippy.serial', '-a', '/home/m/printer_data/comms/klippy.sock']
+Git version: 'v0.11.0-295-g83ef0e13'
+Branch: master
+Remote: origin
+Tracked URL: https://github.com/Klipper3d/klipper.git
+CPU: 4 core ARMv7 Processor rev 4 (v7l)
+Python: '3.9.2 (default, Mar 12 2021, 04:06:34) \n[GCC 10.2.1 20210110]'
+Start printer at Wed Oct 18 09:40:00 2023 (1697632800.6 77.6)
+===== Config file =====
+[virtual_sdcard]
+path = /home/m/printer_data/gcodes
+on_error_gcode = CANCEL_PRINT
+
+[pause_resume]
+
+[display_status]
+
+[respond]
+
+[gcode_macro CANCEL_PRINT]
+description = Cancel the actual running print
+rename_existing = CANCEL_PRINT_BASE
+gcode = 
+	
+	{% set client = printer['gcode_macro _CLIENT_VARIABLE']|default({}) %}
+	{% set allow_park = client.park_at_cancel|default(false)|lower == 'true' %}
+	{% set retract = client.cancel_retract|default(5.0)|abs %}
+	
+	{% set park_x = "" if (client.park_at_cancel_x|default(none) is none)
+	else "X=" ~ client.park_at_cancel_x %}
+	{% set park_y = "" if (client.park_at_cancel_y|default(none) is none)
+	else "Y=" ~ client.park_at_cancel_y %}
+	{% set custom_park = park_x|length > 0 or park_y|length > 0 %}
+	
+	
+	{% if printer['gcode_macro PAUSE'].restore_idle_timeout > 0 %}
+	SET_IDLE_TIMEOUT TIMEOUT={printer['gcode_macro PAUSE'].restore_idle_timeout}
+	{% endif %}
+	{% if (custom_park or not printer.pause_resume.is_paused) and allow_park %} _TOOLHEAD_PARK_PAUSE_CANCEL {park_x} {park_y} {% endif %}
+	_CLIENT_RETRACT LENGTH={retract}
+	TURN_OFF_HEATERS
+	M106 S0
+	
+	SET_PAUSE_NEXT_LAYER ENABLE=0
+	SET_PAUSE_AT_LAYER ENABLE=0 LAYER=0
+	CANCEL_PRINT_BASE
+
+[gcode_macro PAUSE]
+description = Pause the actual running print
+rename_existing = PAUSE_BASE
+variable_restore_idle_timeout = 0
+gcode = 
+	
+	{% set client = printer['gcode_macro _CLIENT_VARIABLE']|default({}) %}
+	{% set idle_timeout = client.idle_timeout|default(0) %}
+	{% set temp = printer[printer.toolhead.extruder].target if printer.toolhead.extruder != '' else 0%}
+	{% set restore = False if printer.toolhead.extruder == ''
+	else True  if params.RESTORE|default(1)|int == 1 else False %}
+	
+	SET_GCODE_VARIABLE MACRO=RESUME VARIABLE=last_extruder_temp VALUE="{{'restore': restore, 'temp': temp}}"
+	
+	{% if idle_timeout > 0 %}
+	SET_GCODE_VARIABLE MACRO=PAUSE VARIABLE=restore_idle_timeout VALUE={printer.configfile.settings.idle_timeout.timeout}
+	SET_IDLE_TIMEOUT TIMEOUT={idle_timeout}
+	{% endif %}
+	PAUSE_BASE
+	_TOOLHEAD_PARK_PAUSE_CANCEL {rawparams}
+
+[gcode_macro RESUME]
+description = Resume the actual running print
+rename_existing = RESUME_BASE
+variable_last_extruder_temp = {'restore': False, 'temp': 0}
+gcode = 
+	
+	{% set client = printer['gcode_macro _CLIENT_VARIABLE']|default({}) %}
+	{% set velocity = printer.configfile.settings.pause_resume.recover_velocity %}
+	{% set sp_move = client.speed_move|default(velocity) %}
+	
+	
+	{% if printer['gcode_macro PAUSE'].restore_idle_timeout > 0 %}
+	SET_IDLE_TIMEOUT TIMEOUT={printer['gcode_macro PAUSE'].restore_idle_timeout}
+	{% endif %}
+	{% if printer.idle_timeout.state|upper == "IDLE" %}
+	{% if last_extruder_temp.restore %} M109 S{last_extruder_temp.temp} {% endif %}
+	{% endif %}
+	_CLIENT_EXTRUDE
+	RESUME_BASE VELOCITY={params.VELOCITY|default(sp_move)}
+
+[gcode_macro SET_PAUSE_NEXT_LAYER]
+description = Enable a pause if the next layer is reached
+gcode = 
+	{% set pause_next_layer = printer['gcode_macro SET_PRINT_STATS_INFO'].pause_next_layer %}
+	{% set ENABLE = params.ENABLE|default(1)|int != 0 %}
+	{% set MACRO = params.MACRO|default(pause_next_layer.call, True) %}
+	SET_GCODE_VARIABLE MACRO=SET_PRINT_STATS_INFO VARIABLE=pause_next_layer VALUE="{{ 'enable': ENABLE, 'call': MACRO }}"
+
+[gcode_macro SET_PAUSE_AT_LAYER]
+description = Enable/disable a pause if a given layer number is reached
+gcode = 
+	{% set pause_at_layer = printer['gcode_macro SET_PRINT_STATS_INFO'].pause_at_layer %}
+	{% set ENABLE = params.ENABLE|int != 0 if params.ENABLE is defined
+	else params.LAYER is defined %}
+	{% set LAYER = params.LAYER|default(pause_at_layer.layer)|int %}
+	{% set MACRO = params.MACRO|default(pause_at_layer.call, True) %}
+	SET_GCODE_VARIABLE MACRO=SET_PRINT_STATS_INFO VARIABLE=pause_at_layer VALUE="{{ 'enable': ENABLE, 'layer': LAYER, 'call': MACRO }}"
+
+[gcode_macro SET_PRINT_STATS_INFO]
+rename_existing = SET_PRINT_STATS_INFO_BASE
+description = Overwrite, to get pause_next_layer and pause_at_layer feature
+variable_pause_next_layer = { 'enable': False, 'call': "PAUSE" }
+variable_pause_at_layer = { 'enable': False, 'layer': 0, 'call': "PAUSE" }
+gcode = 
+	{% if pause_next_layer.enable %}
+	RESPOND TYPE=echo MSG='{"%s, forced by pause_next_layer" % pause_next_layer.call}'
+	{pause_next_layer.call}
+	SET_PAUSE_NEXT_LAYER ENABLE=0
+	{% elif pause_at_layer.enable and params.CURRENT_LAYER is defined and params.CURRENT_LAYER|int == pause_at_layer.layer %}
+	RESPOND TYPE=echo MSG='{"%s, forced by pause_at_layer [%d]" % (pause_at_layer.call, pause_at_layer.layer)}'
+	{pause_at_layer.call}
+	SET_PAUSE_AT_LAYER ENABLE=0
+	{% endif %}
+	SET_PRINT_STATS_INFO_BASE {rawparams}
+
+[gcode_macro _TOOLHEAD_PARK_PAUSE_CANCEL]
+description = Helper: park toolhead used in PAUSE and CANCEL_PRINT
+gcode = 
+	
+	{% set client = printer['gcode_macro _CLIENT_VARIABLE']|default({}) %}
+	{% set velocity = printer.configfile.settings.pause_resume.recover_velocity %}
+	{% set use_custom     = client.use_custom_pos|default(false)|lower == 'true' %}
+	{% set custom_park_x  = client.custom_park_x|default(0.0) %}
+	{% set custom_park_y  = client.custom_park_y|default(0.0) %}
+	{% set park_dz        = client.custom_park_dz|default(2.0)|abs %}
+	{% set sp_hop         = client.speed_hop|default(15) * 60 %}
+	{% set sp_move        = client.speed_move|default(velocity) * 60 %}
+	
+	{% set origin    = printer.gcode_move.homing_origin %}
+	{% set act       = printer.gcode_move.gcode_position %}
+	{% set max       = printer.toolhead.axis_maximum %}
+	{% set cone      = printer.toolhead.cone_start_z|default(max.z) %}
+	{% set round_bed = True if printer.configfile.settings.printer.kinematics is in ['delta','polar','rotary_delta','winch']
+	else False %}
+	
+	{% set z_min = params.Z_MIN|default(0)|float %}
+	{% set z_park = [[(act.z + park_dz), z_min]|max, (max.z - origin.z)]|min %}
+	{% set x_park = params.X       if params.X is defined
+	else custom_park_x  if use_custom
+	else 0.0            if round_bed
+	else (max.x - 5.0) %}
+	{% set y_park = params.Y       if params.Y is defined
+	else custom_park_y  if use_custom
+	else (max.y - 5.0)  if round_bed and z_park < cone
+	else 0.0            if round_bed
+	else (max.y - 5.0) %}
+	
+	_CLIENT_RETRACT
+	{% if "xyz" in printer.toolhead.homed_axes %}
+	G90
+	G1 Z{z_park} F{sp_hop}
+	G1 X{x_park} Y{y_park} F{sp_move}
+	{% if not printer.gcode_move.absolute_coordinates %} G91 {% endif %}
+	{% else %}
+	RESPOND TYPE=echo MSG='Printer not homed'
+	{% endif %}
+
+[gcode_macro _CLIENT_EXTRUDE]
+description = Extrudes, if the extruder is hot enough
+gcode = 
+	
+	{% set client = printer['gcode_macro _CLIENT_VARIABLE']|default({}) %}
+	{% set use_fw_retract = (client.use_fw_retract|default(false)|lower == 'true') and (printer.firmware_retraction is defined) %}
+	{% set length = params.LENGTH|default(client.unretract)|default(1.0)|float %}
+	{% set speed = params.SPEED|default(client.speed_unretract)|default(35) %}
+	{% set absolute_extrude = printer.gcode_move.absolute_extrude %}
+	
+	{% if printer.toolhead.extruder != '' %}
+	{% if printer[printer.toolhead.extruder].can_extrude %}
+	{% if use_fw_retract %}
+	{% if length < 0 %}
+	G10
+	{% else %}
+	G11
+	{% endif %}
+	{% else %}
+	M83
+	G1 E{length} F{(speed|float|abs) * 60}
+	{% if absolute_extrude %}
+	M82
+	{% endif %}
+	{% endif %}
+	{% else %}
+	RESPOND TYPE=echo MSG='Extruder not hot enough'
+	{% endif %}
+	{% endif %}
+
+[gcode_macro _CLIENT_RETRACT]
+description = Retracts, if the extruder is hot enough
+gcode = 
+	{% set client = printer['gcode_macro _CLIENT_VARIABLE']|default({}) %}
+	{% set length = params.LENGTH|default(client.retract)|default(1.0)|float %}
+	{% set speed = params.SPEED|default(client.speed_retract)|default(35) %}
+	
+	_CLIENT_EXTRUDE LENGTH=-{length|float|abs} SPEED={speed|float|abs}
+
+[gcode_macro PRINT_START]
+gcode = 
+	
+	{% set target_bed = params.BED|int %}
+	{% set target_extruder = params.EXTRUDER|int %}
+	{% set target_chamber = params.CHAMBER|default("40")|int %}
+	{% set x_wait = printer.toolhead.axis_maximum.x|float / 2 %}
+	{% set y_wait = printer.toolhead.axis_maximum.y|float / 2 %}
+	M140 S{target_bed}
+	M104 S150
+	
+	
+	BED_MESH_CLEAR
+	
+	SET_DISPLAY_TEXT MSG="Hotend: 150c"
+	
+	M190 S{target_bed}
+	G28
+	Z_TILT_ADJUST
+	G90
+	M82
+	G1 X{x_wait} Y{y_wait} Z15 F9000
+	M109 S150
+	
+	SET_DISPLAY_TEXT MSG="Bed mesh"
+	
+	BED_MESH_PROFILE LOAD=default
+	
+	SET_DISPLAY_TEXT MSG="Hotend: {target_extruder}c"
+	G1 X{x_wait} Y{y_wait} Z15 F9000
+	M107
+	M109 S{target_extruder}
+	
+	
+	SET_DISPLAY_TEXT MSG="Printer goes brr"
+	G0 X2 Y20 F10000
+	G0 Z0.4
+	G91
+	G1 Y100 E20 F1000
+	G90
+	M82
+	G92 E0
+	G1 Y10 E10 F1200
+	G92 E0
+
+[gcode_macro PRINT_END]
+gcode = 
+	SET_DISPLAY_TEXT MSG="Print Finished"
+	
+	M140 S0
+	M104 S0
+	M106 S0
+	
+	G91
+	G1 X-2 Y-2 E-3 F300
+	
+	G1 Z10 F3000
+	G90
+	
+	M84
+	UPDATE_DELAYED_GCODE ID=POWER_OFF_PRINTER_CHECK DURATION=30
+
+[gcode_macro _POWER_OFF_PRINTER]
+gcode = 
+	{action_call_remote_method("set_device_power",
+	device="printer",
+	state="off")}
+
+[delayed_gcode POWER_OFF_PRINTER_CHECK]
+gcode = 
+	{% if printer.idle_timeout.state == "Idle" or printer.idle_timeout.state == "Ready" %}
+	{% if printer.extruder.temperature < 50.0 and printer.heater_bed.temperature < 50.0 %}
+	{% if printer.extruder.target == 0.0 and printer.heater_bed.target == 0.0 %}
+	UPDATE_DELAYED_GCODE ID=POWER_OFF_PRINTER_CHECK DURATION=0
+	SET_DISPLAY_TEXT MSG="PowerOff Printer"
+	_POWER_OFF_PRINTER
+	{% else %}
+	UPDATE_DELAYED_GCODE ID=POWER_OFF_PRINTER_CHECK DURATION=2
+	{% endif %}
+	{% else %}
+	{% if printer.idle_timeout.state == "Printing" %}
+	UPDATE_DELAYED_GCODE ID=POWER_OFF_PRINTER_CHECK DURATION=0
+	{% else %}
+	{% if printer.extruder.target == 0.0 and printer.heater_bed.target == 0.0 %}
+	UPDATE_DELAYED_GCODE ID=POWER_OFF_PRINTER_CHECK DURATION=2
+	{% else %}
+	UPDATE_DELAYED_GCODE ID=POWER_OFF_PRINTER_CHECK DURATION=0
+	{% endif %}
+	{% endif %}
+	{% endif %}
+	{% endif %}
+
+[gcode_macro ACTIVATE_POWER_OFF]
+gcode = 
+	UPDATE_DELAYED_GCODE ID=POWER_OFF_PRINTER_CHECK_ACT DURATION=60
+
+[gcode_macro DEACTIVATE_POWER_OFF]
+gcode = 
+	UPDATE_DELAYED_GCODE ID=POWER_OFF_PRINTER_CHECK_ACT DURATION=0
+
+[delayed_gcode POWER_OFF_PRINTER_CHECK_ACT]
+gcode = 
+	{% if printer.idle_timeout.state == "Idle" or printer.idle_timeout.state == "Ready" %}
+	UPDATE_DELAYED_GCODE ID=POWER_OFF_PRINTER_CHECK DURATION=30
+	{% else %}
+	UPDATE_DELAYED_GCODE ID=POWER_OFF_PRINTER_CHECK_ACT DURATION=60
+	{% endif %}
+
+[gcode_macro M600]
+description = Filament change
+gcode = PAUSE X=10 Y=10 Z_MIN=50
+
+[gcode_macro _CLIENT_VARIABLE]
+variable_use_custom_pos = False
+variable_custom_park_x = 0.0
+variable_custom_park_y = 0.0
+variable_custom_park_dz = 2.0
+variable_retract = 1.0
+variable_cancel_retract = 5.0
+variable_speed_retract = 35.0
+variable_unretract = 1.0
+variable_speed_unretract = 35.0
+variable_speed_hop = 15.0
+variable_speed_move = 100.0
+variable_park_at_cancel = False
+variable_park_at_cancel_x = None
+variable_park_at_cancel_y = None
+variable_idle_timeout = 0
+gcode = 
+
+[gcode_macro LOAD_FILAMENT]
+variable_load_distance = 50
+variable_purge_distance = 25
+gcode = 
+	{% set speed = params.SPEED|default(300) %}
+	{% set max_velocity = printer.configfile.settings['extruder'].max_extrude_only_velocity  * 60 %}
+	SAVE_GCODE_STATE NAME=load_state
+	G91
+	M82
+	G92 E0
+	G1 E{load_distance} F{max_velocity}
+	G1 E{purge_distance} F{speed}
+	RESTORE_GCODE_STATE NAME=load_state
+
+[gcode_macro UNLOAD_FILAMENT]
+variable_unload_distance = 50
+variable_purge_distance = 25
+gcode = 
+	{% set speed = params.SPEED|default(300) %}
+	{% set max_velocity = printer.configfile.settings['extruder'].max_extrude_only_velocity  * 60 %}
+	SAVE_GCODE_STATE NAME=unload_state
+	G91
+	M82
+	G92 E0
+	G1 E{purge_distance} F{speed}
+	G1 E-{unload_distance} F{max_velocity}
+	RESTORE_GCODE_STATE NAME=unload_state
+
+[gcode_macro _bot_data]
+variable_lapse_video_size = 0
+variable_lapse_filename = 'None'
+variable_lapse_path = 'None'
+gcode = 
+	M118 Setting bot lapse variables
+
+[mcu]
+serial = /dev/ttyAMA0
+
+[mcu rpi]
+serial = /tmp/klipper_host_mcu
+
+[printer]
+kinematics = cartesian
+max_velocity = 400
+max_accel = 3000
+max_z_velocity = 50
+max_z_accel = 150
+
+[exclude_object]
+
+[display]
+lcd_type = ssd1306
+i2c_mcu = rpi
+i2c_bus = i2c.1
+i2c_address = 60
+
+[gcode_button button_pause]
+pin = ^rpi:gpio27
+press_gcode = PAUSE
+
+[gcode_button button_play]
+pin = ^rpi:gpio17
+press_gcode = RESUME
+
+[gcode_button button_cancel]
+pin = ^rpi:gpio22
+press_gcode = CANCEL_PRINT
+
+[filament_switch_sensor extruder_filament_sensor]
+pause_on_runout = True
+event_delay = 2.0
+switch_pin = P1.24
+
+[heater_bed]
+heater_pin = P2.5
+sensor_type = EPCOS 100K B57560G104F
+sensor_pin = P0.23
+min_temp = 10
+max_temp = 130
+control = pid
+pid_kp = 68.783
+pid_ki = 1.176
+pid_kd = 1005.944
+
+[bltouch]
+sensor_pin = ^P1.25
+control_pin = P2.0
+x_offset = -57
+y_offset = -13
+speed = 3.0
+sample_retract_dist = 10
+samples = 3
+samples_tolerance_retries = 2
+z_offset = 0.931
+
+[safe_z_home]
+home_xy_position = 112.5, 112.5
+speed = 100
+z_hop = 15
+z_hop_speed = 5
+
+[bed_mesh]
+speed = 120
+horizontal_move_z = 10
+mesh_min = 20, 20
+mesh_max = 184, 200
+probe_count = 3, 3
+algorithm = bicubic
+fade_start = 1
+fade_end = 10
+fade_target = 0
+
+[tmc2130 stepper_x]
+cs_pin = P1.17
+spi_software_sclk_pin = P0.4
+spi_software_mosi_pin = P4.28
+spi_software_miso_pin = P0.5
+run_current = 0.8
+stealthchop_threshold = 9999999
+
+[stepper_x]
+step_pin = P2.2
+dir_pin = !P2.6
+enable_pin = !P2.1
+endstop_pin = P1.29
+position_endstop = 0
+position_min = 0
+position_max = 241
+homing_speed = 70
+microsteps = 16
+rotation_distance = 40
+
+[tmc2130 stepper_y]
+cs_pin = P1.15
+spi_software_sclk_pin = P0.4
+spi_software_mosi_pin = P4.28
+spi_software_miso_pin = P0.5
+run_current = 0.760
+stealthchop_threshold = 999999
+
+[stepper_y]
+step_pin = P0.19
+dir_pin = !P0.20
+enable_pin = !P2.8
+endstop_pin = P1.27
+position_endstop = -18
+position_min = -18
+position_max = 224
+homing_speed = 70
+microsteps = 16
+rotation_distance = 40
+
+[tmc2130 stepper_z]
+cs_pin = P1.10
+spi_software_sclk_pin = P0.4
+spi_software_mosi_pin = P4.28
+spi_software_miso_pin = P0.5
+run_current = 0.75
+stealthchop_threshold = 999999
+
+[stepper_z]
+step_pin = P0.22
+dir_pin = P2.11
+enable_pin = !P0.21
+endstop_pin = probe:z_virtual_endstop
+position_min = -5
+position_max = 250
+microsteps = 16
+rotation_distance = 8
+
+[z_tilt]
+z_positions = -10, 115
+	250, 115
+points = 
+	60, 115
+	240, 115
+
+[tmc2130 stepper_z1]
+cs_pin = P1.8
+spi_software_sclk_pin = P0.4
+spi_software_mosi_pin = P4.28
+spi_software_miso_pin = P0.5
+run_current = 0.75
+stealthchop_threshold = 999999
+
+[stepper_z1]
+step_pin = P2.13
+dir_pin = !P0.11
+enable_pin = !P2.12
+endstop_pin = probe:z_virtual_endstop
+microsteps = 16
+rotation_distance = 8
+
+[extruder]
+step_pin = P0.1
+dir_pin = !P0.0
+enable_pin = !P0.10
+microsteps = 64
+rotation_distance = 7.655
+nozzle_diameter = 0.400
+filament_diameter = 1.750
+heater_pin = P2.7
+sensor_type = EPCOS 100K B57560G104F
+sensor_pin = P0.24
+min_temp = 10
+max_temp = 260
+pressure_advance = 0
+max_extrude_only_distance = 105
+max_extrude_cross_section = 3
+control = pid
+pid_kp = 27.617
+pid_ki = 1.461
+pid_kd = 130.491
+
+[fan]
+pin = P2.3
+
+[heater_fan noozle_fan]
+heater = extruder
+shutdown_speed = 0
+cycle_time = 0.010
+hardware_pwm = True
+kick_start_time = 0.100
+heater_temp = 50
+fan_speed = 1.0
+pin = P2.4
+
+[bed_mesh default]
+version = 1
+points = 
+	-0.063653, 0.044680, 0.049680
+	-0.073653, 0.010513, 0.030513
+	-0.055320, 0.002180, -0.006153
+x_count = 3
+y_count = 3
+mesh_x_pps = 2
+mesh_y_pps = 2
+algo = bicubic
+tension = 0.2
+min_x = 20.0
+max_x = 170.0
+min_y = 20.0
+max_y = 180.0
+=======================
+bed_mesh: bicubic interpolation with a probe_count of less than 4 points detected.  Forcing lagrange interpolation. Configured Probe Count: 3, 3
+Extruder max_extrude_ratio=1.247255
+mcu 'mcu': Starting serial connect
+webhooks client 1964219888: New connection
+webhooks client 1964219888: Client info {'program': 'Moonraker', 'version': 'v0.8.0-182-g9785387'}
+mcu 'mcu': Timeout on connect
+mcu 'mcu': Wait for identify_response
+Traceback (most recent call last):
+  File "/home/m/klipper/klippy/serialhdl.py", line 68, in _get_identify_data
+    params = self.send_with_response(msg, 'identify_response')
+  File "/home/m/klipper/klippy/serialhdl.py", line 261, in send_with_response
+    return src.get_response([cmd], self.default_cmd_queue)
+  File "/home/m/klipper/klippy/serialhdl.py", line 318, in get_response
+    self.serial.raw_send_wait_ack(cmds[-1], minclock, reqclock,
+  File "/home/m/klipper/klippy/serialhdl.py", line 253, in raw_send_wait_ack
+    self._error("Serial connection closed")
+  File "/home/m/klipper/klippy/serialhdl.py", line 61, in _error
+    raise error(self.warn_prefix + (msg % params))
+serialhdl.error: mcu 'mcu': Serial connection closed
+mcu 'mcu': Timeout on connect
+mcu 'mcu': Wait for identify_response
+Traceback (most recent call last):
+  File "/home/m/klipper/klippy/serialhdl.py", line 68, in _get_identify_data
+    params = self.send_with_response(msg, 'identify_response')
+  File "/home/m/klipper/klippy/serialhdl.py", line 261, in send_with_response
+    return src.get_response([cmd], self.default_cmd_queue)
+  File "/home/m/klipper/klippy/serialhdl.py", line 318, in get_response
+    self.serial.raw_send_wait_ack(cmds[-1], minclock, reqclock,
+  File "/home/m/klipper/klippy/serialhdl.py", line 253, in raw_send_wait_ack
+    self._error("Serial connection closed")
+  File "/home/m/klipper/klippy/serialhdl.py", line 61, in _error
+    raise error(self.warn_prefix + (msg % params))
+serialhdl.error: mcu 'mcu': Serial connection closed
+mcu 'mcu': Timeout on connect
+mcu 'mcu': Wait for identify_response
+Traceback (most recent call last):
+  File "/home/m/klipper/klippy/serialhdl.py", line 68, in _get_identify_data
+    params = self.send_with_response(msg, 'identify_response')
+  File "/home/m/klipper/klippy/serialhdl.py", line 261, in send_with_response
+    return src.get_response([cmd], self.default_cmd_queue)
+  File "/home/m/klipper/klippy/serialhdl.py", line 318, in get_response
+    self.serial.raw_send_wait_ack(cmds[-1], minclock, reqclock,
+  File "/home/m/klipper/klippy/serialhdl.py", line 253, in raw_send_wait_ack
+    self._error("Serial connection closed")
+  File "/home/m/klipper/klippy/serialhdl.py", line 61, in _error
+    raise error(self.warn_prefix + (msg % params))
+serialhdl.error: mcu 'mcu': Serial connection closed
+mcu 'mcu': Timeout on connect
+mcu 'mcu': Wait for identify_response
+Traceback (most recent call last):
+  File "/home/m/klipper/klippy/serialhdl.py", line 68, in _get_identify_data
+    params = self.send_with_response(msg, 'identify_response')
+  File "/home/m/klipper/klippy/serialhdl.py", line 261, in send_with_response
+    return src.get_response([cmd], self.default_cmd_queue)
+  File "/home/m/klipper/klippy/serialhdl.py", line 318, in get_response
+    self.serial.raw_send_wait_ack(cmds[-1], minclock, reqclock,
+  File "/home/m/klipper/klippy/serialhdl.py", line 253, in raw_send_wait_ack
+    self._error("Serial connection closed")
+  File "/home/m/klipper/klippy/serialhdl.py", line 61, in _error
+    raise error(self.warn_prefix + (msg % params))
+serialhdl.error: mcu 'mcu': Serial connection closed
+mcu 'mcu': Timeout on connect
+mcu 'mcu': Wait for identify_response
+Traceback (most recent call last):
+  File "/home/m/klipper/klippy/serialhdl.py", line 68, in _get_identify_data
+    params = self.send_with_response(msg, 'identify_response')
+  File "/home/m/klipper/klippy/serialhdl.py", line 261, in send_with_response
+    return src.get_response([cmd], self.default_cmd_queue)
+  File "/home/m/klipper/klippy/serialhdl.py", line 318, in get_response
+    self.serial.raw_send_wait_ack(cmds[-1], minclock, reqclock,
+  File "/home/m/klipper/klippy/serialhdl.py", line 253, in raw_send_wait_ack
+    self._error("Serial connection closed")
+  File "/home/m/klipper/klippy/serialhdl.py", line 61, in _error
+    raise error(self.warn_prefix + (msg % params))
+serialhdl.error: mcu 'mcu': Serial connection closed
+mcu 'mcu': Timeout on connect
+mcu 'mcu': Wait for identify_response
+Traceback (most recent call last):
+  File "/home/m/klipper/klippy/serialhdl.py", line 68, in _get_identify_data
+    params = self.send_with_response(msg, 'identify_response')
+  File "/home/m/klipper/klippy/serialhdl.py", line 261, in send_with_response
+    return src.get_response([cmd], self.default_cmd_queue)
+  File "/home/m/klipper/klippy/serialhdl.py", line 318, in get_response
+    self.serial.raw_send_wait_ack(cmds[-1], minclock, reqclock,
+  File "/home/m/klipper/klippy/serialhdl.py", line 253, in raw_send_wait_ack
+    self._error("Serial connection closed")
+  File "/home/m/klipper/klippy/serialhdl.py", line 61, in _error
+    raise error(self.warn_prefix + (msg % params))
+serialhdl.error: mcu 'mcu': Serial connection closed
+mcu 'mcu': Timeout on connect
+mcu 'mcu': Wait for identify_response
+Traceback (most recent call last):
+  File "/home/m/klipper/klippy/serialhdl.py", line 68, in _get_identify_data
+    params = self.send_with_response(msg, 'identify_response')
+  File "/home/m/klipper/klippy/serialhdl.py", line 261, in send_with_response
+    return src.get_response([cmd], self.default_cmd_queue)
+  File "/home/m/klipper/klippy/serialhdl.py", line 318, in get_response
+    self.serial.raw_send_wait_ack(cmds[-1], minclock, reqclock,
+  File "/home/m/klipper/klippy/serialhdl.py", line 253, in raw_send_wait_ack
+    self._error("Serial connection closed")
+  File "/home/m/klipper/klippy/serialhdl.py", line 61, in _error
+    raise error(self.warn_prefix + (msg % params))
+serialhdl.error: mcu 'mcu': Serial connection closed
+mcu 'mcu': Timeout on connect
+mcu 'mcu': Wait for identify_response
+Traceback (most recent call last):
+  File "/home/m/klipper/klippy/serialhdl.py", line 68, in _get_identify_data
+    params = self.send_with_response(msg, 'identify_response')
+  File "/home/m/klipper/klippy/serialhdl.py", line 261, in send_with_response
+    return src.get_response([cmd], self.default_cmd_queue)
+  File "/home/m/klipper/klippy/serialhdl.py", line 318, in get_response
+    self.serial.raw_send_wait_ack(cmds[-1], minclock, reqclock,
+  File "/home/m/klipper/klippy/serialhdl.py", line 253, in raw_send_wait_ack
+    self._error("Serial connection closed")
+  File "/home/m/klipper/klippy/serialhdl.py", line 61, in _error
+    raise error(self.warn_prefix + (msg % params))
+serialhdl.error: mcu 'mcu': Serial connection closed
+mcu 'mcu': Timeout on connect
+mcu 'mcu': Wait for identify_response
+Traceback (most recent call last):
+  File "/home/m/klipper/klippy/serialhdl.py", line 68, in _get_identify_data
+    params = self.send_with_response(msg, 'identify_response')
+  File "/home/m/klipper/klippy/serialhdl.py", line 261, in send_with_response
+    return src.get_response([cmd], self.default_cmd_queue)
+  File "/home/m/klipper/klippy/serialhdl.py", line 318, in get_response
+    self.serial.raw_send_wait_ack(cmds[-1], minclock, reqclock,
+  File "/home/m/klipper/klippy/serialhdl.py", line 253, in raw_send_wait_ack
+    self._error("Serial connection closed")
+  File "/home/m/klipper/klippy/serialhdl.py", line 61, in _error
+    raise error(self.warn_prefix + (msg % params))
+serialhdl.error: mcu 'mcu': Serial connection closed
+mcu 'mcu': Timeout on connect
+mcu 'mcu': Wait for identify_response
+Traceback (most recent call last):
+  File "/home/m/klipper/klippy/serialhdl.py", line 68, in _get_identify_data
+    params = self.send_with_response(msg, 'identify_response')
+  File "/home/m/klipper/klippy/serialhdl.py", line 261, in send_with_response
+    return src.get_response([cmd], self.default_cmd_queue)
+  File "/home/m/klipper/klippy/serialhdl.py", line 318, in get_response
+    self.serial.raw_send_wait_ack(cmds[-1], minclock, reqclock,
+  File "/home/m/klipper/klippy/serialhdl.py", line 253, in raw_send_wait_ack
+    self._error("Serial connection closed")
+  File "/home/m/klipper/klippy/serialhdl.py", line 61, in _error
+    raise error(self.warn_prefix + (msg % params))
+serialhdl.error: mcu 'mcu': Serial connection closed
+mcu 'mcu': Timeout on connect
+mcu 'mcu': Wait for identify_response
+Traceback (most recent call last):
+  File "/home/m/klipper/klippy/serialhdl.py", line 68, in _get_identify_data
+    params = self.send_with_response(msg, 'identify_response')
+  File "/home/m/klipper/klippy/serialhdl.py", line 261, in send_with_response
+    return src.get_response([cmd], self.default_cmd_queue)
+  File "/home/m/klipper/klippy/serialhdl.py", line 318, in get_response
+    self.serial.raw_send_wait_ack(cmds[-1], minclock, reqclock,
+  File "/home/m/klipper/klippy/serialhdl.py", line 253, in raw_send_wait_ack
+    self._error("Serial connection closed")
+  File "/home/m/klipper/klippy/serialhdl.py", line 61, in _error
+    raise error(self.warn_prefix + (msg % params))
+serialhdl.error: mcu 'mcu': Serial connection closed
+mcu 'mcu': Timeout on connect
+mcu 'mcu': Wait for identify_response
+Traceback (most recent call last):
+  File "/home/m/klipper/klippy/serialhdl.py", line 68, in _get_identify_data
+    params = self.send_with_response(msg, 'identify_response')
+  File "/home/m/klipper/klippy/serialhdl.py", line 261, in send_with_response
+    return src.get_response([cmd], self.default_cmd_queue)
+  File "/home/m/klipper/klippy/serialhdl.py", line 318, in get_response
+    self.serial.raw_send_wait_ack(cmds[-1], minclock, reqclock,
+  File "/home/m/klipper/klippy/serialhdl.py", line 253, in raw_send_wait_ack
+    self._error("Serial connection closed")
+  File "/home/m/klipper/klippy/serialhdl.py", line 61, in _error
+    raise error(self.warn_prefix + (msg % params))
+serialhdl.error: mcu 'mcu': Serial connection closed
+mcu 'mcu': Timeout on connect
+mcu 'mcu': Wait for identify_response
+Traceback (most recent call last):
+  File "/home/m/klipper/klippy/serialhdl.py", line 68, in _get_identify_data
+    params = self.send_with_response(msg, 'identify_response')
+  File "/home/m/klipper/klippy/serialhdl.py", line 261, in send_with_response
+    return src.get_response([cmd], self.default_cmd_queue)
+  File "/home/m/klipper/klippy/serialhdl.py", line 318, in get_response
+    self.serial.raw_send_wait_ack(cmds[-1], minclock, reqclock,
+  File "/home/m/klipper/klippy/serialhdl.py", line 253, in raw_send_wait_ack
+    self._error("Serial connection closed")
+  File "/home/m/klipper/klippy/serialhdl.py", line 61, in _error
+    raise error(self.warn_prefix + (msg % params))
+serialhdl.error: mcu 'mcu': Serial connection closed
+mcu 'mcu': Timeout on connect
+mcu 'mcu': Wait for identify_response
+Traceback (most recent call last):
+  File "/home/m/klipper/klippy/serialhdl.py", line 68, in _get_identify_data
+    params = self.send_with_response(msg, 'identify_response')
+  File "/home/m/klipper/klippy/serialhdl.py", line 261, in send_with_response
+    return src.get_response([cmd], self.default_cmd_queue)
+  File "/home/m/klipper/klippy/serialhdl.py", line 318, in get_response
+    self.serial.raw_send_wait_ack(cmds[-1], minclock, reqclock,
+  File "/home/m/klipper/klippy/serialhdl.py", line 253, in raw_send_wait_ack
+    self._error("Serial connection closed")
+  File "/home/m/klipper/klippy/serialhdl.py", line 61, in _error
+    raise error(self.warn_prefix + (msg % params))
+serialhdl.error: mcu 'mcu': Serial connection closed
+mcu 'mcu': Timeout on connect
+mcu 'mcu': Wait for identify_response
+Traceback (most recent call last):
+  File "/home/m/klipper/klippy/serialhdl.py", line 68, in _get_identify_data
+    params = self.send_with_response(msg, 'identify_response')
+  File "/home/m/klipper/klippy/serialhdl.py", line 261, in send_with_response
+    return src.get_response([cmd], self.default_cmd_queue)
+  File "/home/m/klipper/klippy/serialhdl.py", line 318, in get_response
+    self.serial.raw_send_wait_ack(cmds[-1], minclock, reqclock,
+  File "/home/m/klipper/klippy/serialhdl.py", line 253, in raw_send_wait_ack
+    self._error("Serial connection closed")
+  File "/home/m/klipper/klippy/serialhdl.py", line 61, in _error
+    raise error(self.warn_prefix + (msg % params))
+serialhdl.error: mcu 'mcu': Serial connection closed
+mcu 'mcu': Timeout on connect
+mcu 'mcu': Wait for identify_response
+Traceback (most recent call last):
+  File "/home/m/klipper/klippy/serialhdl.py", line 68, in _get_identify_data
+    params = self.send_with_response(msg, 'identify_response')
+  File "/home/m/klipper/klippy/serialhdl.py", line 261, in send_with_response
+    return src.get_response([cmd], self.default_cmd_queue)
+  File "/home/m/klipper/klippy/serialhdl.py", line 318, in get_response
+    self.serial.raw_send_wait_ack(cmds[-1], minclock, reqclock,
+  File "/home/m/klipper/klippy/serialhdl.py", line 253, in raw_send_wait_ack
+    self._error("Serial connection closed")
+  File "/home/m/klipper/klippy/serialhdl.py", line 61, in _error
+    raise error(self.warn_prefix + (msg % params))
+serialhdl.error: mcu 'mcu': Serial connection closed
+mcu 'mcu': Timeout on connect
+mcu 'mcu': Wait for identify_response
+Traceback (most recent call last):
+  File "/home/m/klipper/klippy/serialhdl.py", line 68, in _get_identify_data
+    params = self.send_with_response(msg, 'identify_response')
+  File "/home/m/klipper/klippy/serialhdl.py", line 261, in send_with_response
+    return src.get_response([cmd], self.default_cmd_queue)
+  File "/home/m/klipper/klippy/serialhdl.py", line 318, in get_response
+    self.serial.raw_send_wait_ack(cmds[-1], minclock, reqclock,
+  File "/home/m/klipper/klippy/serialhdl.py", line 253, in raw_send_wait_ack
+    self._error("Serial connection closed")
+  File "/home/m/klipper/klippy/serialhdl.py", line 61, in _error
+    raise error(self.warn_prefix + (msg % params))
+serialhdl.error: mcu 'mcu': Serial connection closed
+mcu 'mcu': Timeout on connect
+MCU error during connect
+Traceback (most recent call last):
+  File "/home/m/klipper/klippy/mcu.py", line 800, in _mcu_identify
+    self._serial.connect_uart(self._serialport, self._baud, rts)
+  File "/home/m/klipper/klippy/serialhdl.py", line 182, in connect_uart
+    self._error("Unable to connect")
+  File "/home/m/klipper/klippy/serialhdl.py", line 61, in _error
+    raise error(self.warn_prefix + (msg % params))
+serialhdl.error: mcu 'mcu': Unable to connect
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/m/klipper/klippy/klippy.py", line 176, in _connect
+    self.send_event("klippy:mcu_identify")
+  File "/home/m/klipper/klippy/klippy.py", line 263, in send_event
+    return [cb(*params) for cb in self.event_handlers.get(event, [])]
+  File "/home/m/klipper/klippy/klippy.py", line 263, in <listcomp>
+    return [cb(*params) for cb in self.event_handlers.get(event, [])]
+  File "/home/m/klipper/klippy/mcu.py", line 805, in _mcu_identify
+    raise error(str(e))
+mcu.error: mcu 'mcu': Unable to connect
+Build file /home/m/klipper/klippy/../.config(866): Sun Oct  8 10:04:03 2023
+========= Last MCU build config =========
+# CONFIG_LOW_LEVEL_OPTIONS is not set
+# CONFIG_MACH_AVR is not set
+# CONFIG_MACH_ATSAM is not set
+# CONFIG_MACH_ATSAMD is not set
+# CONFIG_MACH_LPC176X is not set
+# CONFIG_MACH_STM32 is not set
+# CONFIG_MACH_HC32F460 is not set
+# CONFIG_MACH_RP2040 is not set
+# CONFIG_MACH_PRU is not set
+# CONFIG_MACH_AR100 is not set
+CONFIG_MACH_LINUX=y
+# CONFIG_MACH_SIMU is not set
+CONFIG_BOARD_DIRECTORY="linux"
+CONFIG_CLOCK_FREQ=50000000
+CONFIG_LINUX_SELECT=y
+CONFIG_USB_VENDOR_ID=0x1d50
+CONFIG_USB_DEVICE_ID=0x614e
+CONFIG_USB_SERIAL_NUMBER="12345"
+CONFIG_WANT_GPIO_BITBANGING=y
+CONFIG_WANT_DISPLAYS=y
+CONFIG_WANT_SENSORS=y
+CONFIG_WANT_LIS2DW=y
+CONFIG_WANT_SOFTWARE_I2C=y
+CONFIG_WANT_SOFTWARE_SPI=y
+CONFIG_CANBUS_FREQUENCY=1000000
+CONFIG_HAVE_GPIO=y
+CONFIG_HAVE_GPIO_ADC=y
+CONFIG_HAVE_GPIO_SPI=y
+CONFIG_HAVE_GPIO_I2C=y
+CONFIG_HAVE_GPIO_HARD_PWM=y
+CONFIG_INLINE_STEPPER_HACK=y
+=======================
+No build file /home/m/klipper/klippy/../out/klipper.dict
+No build file /home/m/klipper/klippy/../out/klipper.elf
+mcu 'mcu': Wait for identify_response
+Traceback (most recent call last):
+  File "/home/m/klipper/klippy/serialhdl.py", line 68, in _get_identify_data
+    params = self.send_with_response(msg, 'identify_response')
+  File "/home/m/klipper/klippy/serialhdl.py", line 261, in send_with_response
+    return src.get_response([cmd], self.default_cmd_queue)
+  File "/home/m/klipper/klippy/serialhdl.py", line 318, in get_response
+    self.serial.raw_send_wait_ack(cmds[-1], minclock, reqclock,
+  File "/home/m/klipper/klippy/serialhdl.py", line 253, in raw_send_wait_ack
+    self._error("Serial connection closed")
+  File "/home/m/klipper/klippy/serialhdl.py", line 61, in _error
+    raise error(self.warn_prefix + (msg % params))
+serialhdl.error: mcu 'mcu': Serial connection closed
+Attempting MCU 'mcu' reset
+Unable to issue reset command on MCU 'rpi'
+webhooks client 1964219888: Disconnected
+Restarting printer
+Start printer at Wed Oct 18 11:37:55 2023 (1697639875.5 5901.1)
+===== Config file =====
+[virtual_sdcard]
+path = /home/m/printer_data/gcodes
+on_error_gcode = CANCEL_PRINT
+
+[pause_resume]
+
+[display_status]
+
+[respond]
+
+[gcode_macro CANCEL_PRINT]
+description = Cancel the actual running print
+rename_existing = CANCEL_PRINT_BASE
+gcode = 
+	
+	{% set client = printer['gcode_macro _CLIENT_VARIABLE']|default({}) %}
+	{% set allow_park = client.park_at_cancel|default(false)|lower == 'true' %}
+	{% set retract = client.cancel_retract|default(5.0)|abs %}
+	
+	{% set park_x = "" if (client.park_at_cancel_x|default(none) is none)
+	else "X=" ~ client.park_at_cancel_x %}
+	{% set park_y = "" if (client.park_at_cancel_y|default(none) is none)
+	else "Y=" ~ client.park_at_cancel_y %}
+	{% set custom_park = park_x|length > 0 or park_y|length > 0 %}
+	
+	
+	{% if printer['gcode_macro PAUSE'].restore_idle_timeout > 0 %}
+	SET_IDLE_TIMEOUT TIMEOUT={printer['gcode_macro PAUSE'].restore_idle_timeout}
+	{% endif %}
+	{% if (custom_park or not printer.pause_resume.is_paused) and allow_park %} _TOOLHEAD_PARK_PAUSE_CANCEL {park_x} {park_y} {% endif %}
+	_CLIENT_RETRACT LENGTH={retract}
+	TURN_OFF_HEATERS
+	M106 S0
+	
+	SET_PAUSE_NEXT_LAYER ENABLE=0
+	SET_PAUSE_AT_LAYER ENABLE=0 LAYER=0
+	CANCEL_PRINT_BASE
+
+[gcode_macro PAUSE]
+description = Pause the actual running print
+rename_existing = PAUSE_BASE
+variable_restore_idle_timeout = 0
+gcode = 
+	
+	{% set client = printer['gcode_macro _CLIENT_VARIABLE']|default({}) %}
+	{% set idle_timeout = client.idle_timeout|default(0) %}
+	{% set temp = printer[printer.toolhead.extruder].target if printer.toolhead.extruder != '' else 0%}
+	{% set restore = False if printer.toolhead.extruder == ''
+	else True  if params.RESTORE|default(1)|int == 1 else False %}
+	
+	SET_GCODE_VARIABLE MACRO=RESUME VARIABLE=last_extruder_temp VALUE="{{'restore': restore, 'temp': temp}}"
+	
+	{% if idle_timeout > 0 %}
+	SET_GCODE_VARIABLE MACRO=PAUSE VARIABLE=restore_idle_timeout VALUE={printer.configfile.settings.idle_timeout.timeout}
+	SET_IDLE_TIMEOUT TIMEOUT={idle_timeout}
+	{% endif %}
+	PAUSE_BASE
+	_TOOLHEAD_PARK_PAUSE_CANCEL {rawparams}
+
+[gcode_macro RESUME]
+description = Resume the actual running print
+rename_existing = RESUME_BASE
+variable_last_extruder_temp = {'restore': False, 'temp': 0}
+gcode = 
+	
+	{% set client = printer['gcode_macro _CLIENT_VARIABLE']|default({}) %}
+	{% set velocity = printer.configfile.settings.pause_resume.recover_velocity %}
+	{% set sp_move = client.speed_move|default(velocity) %}
+	
+	
+	{% if printer['gcode_macro PAUSE'].restore_idle_timeout > 0 %}
+	SET_IDLE_TIMEOUT TIMEOUT={printer['gcode_macro PAUSE'].restore_idle_timeout}
+	{% endif %}
+	{% if printer.idle_timeout.state|upper == "IDLE" %}
+	{% if last_extruder_temp.restore %} M109 S{last_extruder_temp.temp} {% endif %}
+	{% endif %}
+	_CLIENT_EXTRUDE
+	RESUME_BASE VELOCITY={params.VELOCITY|default(sp_move)}
+
+[gcode_macro SET_PAUSE_NEXT_LAYER]
+description = Enable a pause if the next layer is reached
+gcode = 
+	{% set pause_next_layer = printer['gcode_macro SET_PRINT_STATS_INFO'].pause_next_layer %}
+	{% set ENABLE = params.ENABLE|default(1)|int != 0 %}
+	{% set MACRO = params.MACRO|default(pause_next_layer.call, True) %}
+	SET_GCODE_VARIABLE MACRO=SET_PRINT_STATS_INFO VARIABLE=pause_next_layer VALUE="{{ 'enable': ENABLE, 'call': MACRO }}"
+
+[gcode_macro SET_PAUSE_AT_LAYER]
+description = Enable/disable a pause if a given layer number is reached
+gcode = 
+	{% set pause_at_layer = printer['gcode_macro SET_PRINT_STATS_INFO'].pause_at_layer %}
+	{% set ENABLE = params.ENABLE|int != 0 if params.ENABLE is defined
+	else params.LAYER is defined %}
+	{% set LAYER = params.LAYER|default(pause_at_layer.layer)|int %}
+	{% set MACRO = params.MACRO|default(pause_at_layer.call, True) %}
+	SET_GCODE_VARIABLE MACRO=SET_PRINT_STATS_INFO VARIABLE=pause_at_layer VALUE="{{ 'enable': ENABLE, 'layer': LAYER, 'call': MACRO }}"
+
+[gcode_macro SET_PRINT_STATS_INFO]
+rename_existing = SET_PRINT_STATS_INFO_BASE
+description = Overwrite, to get pause_next_layer and pause_at_layer feature
+variable_pause_next_layer = { 'enable': False, 'call': "PAUSE" }
+variable_pause_at_layer = { 'enable': False, 'layer': 0, 'call': "PAUSE" }
+gcode = 
+	{% if pause_next_layer.enable %}
+	RESPOND TYPE=echo MSG='{"%s, forced by pause_next_layer" % pause_next_layer.call}'
+	{pause_next_layer.call}
+	SET_PAUSE_NEXT_LAYER ENABLE=0
+	{% elif pause_at_layer.enable and params.CURRENT_LAYER is defined and params.CURRENT_LAYER|int == pause_at_layer.layer %}
+	RESPOND TYPE=echo MSG='{"%s, forced by pause_at_layer [%d]" % (pause_at_layer.call, pause_at_layer.layer)}'
+	{pause_at_layer.call}
+	SET_PAUSE_AT_LAYER ENABLE=0
+	{% endif %}
+	SET_PRINT_STATS_INFO_BASE {rawparams}
+
+[gcode_macro _TOOLHEAD_PARK_PAUSE_CANCEL]
+description = Helper: park toolhead used in PAUSE and CANCEL_PRINT
+gcode = 
+	
+	{% set client = printer['gcode_macro _CLIENT_VARIABLE']|default({}) %}
+	{% set velocity = printer.configfile.settings.pause_resume.recover_velocity %}
+	{% set use_custom     = client.use_custom_pos|default(false)|lower == 'true' %}
+	{% set custom_park_x  = client.custom_park_x|default(0.0) %}
+	{% set custom_park_y  = client.custom_park_y|default(0.0) %}
+	{% set park_dz        = client.custom_park_dz|default(2.0)|abs %}
+	{% set sp_hop         = client.speed_hop|default(15) * 60 %}
+	{% set sp_move        = client.speed_move|default(velocity) * 60 %}
+	
+	{% set origin    = printer.gcode_move.homing_origin %}
+	{% set act       = printer.gcode_move.gcode_position %}
+	{% set max       = printer.toolhead.axis_maximum %}
+	{% set cone      = printer.toolhead.cone_start_z|default(max.z) %}
+	{% set round_bed = True if printer.configfile.settings.printer.kinematics is in ['delta','polar','rotary_delta','winch']
+	else False %}
+	
+	{% set z_min = params.Z_MIN|default(0)|float %}
+	{% set z_park = [[(act.z + park_dz), z_min]|max, (max.z - origin.z)]|min %}
+	{% set x_park = params.X       if params.X is defined
+	else custom_park_x  if use_custom
+	else 0.0            if round_bed
+	else (max.x - 5.0) %}
+	{% set y_park = params.Y       if params.Y is defined
+	else custom_park_y  if use_custom
+	else (max.y - 5.0)  if round_bed and z_park < cone
+	else 0.0            if round_bed
+	else (max.y - 5.0) %}
+	
+	_CLIENT_RETRACT
+	{% if "xyz" in printer.toolhead.homed_axes %}
+	G90
+	G1 Z{z_park} F{sp_hop}
+	G1 X{x_park} Y{y_park} F{sp_move}
+	{% if not printer.gcode_move.absolute_coordinates %} G91 {% endif %}
+	{% else %}
+	RESPOND TYPE=echo MSG='Printer not homed'
+	{% endif %}
+
+[gcode_macro _CLIENT_EXTRUDE]
+description = Extrudes, if the extruder is hot enough
+gcode = 
+	
+	{% set client = printer['gcode_macro _CLIENT_VARIABLE']|default({}) %}
+	{% set use_fw_retract = (client.use_fw_retract|default(false)|lower == 'true') and (printer.firmware_retraction is defined) %}
+	{% set length = params.LENGTH|default(client.unretract)|default(1.0)|float %}
+	{% set speed = params.SPEED|default(client.speed_unretract)|default(35) %}
+	{% set absolute_extrude = printer.gcode_move.absolute_extrude %}
+	
+	{% if printer.toolhead.extruder != '' %}
+	{% if printer[printer.toolhead.extruder].can_extrude %}
+	{% if use_fw_retract %}
+	{% if length < 0 %}
+	G10
+	{% else %}
+	G11
+	{% endif %}
+	{% else %}
+	M83
+	G1 E{length} F{(speed|float|abs) * 60}
+	{% if absolute_extrude %}
+	M82
+	{% endif %}
+	{% endif %}
+	{% else %}
+	RESPOND TYPE=echo MSG='Extruder not hot enough'
+	{% endif %}
+	{% endif %}
+
+[gcode_macro _CLIENT_RETRACT]
+description = Retracts, if the extruder is hot enough
+gcode = 
+	{% set client = printer['gcode_macro _CLIENT_VARIABLE']|default({}) %}
+	{% set length = params.LENGTH|default(client.retract)|default(1.0)|float %}
+	{% set speed = params.SPEED|default(client.speed_retract)|default(35) %}
+	
+	_CLIENT_EXTRUDE LENGTH=-{length|float|abs} SPEED={speed|float|abs}
+
+[gcode_macro PRINT_START]
+gcode = 
+	
+	{% set target_bed = params.BED|int %}
+	{% set target_extruder = params.EXTRUDER|int %}
+	{% set target_chamber = params.CHAMBER|default("40")|int %}
+	{% set x_wait = printer.toolhead.axis_maximum.x|float / 2 %}
+	{% set y_wait = printer.toolhead.axis_maximum.y|float / 2 %}
+	M140 S{target_bed}
+	M104 S150
+	
+	
+	BED_MESH_CLEAR
+	
+	SET_DISPLAY_TEXT MSG="Hotend: 150c"
+	
+	M190 S{target_bed}
+	G28
+	Z_TILT_ADJUST
+	G90
+	M82
+	G1 X{x_wait} Y{y_wait} Z15 F9000
+	M109 S150
+	
+	SET_DISPLAY_TEXT MSG="Bed mesh"
+	
+	BED_MESH_PROFILE LOAD=default
+	
+	SET_DISPLAY_TEXT MSG="Hotend: {target_extruder}c"
+	G1 X{x_wait} Y{y_wait} Z15 F9000
+	M107
+	M109 S{target_extruder}
+	
+	
+	SET_DISPLAY_TEXT MSG="Printer goes brr"
+	G0 X2 Y20 F10000
+	G0 Z0.4
+	G91
+	G1 Y100 E20 F1000
+	G90
+	M82
+	G92 E0
+	G1 Y10 E10 F1200
+	G92 E0
+
+[gcode_macro PRINT_END]
+gcode = 
+	SET_DISPLAY_TEXT MSG="Print Finished"
+	
+	M140 S0
+	M104 S0
+	M106 S0
+	
+	G91
+	G1 X-2 Y-2 E-3 F300
+	
+	G1 Z10 F3000
+	G90
+	
+	M84
+	UPDATE_DELAYED_GCODE ID=POWER_OFF_PRINTER_CHECK DURATION=30
+
+[gcode_macro _POWER_OFF_PRINTER]
+gcode = 
+	{action_call_remote_method("set_device_power",
+	device="printer",
+	state="off")}
+
+[delayed_gcode POWER_OFF_PRINTER_CHECK]
+gcode = 
+	{% if printer.idle_timeout.state == "Idle" or printer.idle_timeout.state == "Ready" %}
+	{% if printer.extruder.temperature < 50.0 and printer.heater_bed.temperature < 50.0 %}
+	{% if printer.extruder.target == 0.0 and printer.heater_bed.target == 0.0 %}
+	UPDATE_DELAYED_GCODE ID=POWER_OFF_PRINTER_CHECK DURATION=0
+	SET_DISPLAY_TEXT MSG="PowerOff Printer"
+	_POWER_OFF_PRINTER
+	{% else %}
+	UPDATE_DELAYED_GCODE ID=POWER_OFF_PRINTER_CHECK DURATION=2
+	{% endif %}
+	{% else %}
+	{% if printer.idle_timeout.state == "Printing" %}
+	UPDATE_DELAYED_GCODE ID=POWER_OFF_PRINTER_CHECK DURATION=0
+	{% else %}
+	{% if printer.extruder.target == 0.0 and printer.heater_bed.target == 0.0 %}
+	UPDATE_DELAYED_GCODE ID=POWER_OFF_PRINTER_CHECK DURATION=2
+	{% else %}
+	UPDATE_DELAYED_GCODE ID=POWER_OFF_PRINTER_CHECK DURATION=0
+	{% endif %}
+	{% endif %}
+	{% endif %}
+	{% endif %}
+
+[gcode_macro ACTIVATE_POWER_OFF]
+gcode = 
+	UPDATE_DELAYED_GCODE ID=POWER_OFF_PRINTER_CHECK_ACT DURATION=60
+
+[gcode_macro DEACTIVATE_POWER_OFF]
+gcode = 
+	UPDATE_DELAYED_GCODE ID=POWER_OFF_PRINTER_CHECK_ACT DURATION=0
+
+[delayed_gcode POWER_OFF_PRINTER_CHECK_ACT]
+gcode = 
+	{% if printer.idle_timeout.state == "Idle" or printer.idle_timeout.state == "Ready" %}
+	UPDATE_DELAYED_GCODE ID=POWER_OFF_PRINTER_CHECK DURATION=30
+	{% else %}
+	UPDATE_DELAYED_GCODE ID=POWER_OFF_PRINTER_CHECK_ACT DURATION=60
+	{% endif %}
+
+[gcode_macro M600]
+description = Filament change
+gcode = PAUSE X=10 Y=10 Z_MIN=50
+
+[gcode_macro _CLIENT_VARIABLE]
+variable_use_custom_pos = False
+variable_custom_park_x = 0.0
+variable_custom_park_y = 0.0
+variable_custom_park_dz = 2.0
+variable_retract = 1.0
+variable_cancel_retract = 5.0
+variable_speed_retract = 35.0
+variable_unretract = 1.0
+variable_speed_unretract = 35.0
+variable_speed_hop = 15.0
+variable_speed_move = 100.0
+variable_park_at_cancel = False
+variable_park_at_cancel_x = None
+variable_park_at_cancel_y = None
+variable_idle_timeout = 0
+gcode = 
+
+[gcode_macro LOAD_FILAMENT]
+variable_load_distance = 50
+variable_purge_distance = 25
+gcode = 
+	{% set speed = params.SPEED|default(300) %}
+	{% set max_velocity = printer.configfile.settings['extruder'].max_extrude_only_velocity  * 60 %}
+	SAVE_GCODE_STATE NAME=load_state
+	G91
+	M82
+	G92 E0
+	G1 E{load_distance} F{max_velocity}
+	G1 E{purge_distance} F{speed}
+	RESTORE_GCODE_STATE NAME=load_state
+
+[gcode_macro UNLOAD_FILAMENT]
+variable_unload_distance = 50
+variable_purge_distance = 25
+gcode = 
+	{% set speed = params.SPEED|default(300) %}
+	{% set max_velocity = printer.configfile.settings['extruder'].max_extrude_only_velocity  * 60 %}
+	SAVE_GCODE_STATE NAME=unload_state
+	G91
+	M82
+	G92 E0
+	G1 E{purge_distance} F{speed}
+	G1 E-{unload_distance} F{max_velocity}
+	RESTORE_GCODE_STATE NAME=unload_state
+
+[gcode_macro _bot_data]
+variable_lapse_video_size = 0
+variable_lapse_filename = 'None'
+variable_lapse_path = 'None'
+gcode = 
+	M118 Setting bot lapse variables
+
+[mcu]
+serial = /dev/ttyAMA0
+
+[mcu rpi]
+serial = /tmp/klipper_host_mcu
+
+[printer]
+kinematics = cartesian
+max_velocity = 400
+max_accel = 3000
+max_z_velocity = 50
+max_z_accel = 150
+
+[exclude_object]
+
+[display]
+lcd_type = ssd1306
+i2c_mcu = rpi
+i2c_bus = i2c.1
+i2c_address = 60
+
+[gcode_button button_pause]
+pin = ^rpi:gpio27
+press_gcode = PAUSE
+
+[gcode_button button_play]
+pin = ^rpi:gpio17
+press_gcode = RESUME
+
+[gcode_button button_cancel]
+pin = ^rpi:gpio22
+press_gcode = CANCEL_PRINT
+
+[filament_switch_sensor extruder_filament_sensor]
+pause_on_runout = True
+event_delay = 2.0
+switch_pin = P1.24
+
+[heater_bed]
+heater_pin = P2.5
+sensor_type = EPCOS 100K B57560G104F
+sensor_pin = P0.23
+min_temp = 10
+max_temp = 130
+control = pid
+pid_kp = 68.783
+pid_ki = 1.176
+pid_kd = 1005.944
+
+[bltouch]
+sensor_pin = ^P1.25
+control_pin = P2.0
+x_offset = -57
+y_offset = -13
+speed = 3.0
+sample_retract_dist = 10
+samples = 3
+samples_tolerance_retries = 2
+z_offset = 0.931
+
+[safe_z_home]
+home_xy_position = 112.5, 112.5
+speed = 100
+z_hop = 15
+z_hop_speed = 5
+
+[bed_mesh]
+speed = 120
+horizontal_move_z = 10
+mesh_min = 20, 20
+mesh_max = 184, 200
+probe_count = 3, 3
+algorithm = bicubic
+fade_start = 1
+fade_end = 10
+fade_target = 0
+
+[tmc2130 stepper_x]
+cs_pin = P1.17
+spi_software_sclk_pin = P0.4
+spi_software_mosi_pin = P4.28
+spi_software_miso_pin = P0.5
+run_current = 0.8
+stealthchop_threshold = 9999999
+
+[stepper_x]
+step_pin = P2.2
+dir_pin = !P2.6
+enable_pin = !P2.1
+endstop_pin = P1.29
+position_endstop = 0
+position_min = 0
+position_max = 241
+homing_speed = 70
+microsteps = 16
+rotation_distance = 40
+
+[tmc2130 stepper_y]
+cs_pin = P1.15
+spi_software_sclk_pin = P0.4
+spi_software_mosi_pin = P4.28
+spi_software_miso_pin = P0.5
+run_current = 0.760
+stealthchop_threshold = 999999
+
+[stepper_y]
+step_pin = P0.19
+dir_pin = !P0.20
+enable_pin = !P2.8
+endstop_pin = P1.27
+position_endstop = -18
+position_min = -18
+position_max = 224
+homing_speed = 70
+microsteps = 16
+rotation_distance = 40
+
+[tmc2130 stepper_z]
+cs_pin = P1.10
+spi_software_sclk_pin = P0.4
+spi_software_mosi_pin = P4.28
+spi_software_miso_pin = P0.5
+run_current = 0.75
+stealthchop_threshold = 999999
+
+[stepper_z]
+step_pin = P0.22
+dir_pin = P2.11
+enable_pin = !P0.21
+endstop_pin = probe:z_virtual_endstop
+position_min = -5
+position_max = 250
+microsteps = 16
+rotation_distance = 8
+
+[z_tilt]
+z_positions = -10, 115
+	250, 115
+points = 
+	60, 115
+	240, 115
+
+[tmc2130 stepper_z1]
+cs_pin = P1.8
+spi_software_sclk_pin = P0.4
+spi_software_mosi_pin = P4.28
+spi_software_miso_pin = P0.5
+run_current = 0.75
+stealthchop_threshold = 999999
+
+[stepper_z1]
+step_pin = P2.13
+dir_pin = !P0.11
+enable_pin = !P2.12
+endstop_pin = probe:z_virtual_endstop
+microsteps = 16
+rotation_distance = 8
+
+[extruder]
+step_pin = P0.1
+dir_pin = !P0.0
+enable_pin = !P0.10
+microsteps = 64
+rotation_distance = 7.655
+nozzle_diameter = 0.400
+filament_diameter = 1.750
+heater_pin = P2.7
+sensor_type = EPCOS 100K B57560G104F
+sensor_pin = P0.24
+min_temp = 10
+max_temp = 260
+pressure_advance = 0
+max_extrude_only_distance = 105
+max_extrude_cross_section = 3
+control = pid
+pid_kp = 27.617
+pid_ki = 1.461
+pid_kd = 130.491
+
+[fan]
+pin = P2.3
+
+[heater_fan noozle_fan]
+heater = extruder
+shutdown_speed = 0
+cycle_time = 0.010
+hardware_pwm = True
+kick_start_time = 0.100
+heater_temp = 50
+fan_speed = 1.0
+pin = P2.4
+
+[bed_mesh default]
+version = 1
+points = 
+	-0.063653, 0.044680, 0.049680
+	-0.073653, 0.010513, 0.030513
+	-0.055320, 0.002180, -0.006153
+x_count = 3
+y_count = 3
+mesh_x_pps = 2
+mesh_y_pps = 2
+algo = bicubic
+tension = 0.2
+min_x = 20.0
+max_x = 170.0
+min_y = 20.0
+max_y = 180.0
+=======================
+bed_mesh: bicubic interpolation with a probe_count of less than 4 points detected.  Forcing lagrange interpolation. Configured Probe Count: 3, 3
+Extruder max_extrude_ratio=1.247255
+mcu 'mcu': Starting serial connect
+webhooks client 1947065192: New connection
+webhooks client 1947065192: Client info {'program': 'Moonraker', 'version': 'v0.8.0-182-g9785387'}
+Loaded MCU 'mcu' 112 commands (v0.11.0-295-g83ef0e13 / gcc: (15:12.2.rel1-1) 12.2.1 20221205 binutils: (2.40-2+18+b1) 2.40)
+MCU 'mcu' config: ADC_MAX=4095 BUS_PINS_i2c0=P0.28,P0.27 BUS_PINS_i2c1=P0.1,P0.0 BUS_PINS_i2c1a=P0.20,P0.19 BUS_PINS_i2c2=P0.11,P0.10 BUS_PINS_ssp0=P0.17,P0.18,P0.15 BUS_PINS_ssp1=P0.8,P0.9,P0.7 CLOCK_FREQ=100000000 MCU=lpc1768 PWM_MAX=255 RECEIVE_WINDOW=192 RESERVE_PINS_serial=P0.3,P0.2 SERIAL_BAUD=250000 STATS_SUMSQ_BASE=256 STEPPER_BOTH_EDGE=1
+mcu 'rpi': Starting connect
+Loaded MCU 'rpi' 118 commands (v0.11.0-295-g83ef0e13 / gcc: (Raspbian 10.2.1-6+rpi1) 10.2.1 20210110 binutils: (GNU Binutils for Raspbian) 2.35.2)
+MCU 'rpi' config: ADC_MAX=4095 CLOCK_FREQ=50000000 MCU=linux PCA9685_MAX=4096 PWM_MAX=32768 STATS_SUMSQ_BASE=256
+Sending MCU 'mcu' printer configuration...
+Configured MCU 'mcu' (1024 moves)
+Sending MCU 'rpi' printer configuration...
+Configured MCU 'rpi' (1024 moves)
+Starting heater checks for heater_bed
+
+Printer is not ready
+The klippy host software is attempting to connect.  Please
+retry in a few moments.
+
+Script running error
+Traceback (most recent call last):
+  File "/home/m/klipper/klippy/extras/gcode_button.py", line 41, in button_callback
+    self.gcode.run_script(template.render())
+  File "/home/m/klipper/klippy/gcode.py", line 216, in run_script
+    self._process_commands(script.split('\n'), need_ack=False)
+  File "/home/m/klipper/klippy/gcode.py", line 198, in _process_commands
+    handler(gcmd)
+  File "/home/m/klipper/klippy/gcode.py", line 272, in cmd_default
+    raise gcmd.error(self.printer.get_state_message()[0])
+gcode.CommandError: 
+Printer is not ready
+The klippy host software is attempting to connect.  Please
+retry in a few moments.
+
+
+Printer is not ready
+The klippy host software is attempting to connect.  Please
+retry in a few moments.
+
+Script running error
+Traceback (most recent call last):
+  File "/home/m/klipper/klippy/extras/gcode_button.py", line 41, in button_callback
+    self.gcode.run_script(template.render())
+  File "/home/m/klipper/klippy/gcode.py", line 216, in run_script
+    self._process_commands(script.split('\n'), need_ack=False)
+  File "/home/m/klipper/klippy/gcode.py", line 198, in _process_commands
+    handler(gcmd)
+  File "/home/m/klipper/klippy/gcode.py", line 272, in cmd_default
+    raise gcmd.error(self.printer.get_state_message()[0])
+gcode.CommandError: 
+Printer is not ready
+The klippy host software is attempting to connect.  Please
+retry in a few moments.
+
+
+Printer is not ready
+The klippy host software is attempting to connect.  Please
+retry in a few moments.
+
+Script running error
+Traceback (most recent call last):
+  File "/home/m/klipper/klippy/extras/gcode_button.py", line 41, in button_callback
+    self.gcode.run_script(template.render())
+  File "/home/m/klipper/klippy/gcode.py", line 216, in run_script
+    self._process_commands(script.split('\n'), need_ack=False)
+  File "/home/m/klipper/klippy/gcode.py", line 198, in _process_commands
+    handler(gcmd)
+  File "/home/m/klipper/klippy/gcode.py", line 272, in cmd_default
+    raise gcmd.error(self.printer.get_state_message()[0])
+gcode.CommandError: 
+Printer is not ready
+The klippy host software is attempting to connect.  Please
+retry in a few moments.
+
+bed_mesh: generated points
+Index |  Tool Adjusted  |   Probe
+  0   | (77.0, 33.0)    | (20.0, 20.0)
+  1   | (159.0, 33.0)   | (102.0, 20.0)
+  2   | (241.0, 33.0)   | (184.0, 20.0)
+  3   | (241.0, 123.0)  | (184.0, 110.0)
+  4   | (159.0, 123.0)  | (102.0, 110.0)
+  5   | (77.0, 123.0)   | (20.0, 110.0)
+  6   | (77.0, 213.0)   | (20.0, 200.0)
+  7   | (159.0, 213.0)  | (102.0, 200.0)
+  8   | (241.0, 213.0)  | (184.0, 200.0)
+Stepper stepper_z phase change (was 0 now 63)
+Stepper stepper_z1 phase change (was 0 now 1)
+Starting heater checks for extruder
+Stats 5906.2: gcodein=0  mcu: mcu_awake=0.002 mcu_task_avg=0.000014 mcu_task_stddev=0.000009 bytes_write=3209 bytes_read=5976 bytes_retransmit=0 bytes_invalid=0 send_seq=280 receive_seq=280 retransmit_seq=0 srtt=0.000 rttvar=0.000 rto=0.025 ready_bytes=0 upcoming_bytes=0 freq=100003030 rpi: mcu_awake=0.003 mcu_task_avg=0.000021 mcu_task_stddev=0.000015 bytes_write=2978 bytes_read=19812 bytes_retransmit=0 bytes_invalid=0 send_seq=155 receive_seq=143 retransmit_seq=0 srtt=0.004 rttvar=0.006 rto=0.027 ready_bytes=851 upcoming_bytes=28 freq=49998622 adj=49992614  heater_bed: target=0 temp=23.1 pwm=0.000 sysload=2.61 cputime=15.618 memavail=234736 print_time=0.001 buffer_time=0.000 print_stall=0 extruder: target=0 temp=22.6 pwm=0.000
+webhooks: registering remote method 'shutdown_machine' for connection id: 1947065192
+webhooks: registering remote method 'reboot_machine' for connection id: 1947065192
+webhooks: registering remote method 'pause_job_queue' for connection id: 1947065192
+webhooks: registering remote method 'start_job_queue' for connection id: 1947065192
+webhooks: registering remote method 'set_device_power' for connection id: 1947065192
+Stats 5907.2: gcodein=0  mcu: mcu_awake=0.002 mcu_task_avg=0.000014 mcu_task_stddev=0.000009 bytes_write=3215 bytes_read=6082 bytes_retransmit=0 bytes_invalid=0 send_seq=281 receive_seq=281 retransmit_seq=0 srtt=0.000 rttvar=0.000 rto=0.025 ready_bytes=0 upcoming_bytes=0 freq=100002731 rpi: mcu_awake=0.003 mcu_task_avg=0.000021 mcu_task_stddev=0.000015 bytes_write=3953 bytes_read=19978 bytes_retransmit=0 bytes_invalid=0 send_seq=174 receive_seq=174 retransmit_seq=0 srtt=0.005 rttvar=0.007 rto=0.032 ready_bytes=0 upcoming_bytes=0 freq=49999746 adj=49998745  heater_bed: target=0 temp=23.0 pwm=0.000 sysload=2.40 cputime=15.651 memavail=234516 print_time=0.001 buffer_time=0.000 print_stall=0 extruder: target=0 temp=22.6 pwm=0.000
+Stats 5908.2: gcodein=0  mcu: mcu_awake=0.002 mcu_task_avg=0.000014 mcu_task_stddev=0.000009 bytes_write=3221 bytes_read=6203 bytes_retransmit=0 bytes_invalid=0 send_seq=282 receive_seq=282 retransmit_seq=0 srtt=0.000 rttvar=0.000 rto=0.025 ready_bytes=0 upcoming_bytes=0 freq=100002949 rpi: mcu_awake=0.003 mcu_task_avg=0.000021 mcu_task_stddev=0.000015 bytes_write=3959 bytes_read=19994 bytes_retransmit=0 bytes_invalid=0 send_seq=175 receive_seq=175 retransmit_seq=0 srtt=0.004 rttvar=0.006 rto=0.029 ready_bytes=0 upcoming_bytes=0 freq=49999987 adj=50000455  heater_bed: target=0 temp=23.0 pwm=0.000 sysload=2.40 cputime=15.683 memavail=234516 print_time=0.001 buffer_time=0.000 print_stall=0 extruder: target=0 temp=22.6 pwm=0.000
+Stats 5909.2: gcodein=0  mcu: mcu_awake=0.002 mcu_task_avg=0.000014 mcu_task_stddev=0.000009 bytes_write=3227 bytes_read=6324 bytes_retransmit=0 bytes_invalid=0 send_seq=283 receive_seq=283 retransmit_seq=0 srtt=0.001 rttvar=0.000 rto=0.025 ready_bytes=0 upcoming_bytes=0 freq=100002969 rpi: mcu_awake=0.003 mcu_task_avg=0.000021 mcu_task_stddev=0.000015 bytes_write=3965 bytes_read=20010 bytes_retransmit=0 bytes_invalid=0 send_seq=176 receive_seq=176 retransmit_seq=0 srtt=0.004 rttvar=0.006 rto=0.027 ready_bytes=0 upcoming_bytes=0 freq=50000039 adj=50000170  heater_bed: target=0 temp=23.1 pwm=0.000 sysload=2.40 cputime=15.714 memavail=231548 print_time=0.001 buffer_time=0.000 print_stall=0 extruder: target=0 temp=22.6 pwm=0.000
