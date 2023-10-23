@@ -3765,3 +3765,53 @@ Error configuring printer
 2023-10-23 19:32:15,322 [job_state.py:_handle_started()] - Job state initialized: standby
 2023-10-23 19:32:15,630 [klippy_connection.py:_check_ready()] - Klippy ready
 2023-10-23 19:32:16,083 [data_store.py:_init_sensors()] - Configuring available sensors: ['heater_bed', 'extruder']
+2023-10-23 19:41:32,137 [proc_stats.py:_watchdog_callback()] - EVENT LOOP BLOCKED: 5.31 seconds, total blocked count: 1
+2023-10-23 19:41:32,338 [proc_stats.py:log_last_stats()] - 
+System Time: 1698100884.357339, Usage: 2.69%, Memory: 23588 kB
+System Time: 1698100885.358137, Usage: 2.88%, Memory: 23472 kB
+System Time: 1698100886.358791, Usage: 2.53%, Memory: 23472 kB
+System Time: 1698100887.362044, Usage: 2.62%, Memory: 23472 kB
+System Time: 1698100888.362357, Usage: 2.63%, Memory: 23040 kB
+2023-10-23 19:41:47,112 [proc_stats.py:_watchdog_callback()] - EVENT LOOP BLOCKED: 7.05 seconds, total blocked count: 2
+2023-10-23 19:41:47,315 [proc_stats.py:log_last_stats()] - 
+System Time: 1698100898.340645, Usage: 2.56%, Memory: 21260 kB
+System Time: 1698100899.342759, Usage: 2.52%, Memory: 21260 kB
+System Time: 1698100900.343048, Usage: 2.57%, Memory: 21260 kB
+System Time: 1698100901.344200, Usage: 2.6%, Memory: 21260 kB
+System Time: 1698100907.274217, Usage: 1.38%, Memory: 21268 kB
+2023-10-23 19:42:16,807 [proc_stats.py:_watchdog_callback()] - EVENT LOOP BLOCKED: 8.91 seconds, total blocked count: 3
+2023-10-23 19:42:17,084 [proc_stats.py:log_last_stats()] - 
+System Time: 1698100922.942785, Usage: 2.44%, Memory: 21268 kB
+System Time: 1698100923.943483, Usage: 4.92%, Memory: 21268 kB
+System Time: 1698100924.944809, Usage: 2.73%, Memory: 21268 kB
+System Time: 1698100925.945560, Usage: 2.24%, Memory: 21268 kB
+System Time: 1698100926.948587, Usage: 2.55%, Memory: 21268 kB
+2023-10-23 19:42:17,655 [machine.py:_parse_network_interfaces()] - Error processing network update
+Traceback (most recent call last):
+  File "/home/m/moonraker/moonraker/components/machine.py", line 627, in _parse_network_interfaces
+    resp = await self.addr_cmd.run_with_response(log_complete=False)
+  File "/home/m/moonraker/moonraker/components/shell_command.py", line 277, in run_with_response
+    raise ShellCommandError(
+moonraker.components.shell_command.ShellCommandError: Error running shell command: 'ip -json -det address'
+2023-10-23 19:42:29,212 [machine.py:_parse_network_interfaces()] - Error processing network update
+Traceback (most recent call last):
+  File "/home/m/moonraker/moonraker/components/machine.py", line 627, in _parse_network_interfaces
+    resp = await self.addr_cmd.run_with_response(log_complete=False)
+  File "/home/m/moonraker/moonraker/components/shell_command.py", line 277, in run_with_response
+    raise ShellCommandError(
+moonraker.components.shell_command.ShellCommandError: Error running shell command: 'ip -json -det address'
+2023-10-23 19:42:40,763 [machine.py:_parse_network_interfaces()] - Error processing network update
+Traceback (most recent call last):
+  File "/home/m/moonraker/moonraker/components/machine.py", line 627, in _parse_network_interfaces
+    resp = await self.addr_cmd.run_with_response(log_complete=False)
+  File "/home/m/moonraker/moonraker/components/shell_command.py", line 277, in run_with_response
+    raise ShellCommandError(
+moonraker.components.shell_command.ShellCommandError: Error running shell command: 'ip -json -det address'
+2023-10-23 19:43:38,088 [proc_stats.py:_watchdog_callback()] - EVENT LOOP BLOCKED: 9.23 seconds, total blocked count: 4
+2023-10-23 19:43:38,290 [proc_stats.py:log_last_stats()] - 
+System Time: 1698101006.823496, Usage: 1.48%, Memory: 17488 kB
+System Time: 1698101007.830161, Usage: 1.35%, Memory: 17492 kB
+System Time: 1698101008.829634, Usage: 2.23%, Memory: 17492 kB
+System Time: 1698101009.833522, Usage: 2.25%, Memory: 17492 kB
+System Time: 1698101018.132313, Usage: 0.58%, Memory: 17520 kB
+2023-10-23 19:52:51,243 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 172.22.200.40
