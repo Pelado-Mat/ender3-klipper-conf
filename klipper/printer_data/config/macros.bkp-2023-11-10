@@ -1,0 +1,316 @@
+#####################################################################
+#   print_start macro
+#####################################################################
+
+## *** THINGS TO UNCOMMENT: ***
+## Bed mesh (2 lines at 2 locations)
+## Z_TILT_ADJUST if your printer is a Trident
+## Quad gantry level if your printer is a V2
+## Nevermore - if you have one
+
+[gcode_macro PRINT_START]
+gcode:
+  # This part fetches data from your slicer. Such as bed temp, extruder temp, chamber temp and size of your printer.
+  {% set target_bed = params.BED|int %}
+  {% set target_extruder = params.EXTRUDER|int %}
+  {% set target_chamber = params.CHAMBER|default("40")|int %}
+  {% set x_wait = printer.toolhead.axis_maximum.x|float / 2 %}
+  {% set y_wait = printer.toolhead.axis_maximum.y|float / 2 %}
+  M140 S{target_bed}
+  M104 S150
+
+  ##  Uncomment for bed mesh (1 of 2)
+  BED_MESH_CLEAR       # Clears old saved bed mesh (if any)
+  # Heating nozzle to 150 degrees. This helps with getting a correct Z-home
+  SET_DISPLAY_TEXT MSG="Hotend: 150c"          # Displays info
+  
+  M190 S{target_bed}                                  # Sets the target temp for the bed
+  G28                   # Full home (XYZ)
+  SET_DISPLAY_TEXT MSG="Z-tilt adjust"     # Displays info
+  Z_TILT_ADJUST
+  G28 Z
+  G90                   # Absolut position
+  M82                   # Absolut Extruder
+  G1 X{x_wait} Y{y_wait} Z15 F9000                    # Goes to center of the bed
+  M109 S150                                    # Heats the nozzle to 150c
+
+  SET_DISPLAY_TEXT MSG="Bed mesh"    # Displays info
+  bed_mesh_calibrate                 # Starts bed mesh
+#  BED_MESH_PROFILE LOAD=default
+  # Heats up the nozzle up to target via data from slicer
+  SET_DISPLAY_TEXT MSG="Hotend: {target_extruder}c"             # Displays info
+  G1 X{x_wait} Y{y_wait} Z15 F9000                              # Goes to center of the bed
+  M107                                                          # Turns off partcooling fan
+  M109 S{target_extruder}                                       # Heats the nozzle to printing temp
+
+  # Gets ready to print by doing a purge line and updating the SB-leds
+  SET_DISPLAY_TEXT MSG="Printer goes brr"          # Displays info
+#  G0 X2 Y20 F10000                      # Moves to starting point
+#  G0 Z0.4                                          # Raises Z to 0.4
+#  G91                                              # Incremental positioning 
+#  G1 Y100 E20 F1000                                # Purge line
+#  G90                                              # Absolut position
+#  M82                   # Absolut Extruder
+#  G92 E0
+#  G1 Y10 E10 F1200 # prime the nozzle
+#  G92 E0
+LINE_PURGE
+
+
+
+#####################################################################
+#   print_end macro
+#####################################################################
+[gcode_macro PRINT_END]
+gcode:
+    SET_DISPLAY_TEXT MSG="Print Finished" 
+    # Turn off bed, extruder, and fan
+    M140 S0
+    M104 S0
+    M106 S0
+    # Move nozzle away from print while retracting
+    G91
+    G1 X-2 Y-2 E-3 F300
+    # Raise nozzle by 30mm 
+    G1 Z10 F3000
+    G90
+    G0 Y170 X10
+    # Disable steppers
+    M84
+    UPDATE_DELAYED_GCODE ID=POWER_OFF_PRINTER_CHECK DURATION=30
+    
+#####################################################################
+#  Automatic power OFF  
+# POWER_OFF_PRINTER_CHECK
+#####################################################################
+[gcode_macro _POWER_OFF_PRINTER]
+gcode:
+  {action_call_remote_method("set_device_power",
+                             device="printer",
+                             state="off")}
+
+
+[delayed_gcode POWER_OFF_PRINTER_CHECK]
+gcode:
+  {% if printer.idle_timeout.state == "Idle" or printer.idle_timeout.state == "Ready" %}
+    {% if printer.extruder.temperature < 50.0 and printer.heater_bed.temperature < 50.0 %}
+        {% if printer.extruder.target == 0.0 and printer.heater_bed.target == 0.0 %}
+            UPDATE_DELAYED_GCODE ID=POWER_OFF_PRINTER_CHECK DURATION=0
+            SET_DISPLAY_TEXT MSG="PowerOff Printer" 
+            _POWER_OFF_PRINTER
+        {% else %}
+            UPDATE_DELAYED_GCODE ID=POWER_OFF_PRINTER_CHECK DURATION=2
+        {% endif %}
+    {% else %}
+        {% if printer.idle_timeout.state == "Printing" %}
+            UPDATE_DELAYED_GCODE ID=POWER_OFF_PRINTER_CHECK DURATION=0
+        {% else %}
+            {% if printer.extruder.target == 0.0 and printer.heater_bed.target == 0.0 %}
+                UPDATE_DELAYED_GCODE ID=POWER_OFF_PRINTER_CHECK DURATION=2
+            {% else %}
+                UPDATE_DELAYED_GCODE ID=POWER_OFF_PRINTER_CHECK DURATION=0
+            {% endif %}
+        {% endif %}
+    {% endif %}
+  {% endif %}
+
+[gcode_macro ACTIVATE_POWER_OFF]
+gcode:
+    UPDATE_DELAYED_GCODE ID=POWER_OFF_PRINTER_CHECK_ACT DURATION=60
+
+[gcode_macro DEACTIVATE_POWER_OFF]
+gcode:
+    UPDATE_DELAYED_GCODE ID=POWER_OFF_PRINTER_CHECK_ACT DURATION=0
+
+[delayed_gcode POWER_OFF_PRINTER_CHECK_ACT]
+gcode:
+  {% if printer.idle_timeout.state == "Idle" or printer.idle_timeout.state == "Ready" %}
+    UPDATE_DELAYED_GCODE ID=POWER_OFF_PRINTER_CHECK DURATION=30
+  {% else %}
+    UPDATE_DELAYED_GCODE ID=POWER_OFF_PRINTER_CHECK_ACT DURATION=60
+  {% endif %}
+
+#########################################
+#  pause and friends
+#########################################
+[gcode_macro M600]
+description: Filament change
+gcode: PAUSE custom_park_x=10 custom_park_y=10 Z_MIN=50
+
+##  Z_MIN will park the toolhead at a minimum of 50 mm above to bed to make it easier for you to swap filament.
+##
+## Client variable macro for your printer.cfg
+[gcode_macro _CLIENT_VARIABLE]
+variable_use_custom_pos   : True ; use custom park coordinates for x,y [True/False]
+variable_custom_park_x    : 10   ; custom x position; value must be within your defined min and max of X
+variable_custom_park_y    : 170   ; custom y position; value must be within your defined min and max of Y
+variable_custom_park_dz   : 10.0   ; custom dz value; the value in mm to lift the nozzle when move to park position
+variable_retract          : 1.0   ; the value to retract while PAUSE
+variable_cancel_retract   : 5.0   ; the value to retract while CANCEL_PRINT
+variable_speed_retract    : 35.0  ; retract speed in mm/s
+variable_unretract        : 1.0   ; the value to unretract while RESUME
+variable_speed_unretract  : 35.0  ; unretract speed in mm/s
+variable_speed_hop        : 15.0  ; z move speed in mm/s
+variable_speed_move       : 100.0 ; move speed in mm/s
+variable_park_at_cancel   : False ; allow to move the toolhead to park while execute CANCEL_PRINT [True/False]
+variable_park_at_cancel_x : None  ; different park position during CANCEL_PRINT [None/Position as Float]; park_at_cancel must be True
+variable_park_at_cancel_y : None  ; different park position during CANCEL_PRINT [None/Position as Float]; park_at_cancel must be True
+# !!! Caution [firmware_retraction] must be defined in the printer.cfg if you set use_fw_retract: True !!!
+#variable_use_fw_retract   : False ; use fw_retraction instead of the manual version [True/False]
+variable_idle_timeout     : 0     ; time in sec until idle_timeout kicks in. Value 0 means that no value will be set or restored
+gcode:
+
+[gcode_macro LOAD_FILAMENT]
+variable_load_distance:  100
+variable_purge_distance:  100
+gcode:
+    {% set speed = params.SPEED|default(200) %}
+    {% set max_velocity = printer.configfile.settings['extruder'].max_extrude_only_velocity  * 60 %}
+    SAVE_GCODE_STATE NAME=load_state
+    G91
+    M82
+    G92 E0
+    G1 E{load_distance} F{max_velocity} # fast-load
+    G1 E{purge_distance} F{speed} # purge
+    RESTORE_GCODE_STATE NAME=load_state
+
+[gcode_macro UNLOAD_FILAMENT]
+variable_unload_distance:  100
+variable_purge_distance:  100
+gcode:
+    {% set speed = params.SPEED|default(200) %}
+    {% set max_velocity = printer.configfile.settings['extruder'].max_extrude_only_velocity  * 60 %}
+    SAVE_GCODE_STATE NAME=unload_state
+    G91
+    M82
+    G92 E0
+    G1 E{purge_distance} F{speed} # purge
+    G1 E-{unload_distance} F{max_velocity} # fast-unload
+    RESTORE_GCODE_STATE NAME=unload_state
+
+
+###############################################
+#  Telegram Bot
+##############################################
+[gcode_macro _bot_data]
+variable_lapse_video_size: 0
+variable_lapse_filename: 'None'
+variable_lapse_path: 'None'
+gcode:
+    M118 Setting bot lapse variables
+
+################################################
+# Test Speed
+# https://github.com/AndrewEllis93/Print-Tuning-Guide/blob/main/macros/TEST_SPEED.cfg
+################################################
+# Home, get position, throw around toolhead, home again.
+# If MCU stepper positions (first line in GET_POSITION) are greater than a full step different (your number of microsteps), then skipping occured.
+# We only measure to a full step to accomodate for endstop variance.
+# Example: TEST_SPEED SPEED=300 ACCEL=5000 ITERATIONS=10
+
+[gcode_macro TEST_SPEED]
+gcode:
+    # Speed
+    {% set speed  = params.SPEED|default(printer.configfile.settings.printer.max_velocity)|int %}
+    # Iterations
+    {% set iterations = params.ITERATIONS|default(5)|int %}
+    # Acceleration
+    {% set accel  = params.ACCEL|default(printer.configfile.settings.printer.max_accel)|int %}
+    # Bounding inset for large pattern (helps prevent slamming the toolhead into the sides after small skips, and helps to account for machines with imperfectly set dimensions)
+    {% set bound = params.BOUND|default(20)|int %}
+    # Size for small pattern box
+    {% set smallpatternsize = SMALLPATTERNSIZE|default(20)|int %}
+    
+    # Large pattern
+        # Max positions, inset by BOUND
+        {% set x_min = printer.toolhead.axis_minimum.x + bound %}
+        {% set x_max = printer.toolhead.axis_maximum.x - bound %}
+        {% set y_min = printer.toolhead.axis_minimum.y + bound %}
+        {% set y_max = printer.toolhead.axis_maximum.y - bound %}
+    
+    # Small pattern at center
+        # Find X/Y center point
+        {% set x_center = (printer.toolhead.axis_minimum.x|float + printer.toolhead.axis_maximum.x|float ) / 2 %}
+        {% set y_center = (printer.toolhead.axis_minimum.y|float + printer.toolhead.axis_maximum.y|float ) / 2 %}
+        
+        # Set small pattern box around center point
+        {% set x_center_min = x_center - (smallpatternsize/2) %}
+        {% set x_center_max = x_center + (smallpatternsize/2) %}
+        {% set y_center_min = y_center - (smallpatternsize/2) %}
+        {% set y_center_max = y_center + (smallpatternsize/2) %}
+
+    # Save current gcode state (absolute/relative, etc)
+    SAVE_GCODE_STATE NAME=TEST_SPEED
+    
+    # Output parameters to g-code terminal
+    { action_respond_info("TEST_SPEED: starting %d iterations at speed %d, accel %d" % (iterations, speed, accel)) }
+    
+    # Home and get position for comparison later:
+        M400 # Finish moves - https://github.com/AndrewEllis93/Print-Tuning-Guide/issues/66
+        G28
+        # QGL if not already QGLd (only if QGL section exists in config)
+        {% if printer.configfile.settings.quad_gantry_level %}
+            {% if printer.quad_gantry_level.applied == False %}
+                QUAD_GANTRY_LEVEL
+                G28 Z
+            {% endif %}
+        {% endif %} 
+        # Move 50mm away from max position and home again (to help with hall effect endstop accuracy - https://github.com/AndrewEllis93/Print-Tuning-Guide/issues/24)
+        G90
+        G1 X{printer.toolhead.axis_maximum.x-50} Y{printer.toolhead.axis_maximum.y-50} F{30*60}
+        M400 # Finish moves - https://github.com/AndrewEllis93/Print-Tuning-Guide/issues/66
+        G28 X Y
+        G0 X{printer.toolhead.axis_maximum.x-1} Y{printer.toolhead.axis_maximum.y-1} F{30*60}
+        G4 P1000 
+        GET_POSITION
+
+    # Go to starting position
+    G0 X{x_min} Y{y_min} Z{bound + 10} F{speed*60}
+
+    # Set new limits
+    SET_VELOCITY_LIMIT VELOCITY={speed} ACCEL={accel} ACCEL_TO_DECEL={accel / 2}
+
+    {% for i in range(iterations) %}
+        # Large pattern diagonals
+        G0 X{x_min} Y{y_min} F{speed*60}
+        G0 X{x_max} Y{y_max} F{speed*60}
+        G0 X{x_min} Y{y_min} F{speed*60}
+        G0 X{x_max} Y{y_min} F{speed*60}
+        G0 X{x_min} Y{y_max} F{speed*60}
+        G0 X{x_max} Y{y_min} F{speed*60}
+        
+        # Large pattern box
+        G0 X{x_min} Y{y_min} F{speed*60}
+        G0 X{x_min} Y{y_max} F{speed*60}
+        G0 X{x_max} Y{y_max} F{speed*60}
+        G0 X{x_max} Y{y_min} F{speed*60}
+    
+        # Small pattern diagonals
+        G0 X{x_center_min} Y{y_center_min} F{speed*60}
+        G0 X{x_center_max} Y{y_center_max} F{speed*60}
+        G0 X{x_center_min} Y{y_center_min} F{speed*60}
+        G0 X{x_center_max} Y{y_center_min} F{speed*60}
+        G0 X{x_center_min} Y{y_center_max} F{speed*60}
+        G0 X{x_center_max} Y{y_center_min} F{speed*60}
+        
+        # Small patternbox
+        G0 X{x_center_min} Y{y_center_min} F{speed*60}
+        G0 X{x_center_min} Y{y_center_max} F{speed*60}
+        G0 X{x_center_max} Y{y_center_max} F{speed*60}
+        G0 X{x_center_max} Y{y_center_min} F{speed*60}
+    {% endfor %}
+
+    # Restore max speed/accel/accel_to_decel to their configured values
+    SET_VELOCITY_LIMIT VELOCITY={printer.configfile.settings.printer.max_velocity} ACCEL={printer.configfile.settings.printer.max_accel} ACCEL_TO_DECEL={printer.configfile.settings.printer.max_accel_to_decel} 
+
+    # Re-home and get position again for comparison:
+        M400 # Finish moves - https://github.com/AndrewEllis93/Print-Tuning-Guide/issues/66
+        G28 # This is a full G28 to fix an issue with CoreXZ - https://github.com/AndrewEllis93/Print-Tuning-Guide/issues/12
+        # Go to XY home positions (in case your homing override leaves it elsewhere)
+        G90
+        G0 X{printer.toolhead.axis_maximum.x-1} Y{printer.toolhead.axis_maximum.y-1} F{30*60}
+        G4 P1000 
+        GET_POSITION
+
+    # Restore previous gcode state (absolute/relative, etc)
+    RESTORE_GCODE_STATE NAME=TEST_SPEED   
