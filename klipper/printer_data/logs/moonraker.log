@@ -396,3 +396,10 @@ Commits Behind Count: 0
 Diverged: False
 2023-12-30 02:38:48,761 [base_deploy.py:log_info()] - Git Repo Klipper-Adaptive-Meshing-Purging: Channel: dev
 2023-12-30 02:38:48,761 [base_deploy.py:log_info()] - Git Repo Klipper-Adaptive-Meshing-Purging: Validity check for git repo passed
+2023-12-30 05:00:30,545 [proc_stats.py:_watchdog_callback()] - EVENT LOOP BLOCKED: 4.24 seconds, total blocked count: 1
+2023-12-30 05:00:30,747 [proc_stats.py:log_last_stats()] - 
+System Time: 1703923224.586992, Usage: 3.47%, Memory: 30620 kB
+System Time: 1703923225.589918, Usage: 1.27%, Memory: 30620 kB
+System Time: 1703923226.589934, Usage: 3.81%, Memory: 30620 kB
+System Time: 1703923227.591467, Usage: 1.12%, Memory: 30620 kB
+System Time: 1703923230.702061, Usage: 2.29%, Memory: 30620 kB
