@@ -1,4 +1,4 @@
--------------------- Log Start | Tue Jan  2 09:27:01 2024 --------------------
+-------------------- Log Start | Thu Jan  4 04:38:05 2024 --------------------
 data_path: /home/m/printer_data
 is_default_data_path: False
 config_file: /home/m/printer_data/config/moonraker.conf
@@ -217,9 +217,49 @@ Git Repo sonar: No warnings detected
 Git Repo moonraker-telegram-bot: No warnings detected
 Git Repo Klipper-Adaptive-Meshing-Purging: No warnings detected
 Klipper Version: v0.12.0-12-g38221df8-dirty
-2024-01-02 06:27:01,132 [websockets.py:write_to_socket()] - Websocket closed while writing: 1726982056
-2024-01-02 06:27:01,507 [websockets.py:on_close()] - Websocket Closed: ID: 1726982056 Close Code: 1000, Close Reason: None, Pong Time Elapsed: 0.01
-2024-01-02 06:27:31,440 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 172.22.200.40
-2024-01-02 06:27:31,443 [app.py:log_request()] - 101 GET /websocket (172.22.200.40) [_TRUSTED_USER_] 11.58ms
-2024-01-02 06:27:31,446 [websockets.py:open()] - Websocket Opened: ID: 1746337720, Proxied: False, User Agent: HomeAssistant/2023.12.3 aiohttp/3.9.1 Python/3.11, Host Name: klipper.h.m01.cl
-2024-01-02 07:28:03,178 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 172.22.200.40
+2024-01-04 01:38:05,598 [web_deploy.py:_log_client_info()] - Web Client mainsail Detected:
+Repo: mainsail-crew/mainsail
+Channel: stable
+Path: /home/m/mainsail
+Local Version: v2.8.0
+Remote Version: v2.9.1
+Valid: True
+Fallback Client Detected: False
+Pre-release: False
+Download Url: https://github.com/mainsail-crew/mainsail/releases/download/v2.9.1/mainsail.zip
+Download Size: 2071443
+Content Type: application/zip
+Rollback Version: v2.8.0
+Rollback Repo: mainsail-crew/mainsail
+2024-01-04 01:38:05,828 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker-telegram-bot status --porcelain -b) successfully finished
+2024-01-04 01:38:05,884 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker-telegram-bot branch --list --no-color) successfully finished
+2024-01-04 01:38:05,922 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker-telegram-bot remote get-url origin) successfully finished
+2024-01-04 01:38:07,165 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker-telegram-bot fetch origin --prune --progress) successfully finished
+2024-01-04 01:38:07,194 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker-telegram-bot merge-base --is-ancestor HEAD origin/master) successfully finished
+2024-01-04 01:38:07,218 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker-telegram-bot rev-parse HEAD) successfully finished
+2024-01-04 01:38:07,244 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker-telegram-bot describe --always --tags --long --dirty --abbrev=8) successfully finished
+2024-01-04 01:38:07,267 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker-telegram-bot rev-parse origin/master) successfully finished
+2024-01-04 01:38:07,291 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker-telegram-bot describe origin/master --always --tags --long --abbrev=8) successfully finished
+2024-01-04 01:38:07,310 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker-telegram-bot rev-list HEAD..b9b47003e13b8a23af696594aac8ba53c777f5a7 --count) successfully finished
+2024-01-04 01:38:07,314 [git_deploy.py:log_repo_info()] - Git Repo moonraker-telegram-bot Detected:
+Owner: nlef
+Repository Name: moonraker-telegram-bot
+Path: /home/m/moonraker-telegram-bot
+Remote: origin
+Branch: master
+Remote URL: https://github.com/nlef/moonraker-telegram-bot.git
+Recovery URL: https://github.com/nlef/moonraker-telegram-bot.git
+Current Commit SHA: b9b47003e13b8a23af696594aac8ba53c777f5a7
+Upstream Commit SHA: b9b47003e13b8a23af696594aac8ba53c777f5a7
+Current Version: v1.5-0-gb9b47003
+Upstream Version: v1.5-0-gb9b47003
+Rollback Commit: b9b47003e13b8a23af696594aac8ba53c777f5a7
+Rollback Branch: master
+Rollback Version: v1.5-0-gb9b47003
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+2024-01-04 01:38:07,315 [base_deploy.py:log_info()] - Git Repo moonraker-telegram-bot: Channel: dev
+2024-01-04 01:38:07,315 [base_deploy.py:log_info()] - Git Repo moonraker-telegram-bot: Validity check for git repo passed
