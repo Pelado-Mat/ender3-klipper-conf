@@ -1,4 +1,4 @@
--------------------- Log Start | Thu Jan  4 04:38:05 2024 --------------------
+-------------------- Log Start | Fri Jan  5 03:38:05 2024 --------------------
 data_path: /home/m/printer_data
 is_default_data_path: False
 config_file: /home/m/printer_data/config/moonraker.conf
@@ -217,49 +217,39 @@ Git Repo sonar: No warnings detected
 Git Repo moonraker-telegram-bot: No warnings detected
 Git Repo Klipper-Adaptive-Meshing-Purging: No warnings detected
 Klipper Version: v0.12.0-12-g38221df8-dirty
-2024-01-04 01:38:05,598 [web_deploy.py:_log_client_info()] - Web Client mainsail Detected:
-Repo: mainsail-crew/mainsail
-Channel: stable
-Path: /home/m/mainsail
-Local Version: v2.8.0
-Remote Version: v2.9.1
-Valid: True
-Fallback Client Detected: False
-Pre-release: False
-Download Url: https://github.com/mainsail-crew/mainsail/releases/download/v2.9.1/mainsail.zip
-Download Size: 2071443
-Content Type: application/zip
-Rollback Version: v2.8.0
-Rollback Repo: mainsail-crew/mainsail
-2024-01-04 01:38:05,828 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker-telegram-bot status --porcelain -b) successfully finished
-2024-01-04 01:38:05,884 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker-telegram-bot branch --list --no-color) successfully finished
-2024-01-04 01:38:05,922 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker-telegram-bot remote get-url origin) successfully finished
-2024-01-04 01:38:07,165 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker-telegram-bot fetch origin --prune --progress) successfully finished
-2024-01-04 01:38:07,194 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker-telegram-bot merge-base --is-ancestor HEAD origin/master) successfully finished
-2024-01-04 01:38:07,218 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker-telegram-bot rev-parse HEAD) successfully finished
-2024-01-04 01:38:07,244 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker-telegram-bot describe --always --tags --long --dirty --abbrev=8) successfully finished
-2024-01-04 01:38:07,267 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker-telegram-bot rev-parse origin/master) successfully finished
-2024-01-04 01:38:07,291 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker-telegram-bot describe origin/master --always --tags --long --abbrev=8) successfully finished
-2024-01-04 01:38:07,310 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker-telegram-bot rev-list HEAD..b9b47003e13b8a23af696594aac8ba53c777f5a7 --count) successfully finished
-2024-01-04 01:38:07,314 [git_deploy.py:log_repo_info()] - Git Repo moonraker-telegram-bot Detected:
-Owner: nlef
-Repository Name: moonraker-telegram-bot
-Path: /home/m/moonraker-telegram-bot
+2024-01-05 00:38:05,028 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker status --porcelain -b) successfully finished
+2024-01-05 00:38:05,090 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker branch --list --no-color) successfully finished
+2024-01-05 00:38:05,140 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker remote get-url origin) successfully finished
+2024-01-05 00:38:07,250 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker fetch origin --prune --progress) successfully finished
+2024-01-05 00:38:07,271 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker merge-base --is-ancestor HEAD origin/master) successfully finished
+2024-01-05 00:38:07,287 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker rev-parse HEAD) successfully finished
+2024-01-05 00:38:07,346 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker describe --always --tags --long --dirty --abbrev=8) successfully finished
+2024-01-05 00:38:07,364 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker rev-parse origin/master) successfully finished
+2024-01-05 00:38:07,396 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker describe origin/master --always --tags --long --abbrev=8) successfully finished
+2024-01-05 00:38:07,417 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker rev-list HEAD..84a8538597fe3f052f00808a0f174c71bc096566 --count) successfully finished
+2024-01-05 00:38:07,443 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker log fb15b2a3de1ac203a8bf2a700b08c649d23cd4a0..origin/master --format="sha:%H%x1Dauthor:%an%x1Ddate:%ct%x1Dsubject:%s%x1Dmessage:%b%x1E" --max-count=100) successfully finished
+2024-01-05 00:38:07,551 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker for-each-ref --count=100 --sort='-creatordate' --contains=HEAD --merged=origin/master --format='%(if)%(*objecttype)%(then)%(*objecttype) %(*objectname)%(else)%(objecttype) %(objectname)%(end) %(refname)' 'refs/tags') successfully finished
+2024-01-05 00:38:07,552 [git_deploy.py:log_repo_info()] - Git Repo moonraker Detected:
+Owner: Arksine
+Repository Name: moonraker
+Path: /home/m/moonraker
 Remote: origin
 Branch: master
-Remote URL: https://github.com/nlef/moonraker-telegram-bot.git
-Recovery URL: https://github.com/nlef/moonraker-telegram-bot.git
-Current Commit SHA: b9b47003e13b8a23af696594aac8ba53c777f5a7
-Upstream Commit SHA: b9b47003e13b8a23af696594aac8ba53c777f5a7
-Current Version: v1.5-0-gb9b47003
-Upstream Version: v1.5-0-gb9b47003
-Rollback Commit: b9b47003e13b8a23af696594aac8ba53c777f5a7
+Remote URL: https://github.com/Arksine/moonraker.git
+Recovery URL: https://github.com/Arksine/moonraker.git
+Current Commit SHA: fb15b2a3de1ac203a8bf2a700b08c649d23cd4a0
+Upstream Commit SHA: 84a8538597fe3f052f00808a0f174c71bc096566
+Current Version: v0.8.0-204-gfb15b2a3
+Upstream Version: v0.8.0-243-g84a85385
+Rollback Commit: 975011d19078c209ff5175698962ab12c10b1a07
 Rollback Branch: master
-Rollback Version: v1.5-0-gb9b47003
+Rollback Version: v0.8.0-197-g975011d1
 Is Dirty: False
 Is Detached: False
 Is Shallow: False
-Commits Behind Count: 0
+Commits Behind Count: 39
 Diverged: False
-2024-01-04 01:38:07,315 [base_deploy.py:log_info()] - Git Repo moonraker-telegram-bot: Channel: dev
-2024-01-04 01:38:07,315 [base_deploy.py:log_info()] - Git Repo moonraker-telegram-bot: Validity check for git repo passed
+Repo Warnings:
+  Repo has untracked source files: ['moonraker/components/timelapse.py']
+2024-01-05 00:38:07,555 [base_deploy.py:log_info()] - Git Repo moonraker: Channel: dev
+2024-01-05 00:38:07,555 [base_deploy.py:log_info()] - Git Repo moonraker: Validity check for git repo passed
