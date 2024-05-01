@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+# abort if its printing
+
+STATE=$(curl -X GET http://127.0.0.1:7125/printer/objects/query?print_stats 2>/dev/null | grep -oP '(?<="state": ")[^"]*')
+if [ "$STATE" = "printing" ]; then
+  echo "Abortamos: se esta imprimiendo"
+  exit 0
+fi
+
 # Set parent directory path
 parent_path=$(cd "$(dirname "${BASH_SOURCE[0]}")"; pwd -P)
 
