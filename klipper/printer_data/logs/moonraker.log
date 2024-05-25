@@ -1,4 +1,4 @@
--------------------- Log Start | Thu May 23 05:10:17 2024 --------------------
+-------------------- Log Start | Fri May 24 09:00:28 2024 --------------------
 platform: Linux-6.1.21-v7+-armv7l-with-glibc2.31
 data_path: /home/m/printer_data
 is_default_data_path: False
@@ -223,280 +223,42 @@ Git Repo sonar: No warnings detected
 Git Repo moonraker-telegram-bot: No warnings detected
 Git Repo Klipper-Adaptive-Meshing-Purging: No warnings detected
 Klipper Version: v0.12.0-178-g7e8c7f46-dirty
-2024-05-23 01:10:10,780 [machine.py:_parse_network_interfaces()] - Error processing network update
+2024-05-24 05:00:24,584 [proc_stats.py:_watchdog_callback()] - EVENT LOOP BLOCKED: 6.91 seconds, total blocked count: 7
+2024-05-24 05:00:28,686 [proc_stats.py:log_last_stats()] - 
+System Time: 1716541213.931901, Usage: 1.38%, Memory: 16384 kB
+System Time: 1716541214.933040, Usage: 3.62%, Memory: 16384 kB
+System Time: 1716541215.934603, Usage: 1.38%, Memory: 16384 kB
+System Time: 1716541216.935086, Usage: 3.12%, Memory: 16384 kB
+System Time: 1716541217.937505, Usage: 1.57%, Memory: 16384 kB
+2024-05-24 05:00:28,699 [proc_stats.py:_watchdog_callback()] - EVENT LOOP BLOCKED: 4.23 seconds, total blocked count: 8
+2024-05-24 05:00:29,273 [proc_stats.py:log_last_stats()] - 
+System Time: 1716541214.933040, Usage: 3.62%, Memory: 16384 kB
+System Time: 1716541215.934603, Usage: 1.38%, Memory: 16384 kB
+System Time: 1716541216.935086, Usage: 3.12%, Memory: 16384 kB
+System Time: 1716541217.937505, Usage: 1.57%, Memory: 16384 kB
+System Time: 1716541228.701405, Usage: 0.84%, Memory: 16572 kB
+2024-05-24 05:00:41,292 [proc_stats.py:_watchdog_callback()] - EVENT LOOP BLOCKED: 4.58 seconds, total blocked count: 9
+2024-05-24 05:00:41,498 [proc_stats.py:log_last_stats()] - 
+System Time: 1716541232.797503, Usage: 1.23%, Memory: 16720 kB
+System Time: 1716541233.796828, Usage: 3.62%, Memory: 16720 kB
+System Time: 1716541234.799861, Usage: 1.13%, Memory: 16720 kB
+System Time: 1716541235.799287, Usage: 3.37%, Memory: 16720 kB
+System Time: 1716541236.802374, Usage: 1.22%, Memory: 16720 kB
+2024-05-24 05:02:34,989 [machine.py:_parse_network_interfaces()] - Error processing network update
 Traceback (most recent call last):
   File "/home/m/moonraker/moonraker/components/machine.py", line 673, in _parse_network_interfaces
     resp = await self.addr_cmd.run_with_response(log_complete=False)
   File "/home/m/moonraker/moonraker/components/shell_command.py", line 277, in run_with_response
     raise ShellCommandError(
 moonraker.components.shell_command.ShellCommandError: Error running shell command: 'ip -json -det address'
-2024-05-23 01:10:22,860 [base_deploy.py:log_info()] - PackageKit: Detected 4 package updates:
-less
-libglib2.0-0
-libglib2.0-bin
-libglib2.0-data
-2024-05-23 01:10:38,258 [proc_stats.py:_watchdog_callback()] - EVENT LOOP BLOCKED: 21.97 seconds, total blocked count: 6
-2024-05-23 01:10:38,462 [proc_stats.py:log_last_stats()] - 
-System Time: 1716441014.798458, Usage: 1.46%, Memory: 26044 kB
-System Time: 1716441015.798832, Usage: 2.99%, Memory: 26044 kB
-System Time: 1716441016.800390, Usage: 2.09%, Memory: 26044 kB
-System Time: 1716441038.291341, Usage: 1.09%, Memory: 26056 kB
-System Time: 1716441038.345877, Usage: 1.63%, Memory: 26492 kB
-2024-05-23 01:10:38,479 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker status --porcelain -b) successfully finished
-2024-05-23 01:10:38,503 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker branch --list --no-color) successfully finished
-2024-05-23 01:10:38,560 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker remote get-url origin) successfully finished
-2024-05-23 01:10:41,107 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker fetch origin --prune --progress) successfully finished
-2024-05-23 01:10:41,128 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker merge-base --is-ancestor HEAD origin/master) successfully finished
-2024-05-23 01:10:41,147 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker rev-parse HEAD) successfully finished
-2024-05-23 01:10:41,189 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker describe --always --tags --long --dirty --abbrev=8) successfully finished
-2024-05-23 01:10:41,209 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker rev-parse origin/master) successfully finished
-2024-05-23 01:10:41,250 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker describe origin/master --always --tags --long --abbrev=8) successfully finished
-2024-05-23 01:10:41,272 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker rev-list HEAD..73df63db1f1c636cf66d5ae03def705c2880b799 --count) successfully finished
-2024-05-23 01:10:41,294 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker log 0f2e3d7c99b5fae2d5ccf7084e6eb6b18c65cda5..origin/master --format="sha:%H%x1Dauthor:%an%x1Ddate:%ct%x1Dsubject:%s%x1Dmessage:%b%x1E" --max-count=100) successfully finished
-2024-05-23 01:10:41,412 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker for-each-ref --count=100 --sort='-creatordate' --contains=HEAD --merged=origin/master --format='%(if)%(*objecttype)%(then)%(*objecttype) %(*objectname)%(else)%(objecttype) %(objectname)%(end) %(refname)' 'refs/tags') successfully finished
-2024-05-23 01:10:41,415 [git_deploy.py:log_repo_info()] - Git Repo moonraker Detected:
-Owner: Arksine
-Repository Name: moonraker
-Path: /home/m/moonraker
-Remote: origin
-Branch: master
-Remote URL: https://github.com/Arksine/moonraker.git
-Recovery URL: https://github.com/Arksine/moonraker.git
-Current Commit SHA: 0f2e3d7c99b5fae2d5ccf7084e6eb6b18c65cda5
-Upstream Commit SHA: 73df63db1f1c636cf66d5ae03def705c2880b799
-Current Version: v0.8.0-343-g0f2e3d7c
-Upstream Version: v0.8.0-359-g73df63db
-Rollback Commit: 99b97afc7de1ed16ddc7db29ab6354bd6ea3dfb7
-Rollback Branch: master
-Rollback Version: v0.8.0-325-g99b97afc
-Is Dirty: False
-Is Detached: False
-Is Shallow: False
-Commits Behind Count: 16
-Diverged: False
-Repo Warnings:
-  Repo has untracked source files: ['moonraker/components/timelapse.py']
-2024-05-23 01:10:41,416 [base_deploy.py:log_info()] - Git Repo moonraker: Channel: dev
-2024-05-23 01:10:41,416 [base_deploy.py:log_info()] - Git Repo moonraker: Validity check for git repo passed
-2024-05-23 01:10:41,727 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/klipper status --porcelain -b) successfully finished
-2024-05-23 01:10:41,755 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/klipper branch --list --no-color) successfully finished
-2024-05-23 01:10:41,801 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/klipper remote get-url origin) successfully finished
-2024-05-23 01:10:47,105 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/klipper fetch origin --prune --progress) successfully finished
-2024-05-23 01:10:47,135 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/klipper merge-base --is-ancestor HEAD origin/master) successfully finished
-2024-05-23 01:10:47,159 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/klipper rev-parse HEAD) successfully finished
-2024-05-23 01:10:47,431 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/klipper describe --always --tags --long --dirty --abbrev=8) successfully finished
-2024-05-23 01:10:47,449 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/klipper rev-parse origin/master) successfully finished
-2024-05-23 01:10:47,627 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/klipper describe origin/master --always --tags --long --abbrev=8) successfully finished
-2024-05-23 01:10:47,649 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/klipper rev-list HEAD..b6a0063235dd58bc9c1bb5767e87e09c9927f39a --count) successfully finished
-2024-05-23 01:10:47,673 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/klipper log 7e8c7f46a971c0aaae39754b52d52c001f052723..origin/master --format="sha:%H%x1Dauthor:%an%x1Ddate:%ct%x1Dsubject:%s%x1Dmessage:%b%x1E" --max-count=100) successfully finished
-2024-05-23 01:10:47,875 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/klipper for-each-ref --count=100 --sort='-creatordate' --contains=HEAD --merged=origin/master --format='%(if)%(*objecttype)%(then)%(*objecttype) %(*objectname)%(else)%(objecttype) %(objectname)%(end) %(refname)' 'refs/tags') successfully finished
-2024-05-23 01:10:47,877 [git_deploy.py:log_repo_info()] - Git Repo klipper Detected:
-Owner: Klipper3d
-Repository Name: klipper
-Path: /home/m/klipper
-Remote: origin
-Branch: master
-Remote URL: https://github.com/Klipper3d/klipper.git
-Recovery URL: https://github.com/Klipper3d/klipper.git
-Current Commit SHA: 7e8c7f46a971c0aaae39754b52d52c001f052723
-Upstream Commit SHA: b6a0063235dd58bc9c1bb5767e87e09c9927f39a
-Current Version: v0.12.0-178-g7e8c7f46
-Upstream Version: v0.12.0-205-gb6a00632
-Rollback Commit: 01c7befacb5b71643130433f2afb3f22ece68d71
-Rollback Branch: master
-Rollback Version: v0.12.0-143-g01c7befa
-Is Dirty: False
-Is Detached: False
-Is Shallow: False
-Commits Behind Count: 27
-Diverged: False
-Repo Warnings:
-  Repo is corrupt
-  Repo has untracked source files: ['klippy/extras/fcm.py']
-2024-05-23 01:10:47,877 [base_deploy.py:log_info()] - Git Repo klipper: Channel: dev
-2024-05-23 01:10:47,877 [base_deploy.py:log_info()] - Git Repo klipper: Validity check for git repo passed
-2024-05-23 01:10:48,754 [base_deploy.py:log_info()] - Web Client mainsail: Detected
-Repo: mainsail-crew/mainsail
-Channel: stable
-Path: /home/m/mainsail
-Local Version: v2.11.0
-Remote Version: v2.11.2
-Valid: True
-Fallback Detected: False
-Pre-release: False
-Download Url: https://github.com/mainsail-crew/mainsail/releases/download/v2.11.2/mainsail.zip
-Download Size: 2114797
-Content Type: application/zip
-Rollback Version: v2.10.0
-Rollback Repo: mainsail-crew/mainsail
-2024-05-23 01:10:48,814 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/mainsail-config status --porcelain -b) successfully finished
-2024-05-23 01:10:48,839 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/mainsail-config branch --list --no-color) successfully finished
-2024-05-23 01:10:48,899 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/mainsail-config remote get-url origin) successfully finished
-2024-05-23 01:10:50,140 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/mainsail-config fetch origin --prune --progress) successfully finished
-2024-05-23 01:10:50,169 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/mainsail-config merge-base --is-ancestor HEAD origin/master) successfully finished
-2024-05-23 01:10:50,194 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/mainsail-config rev-parse HEAD) successfully finished
-2024-05-23 01:10:50,222 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/mainsail-config describe --always --tags --long --dirty --abbrev=8) successfully finished
-2024-05-23 01:10:50,246 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/mainsail-config rev-parse origin/master) successfully finished
-2024-05-23 01:10:50,266 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/mainsail-config describe origin/master --always --tags --long --abbrev=8) successfully finished
-2024-05-23 01:10:50,286 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/mainsail-config rev-list HEAD..e57810d51b5c634aadaca4db923bfcba269ae4b3 --count) successfully finished
-2024-05-23 01:10:50,287 [git_deploy.py:log_repo_info()] - Git Repo mainsail-config Detected:
-Owner: mainsail-crew
-Repository Name: mainsail-config
-Path: /home/m/mainsail-config
-Remote: origin
-Branch: master
-Remote URL: https://github.com/mainsail-crew/mainsail-config.git
-Recovery URL: https://github.com/mainsail-crew/mainsail-config.git
-Current Commit SHA: e57810d51b5c634aadaca4db923bfcba269ae4b3
-Upstream Commit SHA: e57810d51b5c634aadaca4db923bfcba269ae4b3
-Current Version: v1.2.1-0-ge57810d5
-Upstream Version: v1.2.1-0-ge57810d5
-Rollback Commit: 76a9999986b03abb3aed272dc0a818f13a18ea7e
-Rollback Branch: master
-Rollback Version: v1.1.0-1-g76a99999
-Is Dirty: False
-Is Detached: False
-Is Shallow: False
-Commits Behind Count: 0
-Diverged: False
-2024-05-23 01:10:50,287 [base_deploy.py:log_info()] - Git Repo mainsail-config: Channel: dev
-2024-05-23 01:10:50,288 [base_deploy.py:log_info()] - Git Repo mainsail-config: Validity check for git repo passed
-2024-05-23 01:10:50,353 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/crowsnest status --porcelain -b) successfully finished
-2024-05-23 01:10:50,372 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/crowsnest branch --list --no-color) successfully finished
-2024-05-23 01:10:50,406 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/crowsnest remote get-url origin) successfully finished
-2024-05-23 01:10:51,730 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/crowsnest fetch origin --prune --progress) successfully finished
-2024-05-23 01:10:51,756 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/crowsnest merge-base --is-ancestor HEAD origin/master) successfully finished
-2024-05-23 01:10:51,779 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/crowsnest rev-parse HEAD) successfully finished
-2024-05-23 01:10:51,889 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/crowsnest describe --always --tags --long --dirty --abbrev=8) successfully finished
-2024-05-23 01:10:51,913 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/crowsnest rev-parse origin/master) successfully finished
-2024-05-23 01:10:51,955 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/crowsnest describe origin/master --always --tags --long --abbrev=8) successfully finished
-2024-05-23 01:10:51,982 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/crowsnest rev-list HEAD..d75a3aeb018384e59d03518754f6148c98894ed9 --count) successfully finished
-2024-05-23 01:10:51,983 [git_deploy.py:log_repo_info()] - Git Repo crowsnest Detected:
-Owner: mainsail-crew
-Repository Name: crowsnest
-Path: /home/m/crowsnest
-Remote: origin
-Branch: master
-Remote URL: https://github.com/mainsail-crew/crowsnest.git
-Recovery URL: https://github.com/mainsail-crew/crowsnest.git
-Current Commit SHA: d75a3aeb018384e59d03518754f6148c98894ed9
-Upstream Commit SHA: d75a3aeb018384e59d03518754f6148c98894ed9
-Current Version: v4.1.9-1-gd75a3aeb
-Upstream Version: v4.1.9-1-gd75a3aeb
-Rollback Commit: 6ac4711e17f6f7c51998d1f928166fdaee383bf7
-Rollback Branch: master
-Rollback Version: v4.1.8-1-g6ac4711e
-Is Dirty: False
-Is Detached: False
-Is Shallow: False
-Commits Behind Count: 0
-Diverged: False
-2024-05-23 01:10:51,983 [base_deploy.py:log_info()] - Git Repo crowsnest: Channel: dev
-2024-05-23 01:10:51,984 [base_deploy.py:log_info()] - Git Repo crowsnest: Validity check for git repo passed
-2024-05-23 01:10:53,826 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/sonar status --porcelain -b) successfully finished
-2024-05-23 01:10:53,860 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/sonar branch --list --no-color) successfully finished
-2024-05-23 01:10:53,919 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/sonar remote get-url origin) successfully finished
-2024-05-23 01:10:55,124 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/sonar fetch origin --prune --progress) successfully finished
-2024-05-23 01:10:55,143 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/sonar merge-base --is-ancestor HEAD origin/main) successfully finished
-2024-05-23 01:10:55,161 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/sonar rev-parse HEAD) successfully finished
-2024-05-23 01:10:55,182 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/sonar describe --always --tags --long --dirty --abbrev=8) successfully finished
-2024-05-23 01:10:55,200 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/sonar rev-parse origin/main) successfully finished
-2024-05-23 01:10:55,220 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/sonar describe origin/main --always --tags --long --abbrev=8) successfully finished
-2024-05-23 01:10:55,240 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/sonar rev-list HEAD..eacc498a52f79292063b6f9b0e0c191c34c5dc09 --count) successfully finished
-2024-05-23 01:10:55,242 [git_deploy.py:log_repo_info()] - Git Repo sonar Detected:
-Owner: mainsail-crew
-Repository Name: sonar
-Path: /home/m/sonar
-Remote: origin
-Branch: main
-Remote URL: https://github.com/mainsail-crew/sonar.git
-Recovery URL: https://github.com/mainsail-crew/sonar.git
-Current Commit SHA: eacc498a52f79292063b6f9b0e0c191c34c5dc09
-Upstream Commit SHA: eacc498a52f79292063b6f9b0e0c191c34c5dc09
-Current Version: v0.1.3-1-geacc498a
-Upstream Version: v0.1.3-1-geacc498a
-Rollback Commit: 7962a1225ad88fa2a642ae2b378637491b4b2710
-Rollback Branch: main
-Rollback Version: v0.1.2-0-g7962a122
-Is Dirty: False
-Is Detached: False
-Is Shallow: False
-Commits Behind Count: 0
-Diverged: False
-2024-05-23 01:10:55,242 [base_deploy.py:log_info()] - Git Repo sonar: Channel: dev
-2024-05-23 01:10:55,242 [base_deploy.py:log_info()] - Git Repo sonar: Validity check for git repo passed
-2024-05-23 01:10:55,310 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker-telegram-bot status --porcelain -b) successfully finished
-2024-05-23 01:10:55,329 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker-telegram-bot branch --list --no-color) successfully finished
-2024-05-23 01:10:55,367 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker-telegram-bot remote get-url origin) successfully finished
-2024-05-23 01:10:57,096 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker-telegram-bot fetch origin --prune --progress) successfully finished
-2024-05-23 01:10:57,128 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker-telegram-bot merge-base --is-ancestor HEAD origin/master) successfully finished
-2024-05-23 01:10:57,150 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker-telegram-bot rev-parse HEAD) successfully finished
-2024-05-23 01:10:57,176 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker-telegram-bot describe --always --tags --long --dirty --abbrev=8) successfully finished
-2024-05-23 01:10:57,199 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker-telegram-bot rev-parse origin/master) successfully finished
-2024-05-23 01:10:57,223 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker-telegram-bot describe origin/master --always --tags --long --abbrev=8) successfully finished
-2024-05-23 01:10:57,243 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/moonraker-telegram-bot rev-list HEAD..b9b47003e13b8a23af696594aac8ba53c777f5a7 --count) successfully finished
-2024-05-23 01:10:57,244 [git_deploy.py:log_repo_info()] - Git Repo moonraker-telegram-bot Detected:
-Owner: nlef
-Repository Name: moonraker-telegram-bot
-Path: /home/m/moonraker-telegram-bot
-Remote: origin
-Branch: master
-Remote URL: https://github.com/nlef/moonraker-telegram-bot.git
-Recovery URL: https://github.com/nlef/moonraker-telegram-bot.git
-Current Commit SHA: b9b47003e13b8a23af696594aac8ba53c777f5a7
-Upstream Commit SHA: b9b47003e13b8a23af696594aac8ba53c777f5a7
-Current Version: v1.5-0-gb9b47003
-Upstream Version: v1.5-0-gb9b47003
-Rollback Commit: b9b47003e13b8a23af696594aac8ba53c777f5a7
-Rollback Branch: master
-Rollback Version: v1.5-0-gb9b47003
-Is Dirty: False
-Is Detached: False
-Is Shallow: False
-Commits Behind Count: 0
-Diverged: False
-2024-05-23 01:10:57,244 [base_deploy.py:log_info()] - Git Repo moonraker-telegram-bot: Channel: dev
-2024-05-23 01:10:57,244 [base_deploy.py:log_info()] - Git Repo moonraker-telegram-bot: Validity check for git repo passed
-2024-05-23 01:10:57,338 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/Klipper-Adaptive-Meshing-Purging status --porcelain -b) successfully finished
-2024-05-23 01:10:57,363 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/Klipper-Adaptive-Meshing-Purging branch --list --no-color) successfully finished
-2024-05-23 01:10:57,400 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/Klipper-Adaptive-Meshing-Purging remote get-url origin) successfully finished
-2024-05-23 01:10:59,533 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/Klipper-Adaptive-Meshing-Purging fetch origin --prune --progress) successfully finished
-2024-05-23 01:10:59,561 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/Klipper-Adaptive-Meshing-Purging merge-base --is-ancestor HEAD origin/main) successfully finished
-2024-05-23 01:10:59,585 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/Klipper-Adaptive-Meshing-Purging rev-parse HEAD) successfully finished
-2024-05-23 01:10:59,641 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/Klipper-Adaptive-Meshing-Purging describe --always --tags --long --dirty --abbrev=8) successfully finished
-2024-05-23 01:10:59,665 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/Klipper-Adaptive-Meshing-Purging rev-parse origin/main) successfully finished
-2024-05-23 01:10:59,696 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/Klipper-Adaptive-Meshing-Purging describe origin/main --always --tags --long --abbrev=8) successfully finished
-2024-05-23 01:10:59,722 [shell_command.py:_check_proc_success()] - Command (git -C /home/m/Klipper-Adaptive-Meshing-Purging rev-list HEAD..d657271f13fc429b5ca36a4f8956b67c9ddf0558 --count) successfully finished
-2024-05-23 01:10:59,723 [git_deploy.py:log_repo_info()] - Git Repo Klipper-Adaptive-Meshing-Purging Detected:
-Owner: kyleisah
-Repository Name: Klipper-Adaptive-Meshing-Purging
-Path: /home/m/Klipper-Adaptive-Meshing-Purging
-Remote: origin
-Branch: main
-Remote URL: https://github.com/kyleisah/Klipper-Adaptive-Meshing-Purging.git
-Recovery URL: https://github.com/kyleisah/Klipper-Adaptive-Meshing-Purging.git
-Current Commit SHA: d657271f13fc429b5ca36a4f8956b67c9ddf0558
-Upstream Commit SHA: d657271f13fc429b5ca36a4f8956b67c9ddf0558
-Current Version: v1.1.2-12-gd657271f
-Upstream Version: v1.1.2-12-gd657271f
-Rollback Commit: c58f3d31adb16eaf963b84cb35c8ca72cc736245
-Rollback Branch: main
-Rollback Version: v1.1.2-8-gc58f3d31
-Is Dirty: False
-Is Detached: False
-Is Shallow: False
-Commits Behind Count: 0
-Diverged: False
-2024-05-23 01:10:59,723 [base_deploy.py:log_info()] - Git Repo Klipper-Adaptive-Meshing-Purging: Channel: dev
-2024-05-23 01:10:59,723 [base_deploy.py:log_info()] - Git Repo Klipper-Adaptive-Meshing-Purging: Validity check for git repo passed
-2024-05-23 05:00:05,542 [machine.py:_parse_network_interfaces()] - Error processing network update
+2024-05-24 05:04:08,055 [machine.py:_parse_network_interfaces()] - Error processing network update
 Traceback (most recent call last):
   File "/home/m/moonraker/moonraker/components/machine.py", line 673, in _parse_network_interfaces
     resp = await self.addr_cmd.run_with_response(log_complete=False)
   File "/home/m/moonraker/moonraker/components/shell_command.py", line 277, in run_with_response
     raise ShellCommandError(
 moonraker.components.shell_command.ShellCommandError: Error running shell command: 'ip -json -det address'
-2024-05-23 05:02:09,684 [machine.py:_parse_network_interfaces()] - Error processing network update
+2024-05-24 05:04:29,637 [machine.py:_parse_network_interfaces()] - Error processing network update
 Traceback (most recent call last):
   File "/home/m/moonraker/moonraker/components/machine.py", line 673, in _parse_network_interfaces
     resp = await self.addr_cmd.run_with_response(log_complete=False)
