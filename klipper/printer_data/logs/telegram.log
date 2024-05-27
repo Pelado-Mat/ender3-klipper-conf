@@ -640,3 +640,645 @@ Traceback (most recent call last):
   File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/utils/request.py", line 265, in _request_wrapper
     raise NetworkError(f'urllib3 HTTPError {error}') from error
 telegram.error.NetworkError: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot6073594970:AAHJvJjGWCLRPriLT1Nt5gEqCbRTFObQbyY/getUpdates (Caused by ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x61581c58>, 'Connection to api.telegram.org timed out. (connect timeout=5.0)'))
+2024-05-26 05:44:59,906 - __main__ - ERROR - Exception while handling an update:
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connection.py", line 140, in _new_conn
+    conn = connection.create_connection(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/util/connection.py", line 83, in create_connection
+    raise err
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 614, in urlopen
+    httplib_response = self._make_request(conn, method, url,
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 360, in _make_request
+    self._validate_conn(conn)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 857, in _validate_conn
+    super(HTTPSConnectionPool, self)._validate_conn(conn)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 289, in _validate_conn
+    conn.connect()
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connection.py", line 144, in _new_conn
+    raise ConnectTimeoutError(
+telegram.vendor.ptb_urllib3.urllib3.exceptions.ConnectTimeoutError: (<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x61581bc8>, 'Connection to api.telegram.org timed out. (connect timeout=5.0)')
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/utils/request.py", line 259, in _request_wrapper
+    resp = self._con_pool.request(*args, **kwargs)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/request.py", line 68, in request
+    return self.request_encode_body(method, url, fields=fields,
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/request.py", line 148, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/poolmanager.py", line 244, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 691, in urlopen
+    return self.urlopen(method, url, body, headers, retries,
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 691, in urlopen
+    return self.urlopen(method, url, body, headers, retries,
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 691, in urlopen
+    return self.urlopen(method, url, body, headers, retries,
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 665, in urlopen
+    retries = retries.increment(method, url, error=e, _pool=self,
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/util/retry.py", line 376, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+telegram.vendor.ptb_urllib3.urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot6073594970:AAHJvJjGWCLRPriLT1Nt5gEqCbRTFObQbyY/getUpdates (Caused by ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x61581bc8>, 'Connection to api.telegram.org timed out. (connect timeout=5.0)'))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/updater.py", line 651, in _network_loop_retry
+    if not action_cb():
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/updater.py", line 602, in polling_action_cb
+    updates = self.bot.get_updates(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/extbot.py", line 228, in get_updates
+    updates = super().get_updates(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 134, in decorator
+    result = func(*args, **kwargs)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 3140, in get_updates
+    self._post(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 299, in _post
+    return self.request.post(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/utils/request.py", line 361, in post
+    result = self._request_wrapper(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/utils/request.py", line 265, in _request_wrapper
+    raise NetworkError(f'urllib3 HTTPError {error}') from error
+telegram.error.NetworkError: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot6073594970:AAHJvJjGWCLRPriLT1Nt5gEqCbRTFObQbyY/getUpdates (Caused by ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x61581bc8>, 'Connection to api.telegram.org timed out. (connect timeout=5.0)'))
+2024-05-26 05:45:26,814 - __main__ - ERROR - Exception while handling an update:
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 360, in _make_request
+    self._validate_conn(conn)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 857, in _validate_conn
+    super(HTTPSConnectionPool, self)._validate_conn(conn)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 289, in _validate_conn
+    conn.connect()
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connection.py", line 319, in connect
+    self.sock = ssl_wrap_socket(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/util/ssl_.py", line 324, in ssl_wrap_socket
+    return context.wrap_socket(sock, server_hostname=server_hostname)
+  File "/usr/lib/python3.9/ssl.py", line 500, in wrap_socket
+    return self.sslsocket_class._create(
+  File "/usr/lib/python3.9/ssl.py", line 1040, in _create
+    self.do_handshake()
+  File "/usr/lib/python3.9/ssl.py", line 1309, in do_handshake
+    self._sslobj.do_handshake()
+socket.timeout: _ssl.c:1106: The handshake operation timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 614, in urlopen
+    httplib_response = self._make_request(conn, method, url,
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 363, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=conn.timeout,
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 321, in _raise_timeout
+    raise exc_cls(*args)
+telegram.vendor.ptb_urllib3.urllib3.exceptions.ConnectTimeoutError: (<telegram.vendor.ptb_urllib3.urllib3.connectionpool.HTTPSConnectionPool object at 0x641d0628>, 'Connect timed out. (connect timeout=5.0)')
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/utils/request.py", line 259, in _request_wrapper
+    resp = self._con_pool.request(*args, **kwargs)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/request.py", line 68, in request
+    return self.request_encode_body(method, url, fields=fields,
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/request.py", line 148, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/poolmanager.py", line 244, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 691, in urlopen
+    return self.urlopen(method, url, body, headers, retries,
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 691, in urlopen
+    return self.urlopen(method, url, body, headers, retries,
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 691, in urlopen
+    return self.urlopen(method, url, body, headers, retries,
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 665, in urlopen
+    retries = retries.increment(method, url, error=e, _pool=self,
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/util/retry.py", line 376, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+telegram.vendor.ptb_urllib3.urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot6073594970:AAHJvJjGWCLRPriLT1Nt5gEqCbRTFObQbyY/getUpdates (Caused by ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.connectionpool.HTTPSConnectionPool object at 0x641d0628>, 'Connect timed out. (connect timeout=5.0)'))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/updater.py", line 651, in _network_loop_retry
+    if not action_cb():
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/updater.py", line 602, in polling_action_cb
+    updates = self.bot.get_updates(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/extbot.py", line 228, in get_updates
+    updates = super().get_updates(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 134, in decorator
+    result = func(*args, **kwargs)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 3140, in get_updates
+    self._post(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 299, in _post
+    return self.request.post(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/utils/request.py", line 361, in post
+    result = self._request_wrapper(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/utils/request.py", line 265, in _request_wrapper
+    raise NetworkError(f'urllib3 HTTPError {error}') from error
+telegram.error.NetworkError: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot6073594970:AAHJvJjGWCLRPriLT1Nt5gEqCbRTFObQbyY/getUpdates (Caused by ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.connectionpool.HTTPSConnectionPool object at 0x641d0628>, 'Connect timed out. (connect timeout=5.0)'))
+2024-05-26 05:45:53,386 - __main__ - ERROR - Exception while handling an update:
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connection.py", line 140, in _new_conn
+    conn = connection.create_connection(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/util/connection.py", line 83, in create_connection
+    raise err
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 614, in urlopen
+    httplib_response = self._make_request(conn, method, url,
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 360, in _make_request
+    self._validate_conn(conn)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 857, in _validate_conn
+    super(HTTPSConnectionPool, self)._validate_conn(conn)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 289, in _validate_conn
+    conn.connect()
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connection.py", line 144, in _new_conn
+    raise ConnectTimeoutError(
+telegram.vendor.ptb_urllib3.urllib3.exceptions.ConnectTimeoutError: (<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x6294d808>, 'Connection to api.telegram.org timed out. (connect timeout=5.0)')
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/utils/request.py", line 259, in _request_wrapper
+    resp = self._con_pool.request(*args, **kwargs)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/request.py", line 68, in request
+    return self.request_encode_body(method, url, fields=fields,
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/request.py", line 148, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/poolmanager.py", line 244, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 691, in urlopen
+    return self.urlopen(method, url, body, headers, retries,
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 691, in urlopen
+    return self.urlopen(method, url, body, headers, retries,
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 691, in urlopen
+    return self.urlopen(method, url, body, headers, retries,
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 665, in urlopen
+    retries = retries.increment(method, url, error=e, _pool=self,
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/util/retry.py", line 376, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+telegram.vendor.ptb_urllib3.urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot6073594970:AAHJvJjGWCLRPriLT1Nt5gEqCbRTFObQbyY/getUpdates (Caused by ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x6294d808>, 'Connection to api.telegram.org timed out. (connect timeout=5.0)'))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/updater.py", line 651, in _network_loop_retry
+    if not action_cb():
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/updater.py", line 602, in polling_action_cb
+    updates = self.bot.get_updates(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/extbot.py", line 228, in get_updates
+    updates = super().get_updates(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 134, in decorator
+    result = func(*args, **kwargs)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 3140, in get_updates
+    self._post(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 299, in _post
+    return self.request.post(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/utils/request.py", line 361, in post
+    result = self._request_wrapper(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/utils/request.py", line 265, in _request_wrapper
+    raise NetworkError(f'urllib3 HTTPError {error}') from error
+telegram.error.NetworkError: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot6073594970:AAHJvJjGWCLRPriLT1Nt5gEqCbRTFObQbyY/getUpdates (Caused by ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x6294d808>, 'Connection to api.telegram.org timed out. (connect timeout=5.0)'))
+2024-05-26 05:46:17,613 - __main__ - ERROR - Exception while handling an update:
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connection.py", line 140, in _new_conn
+    conn = connection.create_connection(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/util/connection.py", line 83, in create_connection
+    raise err
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 614, in urlopen
+    httplib_response = self._make_request(conn, method, url,
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 360, in _make_request
+    self._validate_conn(conn)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 857, in _validate_conn
+    super(HTTPSConnectionPool, self)._validate_conn(conn)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 289, in _validate_conn
+    conn.connect()
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connection.py", line 144, in _new_conn
+    raise ConnectTimeoutError(
+telegram.vendor.ptb_urllib3.urllib3.exceptions.ConnectTimeoutError: (<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x62947928>, 'Connection to api.telegram.org timed out. (connect timeout=5.0)')
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/utils/request.py", line 259, in _request_wrapper
+    resp = self._con_pool.request(*args, **kwargs)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/request.py", line 68, in request
+    return self.request_encode_body(method, url, fields=fields,
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/request.py", line 148, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/poolmanager.py", line 244, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 691, in urlopen
+    return self.urlopen(method, url, body, headers, retries,
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 691, in urlopen
+    return self.urlopen(method, url, body, headers, retries,
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 691, in urlopen
+    return self.urlopen(method, url, body, headers, retries,
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 665, in urlopen
+    retries = retries.increment(method, url, error=e, _pool=self,
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/util/retry.py", line 376, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+telegram.vendor.ptb_urllib3.urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot6073594970:AAHJvJjGWCLRPriLT1Nt5gEqCbRTFObQbyY/getUpdates (Caused by ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x62947928>, 'Connection to api.telegram.org timed out. (connect timeout=5.0)'))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/updater.py", line 651, in _network_loop_retry
+    if not action_cb():
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/updater.py", line 602, in polling_action_cb
+    updates = self.bot.get_updates(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/extbot.py", line 228, in get_updates
+    updates = super().get_updates(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 134, in decorator
+    result = func(*args, **kwargs)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 3140, in get_updates
+    self._post(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 299, in _post
+    return self.request.post(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/utils/request.py", line 361, in post
+    result = self._request_wrapper(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/utils/request.py", line 265, in _request_wrapper
+    raise NetworkError(f'urllib3 HTTPError {error}') from error
+telegram.error.NetworkError: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot6073594970:AAHJvJjGWCLRPriLT1Nt5gEqCbRTFObQbyY/getUpdates (Caused by ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x62947928>, 'Connection to api.telegram.org timed out. (connect timeout=5.0)'))
+2024-05-26 05:46:48,465 - __main__ - ERROR - Exception while handling an update:
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 360, in _make_request
+    self._validate_conn(conn)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 857, in _validate_conn
+    super(HTTPSConnectionPool, self)._validate_conn(conn)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 289, in _validate_conn
+    conn.connect()
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connection.py", line 319, in connect
+    self.sock = ssl_wrap_socket(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/util/ssl_.py", line 324, in ssl_wrap_socket
+    return context.wrap_socket(sock, server_hostname=server_hostname)
+  File "/usr/lib/python3.9/ssl.py", line 500, in wrap_socket
+    return self.sslsocket_class._create(
+  File "/usr/lib/python3.9/ssl.py", line 1040, in _create
+    self.do_handshake()
+  File "/usr/lib/python3.9/ssl.py", line 1309, in do_handshake
+    self._sslobj.do_handshake()
+socket.timeout: _ssl.c:1106: The handshake operation timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 614, in urlopen
+    httplib_response = self._make_request(conn, method, url,
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 363, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=conn.timeout,
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 321, in _raise_timeout
+    raise exc_cls(*args)
+telegram.vendor.ptb_urllib3.urllib3.exceptions.ConnectTimeoutError: (<telegram.vendor.ptb_urllib3.urllib3.connectionpool.HTTPSConnectionPool object at 0x641d0628>, 'Connect timed out. (connect timeout=5.0)')
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/utils/request.py", line 259, in _request_wrapper
+    resp = self._con_pool.request(*args, **kwargs)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/request.py", line 68, in request
+    return self.request_encode_body(method, url, fields=fields,
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/request.py", line 148, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/poolmanager.py", line 244, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 691, in urlopen
+    return self.urlopen(method, url, body, headers, retries,
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 691, in urlopen
+    return self.urlopen(method, url, body, headers, retries,
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 691, in urlopen
+    return self.urlopen(method, url, body, headers, retries,
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 665, in urlopen
+    retries = retries.increment(method, url, error=e, _pool=self,
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/util/retry.py", line 376, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+telegram.vendor.ptb_urllib3.urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot6073594970:AAHJvJjGWCLRPriLT1Nt5gEqCbRTFObQbyY/getUpdates (Caused by ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.connectionpool.HTTPSConnectionPool object at 0x641d0628>, 'Connect timed out. (connect timeout=5.0)'))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/updater.py", line 651, in _network_loop_retry
+    if not action_cb():
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/updater.py", line 602, in polling_action_cb
+    updates = self.bot.get_updates(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/extbot.py", line 228, in get_updates
+    updates = super().get_updates(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 134, in decorator
+    result = func(*args, **kwargs)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 3140, in get_updates
+    self._post(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 299, in _post
+    return self.request.post(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/utils/request.py", line 361, in post
+    result = self._request_wrapper(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/utils/request.py", line 265, in _request_wrapper
+    raise NetworkError(f'urllib3 HTTPError {error}') from error
+telegram.error.NetworkError: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot6073594970:AAHJvJjGWCLRPriLT1Nt5gEqCbRTFObQbyY/getUpdates (Caused by ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.connectionpool.HTTPSConnectionPool object at 0x641d0628>, 'Connect timed out. (connect timeout=5.0)'))
+2024-05-26 05:47:15,409 - __main__ - ERROR - Exception while handling an update:
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connection.py", line 140, in _new_conn
+    conn = connection.create_connection(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/util/connection.py", line 83, in create_connection
+    raise err
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 614, in urlopen
+    httplib_response = self._make_request(conn, method, url,
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 360, in _make_request
+    self._validate_conn(conn)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 857, in _validate_conn
+    super(HTTPSConnectionPool, self)._validate_conn(conn)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 289, in _validate_conn
+    conn.connect()
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connection.py", line 144, in _new_conn
+    raise ConnectTimeoutError(
+telegram.vendor.ptb_urllib3.urllib3.exceptions.ConnectTimeoutError: (<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x615a7e98>, 'Connection to api.telegram.org timed out. (connect timeout=5.0)')
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/utils/request.py", line 259, in _request_wrapper
+    resp = self._con_pool.request(*args, **kwargs)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/request.py", line 68, in request
+    return self.request_encode_body(method, url, fields=fields,
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/request.py", line 148, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/poolmanager.py", line 244, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 691, in urlopen
+    return self.urlopen(method, url, body, headers, retries,
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 691, in urlopen
+    return self.urlopen(method, url, body, headers, retries,
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 691, in urlopen
+    return self.urlopen(method, url, body, headers, retries,
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 665, in urlopen
+    retries = retries.increment(method, url, error=e, _pool=self,
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/util/retry.py", line 376, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+telegram.vendor.ptb_urllib3.urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot6073594970:AAHJvJjGWCLRPriLT1Nt5gEqCbRTFObQbyY/getUpdates (Caused by ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x615a7e98>, 'Connection to api.telegram.org timed out. (connect timeout=5.0)'))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/updater.py", line 651, in _network_loop_retry
+    if not action_cb():
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/updater.py", line 602, in polling_action_cb
+    updates = self.bot.get_updates(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/extbot.py", line 228, in get_updates
+    updates = super().get_updates(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 134, in decorator
+    result = func(*args, **kwargs)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 3140, in get_updates
+    self._post(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 299, in _post
+    return self.request.post(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/utils/request.py", line 361, in post
+    result = self._request_wrapper(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/utils/request.py", line 265, in _request_wrapper
+    raise NetworkError(f'urllib3 HTTPError {error}') from error
+telegram.error.NetworkError: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot6073594970:AAHJvJjGWCLRPriLT1Nt5gEqCbRTFObQbyY/getUpdates (Caused by ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x615a7e98>, 'Connection to api.telegram.org timed out. (connect timeout=5.0)'))
+2024-05-26 18:48:30,182 - __main__ - ERROR - Exception while handling an update:
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 614, in urlopen
+    httplib_response = self._make_request(conn, method, url,
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 402, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 2, in raise_from
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 398, in _make_request
+    httplib_response = conn.getresponse()
+  File "/usr/lib/python3.9/http/client.py", line 1347, in getresponse
+    response.begin()
+  File "/usr/lib/python3.9/http/client.py", line 307, in begin
+    version, status, reason = self._read_status()
+  File "/usr/lib/python3.9/http/client.py", line 268, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "/usr/lib/python3.9/socket.py", line 704, in readinto
+    return self._sock.recv_into(b)
+  File "/usr/lib/python3.9/ssl.py", line 1241, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/lib/python3.9/ssl.py", line 1099, in read
+    return self._sslobj.read(len, buffer)
+ConnectionResetError: [Errno 104] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/utils/request.py", line 259, in _request_wrapper
+    resp = self._con_pool.request(*args, **kwargs)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/request.py", line 68, in request
+    return self.request_encode_body(method, url, fields=fields,
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/request.py", line 148, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/poolmanager.py", line 244, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 665, in urlopen
+    retries = retries.increment(method, url, error=e, _pool=self,
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/util/retry.py", line 347, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/packages/six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 614, in urlopen
+    httplib_response = self._make_request(conn, method, url,
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 402, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 2, in raise_from
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/vendor/ptb_urllib3/urllib3/connectionpool.py", line 398, in _make_request
+    httplib_response = conn.getresponse()
+  File "/usr/lib/python3.9/http/client.py", line 1347, in getresponse
+    response.begin()
+  File "/usr/lib/python3.9/http/client.py", line 307, in begin
+    version, status, reason = self._read_status()
+  File "/usr/lib/python3.9/http/client.py", line 268, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "/usr/lib/python3.9/socket.py", line 704, in readinto
+    return self._sock.recv_into(b)
+  File "/usr/lib/python3.9/ssl.py", line 1241, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/lib/python3.9/ssl.py", line 1099, in read
+    return self._sslobj.read(len, buffer)
+telegram.vendor.ptb_urllib3.urllib3.exceptions.ProtocolError: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/updater.py", line 651, in _network_loop_retry
+    if not action_cb():
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/updater.py", line 602, in polling_action_cb
+    updates = self.bot.get_updates(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/extbot.py", line 228, in get_updates
+    updates = super().get_updates(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 134, in decorator
+    result = func(*args, **kwargs)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 3140, in get_updates
+    self._post(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 299, in _post
+    return self.request.post(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/utils/request.py", line 361, in post
+    result = self._request_wrapper(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/utils/request.py", line 265, in _request_wrapper
+    raise NetworkError(f'urllib3 HTTPError {error}') from error
+telegram.error.NetworkError: urllib3 HTTPError ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+2024-05-26 19:07:49,222 - __main__ - ERROR - Exception while handling an update:
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/updater.py", line 651, in _network_loop_retry
+    if not action_cb():
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/updater.py", line 602, in polling_action_cb
+    updates = self.bot.get_updates(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/extbot.py", line 228, in get_updates
+    updates = super().get_updates(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 134, in decorator
+    result = func(*args, **kwargs)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 3140, in get_updates
+    self._post(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 299, in _post
+    return self.request.post(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/utils/request.py", line 361, in post
+    result = self._request_wrapper(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/utils/request.py", line 290, in _request_wrapper
+    raise NetworkError('Bad Gateway')
+telegram.error.NetworkError: Bad Gateway
+2024-05-26 19:07:50,490 - __main__ - ERROR - Exception while handling an update:
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/updater.py", line 651, in _network_loop_retry
+    if not action_cb():
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/updater.py", line 602, in polling_action_cb
+    updates = self.bot.get_updates(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/extbot.py", line 228, in get_updates
+    updates = super().get_updates(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 134, in decorator
+    result = func(*args, **kwargs)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 3140, in get_updates
+    self._post(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 299, in _post
+    return self.request.post(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/utils/request.py", line 361, in post
+    result = self._request_wrapper(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/utils/request.py", line 290, in _request_wrapper
+    raise NetworkError('Bad Gateway')
+telegram.error.NetworkError: Bad Gateway
+2024-05-26 19:41:22,886 - __main__ - ERROR - Exception while handling an update:
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/updater.py", line 651, in _network_loop_retry
+    if not action_cb():
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/updater.py", line 602, in polling_action_cb
+    updates = self.bot.get_updates(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/extbot.py", line 228, in get_updates
+    updates = super().get_updates(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 134, in decorator
+    result = func(*args, **kwargs)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 3140, in get_updates
+    self._post(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 299, in _post
+    return self.request.post(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/utils/request.py", line 361, in post
+    result = self._request_wrapper(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/utils/request.py", line 290, in _request_wrapper
+    raise NetworkError('Bad Gateway')
+telegram.error.NetworkError: Bad Gateway
+2024-05-26 19:41:24,145 - __main__ - ERROR - Exception while handling an update:
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/updater.py", line 651, in _network_loop_retry
+    if not action_cb():
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/updater.py", line 602, in polling_action_cb
+    updates = self.bot.get_updates(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/extbot.py", line 228, in get_updates
+    updates = super().get_updates(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 134, in decorator
+    result = func(*args, **kwargs)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 3140, in get_updates
+    self._post(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 299, in _post
+    return self.request.post(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/utils/request.py", line 361, in post
+    result = self._request_wrapper(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/utils/request.py", line 290, in _request_wrapper
+    raise NetworkError('Bad Gateway')
+telegram.error.NetworkError: Bad Gateway
+2024-05-26 19:41:25,904 - __main__ - ERROR - Exception while handling an update:
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/updater.py", line 651, in _network_loop_retry
+    if not action_cb():
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/updater.py", line 602, in polling_action_cb
+    updates = self.bot.get_updates(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/extbot.py", line 228, in get_updates
+    updates = super().get_updates(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 134, in decorator
+    result = func(*args, **kwargs)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 3140, in get_updates
+    self._post(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 299, in _post
+    return self.request.post(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/utils/request.py", line 361, in post
+    result = self._request_wrapper(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/utils/request.py", line 290, in _request_wrapper
+    raise NetworkError('Bad Gateway')
+telegram.error.NetworkError: Bad Gateway
+2024-05-26 19:56:33,136 - __main__ - ERROR - Exception while handling an update:
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/updater.py", line 651, in _network_loop_retry
+    if not action_cb():
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/updater.py", line 602, in polling_action_cb
+    updates = self.bot.get_updates(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/extbot.py", line 228, in get_updates
+    updates = super().get_updates(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 134, in decorator
+    result = func(*args, **kwargs)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 3140, in get_updates
+    self._post(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 299, in _post
+    return self.request.post(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/utils/request.py", line 361, in post
+    result = self._request_wrapper(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/utils/request.py", line 290, in _request_wrapper
+    raise NetworkError('Bad Gateway')
+telegram.error.NetworkError: Bad Gateway
+2024-05-26 19:56:34,404 - __main__ - ERROR - Exception while handling an update:
+Traceback (most recent call last):
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/updater.py", line 651, in _network_loop_retry
+    if not action_cb():
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/updater.py", line 602, in polling_action_cb
+    updates = self.bot.get_updates(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/ext/extbot.py", line 228, in get_updates
+    updates = super().get_updates(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 134, in decorator
+    result = func(*args, **kwargs)
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 3140, in get_updates
+    self._post(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/bot.py", line 299, in _post
+    return self.request.post(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/utils/request.py", line 361, in post
+    result = self._request_wrapper(
+  File "/home/m/moonraker-telegram-bot-env/lib/python3.9/site-packages/telegram/utils/request.py", line 290, in _request_wrapper
+    raise NetworkError('Bad Gateway')
+telegram.error.NetworkError: Bad Gateway

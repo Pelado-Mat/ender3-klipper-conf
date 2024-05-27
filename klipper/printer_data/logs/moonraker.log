@@ -619,3 +619,17 @@ Traceback (most recent call last):
   File "/usr/lib/python3.9/socket.py", line 953, in getaddrinfo
     for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
 socket.gaierror: [Errno -3] Temporary failure in name resolution
+2024-05-26 05:00:31,141 [proc_stats.py:_watchdog_callback()] - EVENT LOOP BLOCKED: 5.46 seconds, total blocked count: 10
+2024-05-26 05:00:31,343 [proc_stats.py:log_last_stats()] - 
+System Time: 1716714024.110001, Usage: 1.27%, Memory: 17560 kB
+System Time: 1716714025.111378, Usage: 3.09%, Memory: 17560 kB
+System Time: 1716714026.115398, Usage: 1.11%, Memory: 17560 kB
+System Time: 1716714027.117754, Usage: 3.42%, Memory: 17560 kB
+System Time: 1716714031.231855, Usage: 1.79%, Memory: 17560 kB
+2024-05-26 05:02:06,809 [machine.py:_parse_network_interfaces()] - Error processing network update
+Traceback (most recent call last):
+  File "/home/m/moonraker/moonraker/components/machine.py", line 673, in _parse_network_interfaces
+    resp = await self.addr_cmd.run_with_response(log_complete=False)
+  File "/home/m/moonraker/moonraker/components/shell_command.py", line 277, in run_with_response
+    raise ShellCommandError(
+moonraker.components.shell_command.ShellCommandError: Error running shell command: 'ip -json -det address'
