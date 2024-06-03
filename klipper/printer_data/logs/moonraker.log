@@ -1,4 +1,4 @@
--------------------- Log Start | Sat Jun  1 09:02:09 2024 --------------------
+-------------------- Log Start | Sun Jun  2 09:05:14 2024 --------------------
 platform: Linux-6.1.21-v7+-armv7l-with-glibc2.31
 data_path: /home/m/printer_data
 is_default_data_path: False
@@ -222,10 +222,17 @@ Git Repo sonar: No warnings detected
 Git Repo moonraker-telegram-bot: No warnings detected
 Git Repo Klipper-Adaptive-Meshing-Purging: No warnings detected
 Klipper Version: v0.12.0-178-g7e8c7f46-dirty
-2024-06-01 05:02:08,817 [proc_stats.py:_watchdog_callback()] - EVENT LOOP BLOCKED: 7.93 seconds, total blocked count: 1
-2024-06-01 05:02:09,019 [proc_stats.py:log_last_stats()] - 
-System Time: 1717232518.603624, Usage: 3.6%, Memory: 38624 kB
-System Time: 1717232519.606251, Usage: 1.33%, Memory: 38624 kB
-System Time: 1717232520.607197, Usage: 3.48%, Memory: 38624 kB
-System Time: 1717232521.608691, Usage: 1.31%, Memory: 38624 kB
-System Time: 1717232522.612461, Usage: 3.2%, Memory: 38624 kB
+2024-06-02 05:05:12,171 [proc_stats.py:_watchdog_callback()] - EVENT LOOP BLOCKED: 4.21 seconds, total blocked count: 2
+2024-06-02 05:05:14,256 [proc_stats.py:log_last_stats()] - 
+System Time: 1717319103.111480, Usage: 3.49%, Memory: 14036 kB
+System Time: 1717319104.112895, Usage: 1.31%, Memory: 14036 kB
+System Time: 1717319105.113505, Usage: 3.3%, Memory: 14036 kB
+System Time: 1717319106.117022, Usage: 1.51%, Memory: 14036 kB
+System Time: 1717319107.118925, Usage: 3.31%, Memory: 14036 kB
+2024-06-02 05:05:14,867 [machine.py:_parse_network_interfaces()] - Error processing network update
+Traceback (most recent call last):
+  File "/home/m/moonraker/moonraker/components/machine.py", line 673, in _parse_network_interfaces
+    resp = await self.addr_cmd.run_with_response(log_complete=False)
+  File "/home/m/moonraker/moonraker/components/shell_command.py", line 277, in run_with_response
+    raise ShellCommandError(
+moonraker.components.shell_command.ShellCommandError: Error running shell command: 'ip -json -det address'
