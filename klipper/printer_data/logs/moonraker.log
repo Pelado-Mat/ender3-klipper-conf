@@ -1,4 +1,4 @@
--------------------- Log Start | Mon Jun 17 09:00:29 2024 --------------------
+-------------------- Log Start | Wed Jun 19 04:06:09 2024 --------------------
 platform: Linux-6.1.21-v7+-armv7l-with-glibc2.31
 data_path: /home/m/printer_data
 is_default_data_path: False
@@ -222,24 +222,6 @@ Git Repo sonar: No warnings detected
 Git Repo moonraker-telegram-bot: No warnings detected
 Git Repo Klipper-Adaptive-Meshing-Purging: No warnings detected
 Klipper Version: v0.12.0-178-g7e8c7f46-dirty
-2024-06-17 05:00:26,305 [proc_stats.py:_watchdog_callback()] - EVENT LOOP BLOCKED: 5.03 seconds, total blocked count: 1
-2024-06-17 05:00:26,507 [proc_stats.py:log_last_stats()] - 
-System Time: 1718614818.784069, Usage: 2.14%, Memory: 39008 kB
-System Time: 1718614819.780822, Usage: 2.96%, Memory: 39008 kB
-System Time: 1718614820.783124, Usage: 1.2%, Memory: 39008 kB
-System Time: 1718614821.783931, Usage: 3.92%, Memory: 39008 kB
-System Time: 1718614822.782743, Usage: 4.13%, Memory: 39008 kB
-2024-06-17 05:00:28,816 [machine.py:_parse_network_interfaces()] - Error processing network update
-Traceback (most recent call last):
-  File "/home/m/moonraker/moonraker/components/machine.py", line 673, in _parse_network_interfaces
-    resp = await self.addr_cmd.run_with_response(log_complete=False)
-  File "/home/m/moonraker/moonraker/components/shell_command.py", line 277, in run_with_response
-    raise ShellCommandError(
-moonraker.components.shell_command.ShellCommandError: Error running shell command: 'ip -json -det address'
-2024-06-17 05:00:40,372 [machine.py:_parse_network_interfaces()] - Error processing network update
-Traceback (most recent call last):
-  File "/home/m/moonraker/moonraker/components/machine.py", line 673, in _parse_network_interfaces
-    resp = await self.addr_cmd.run_with_response(log_complete=False)
-  File "/home/m/moonraker/moonraker/components/shell_command.py", line 277, in run_with_response
-    raise ShellCommandError(
-moonraker.components.shell_command.ShellCommandError: Error running shell command: 'ip -json -det address'
+2024-06-19 00:06:09,431 [update_manager.py:_handle_auto_refresh()] - Klippy is printing, auto refresh aborted
+2024-06-19 01:06:09,433 [update_manager.py:_handle_auto_refresh()] - Klippy is printing, auto refresh aborted
+2024-06-19 05:00:01,446 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 127.0.0.1
